@@ -1,0 +1,8 @@
+es\upm\dit\muirst\tfm\resources\CountryResourceMongoDB.class
+es\upm\dit\muirst\tfm\mappers\deserializer\CountryDeserializer.class
+META-INF\panache-archive.marker
+es\upm\dit\muirst\tfm\resources\CountryResource.class
+es\upm\dit\muirst\tfm\entities\Country.class
+org\acme\commandmode\msConsumer.class
+es\upm\dit\muirst\tfm\adapters\PostgresAdapter.class
+es\upm\dit\muirst\tfm\entities\CountryPostgres.class
