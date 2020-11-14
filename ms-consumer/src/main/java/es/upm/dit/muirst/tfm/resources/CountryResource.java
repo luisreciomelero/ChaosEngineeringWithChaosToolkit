@@ -1,13 +1,9 @@
 package es.upm.dit.muirst.tfm.resources;
 
-import es.upm.dit.muirst.tfm.entities.Country;
-
 import javax.ejb.Singleton;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceUnit;
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Singleton
 public class CountryResource {
