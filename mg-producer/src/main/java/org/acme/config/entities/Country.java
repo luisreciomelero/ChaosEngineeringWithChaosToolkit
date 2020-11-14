@@ -6,11 +6,11 @@ import javax.persistence.*;
 @Entity
 public class Country implements Serializable {
 
-    private Long id;
+
     private String name;
     private String alpha2Code;
     private String capital;
-
+    private String id;
 
 
     public Country(){
@@ -63,5 +63,14 @@ public class Country implements Serializable {
                 ", alpha2Code='" + alpha2Code + '\'' +
                 ", capital='" + capital + '\'' +
                 '}';
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Id
+    public String getId() {
+        return id;
     }
 }
