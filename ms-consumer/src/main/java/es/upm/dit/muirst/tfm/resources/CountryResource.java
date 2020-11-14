@@ -8,16 +8,16 @@ import javax.transaction.Transactional;
 @Singleton
 public class CountryResource {
 
-    @Inject
+ /*   @Inject
     EntityManager entityManager;
 
-    /*public List<Country> getCountry() {
+    *//*public List<Country> getCountry() {
         return entityManager.createQuery("SELECT c FROM Countries c").getResultList();
     }
 
     public Country getCountry(Long id) {
         return entityManager.find(Country.class, id);
-    }*/
+    }*//*
 
     @Transactional(Transactional.TxType.REQUIRED)
     public Country addCountry(Country country) {
@@ -35,7 +35,7 @@ public class CountryResource {
         } else {
             throw new RuntimeException("No such country available");
         }
-    }
+    }*/
 /*
     @Transactional(Transactional.TxType.REQUIRED)
     public void deleteContact(Long id) {
