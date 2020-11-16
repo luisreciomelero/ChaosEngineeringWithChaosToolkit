@@ -2,6 +2,7 @@ package org.acme.config;
 
 import org.acme.config.adapters.kafka.ProducerKafka;
 import org.acme.config.entities.Country;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.reactive.messaging.Emitter;
 
@@ -12,6 +13,9 @@ import java.util.logging.Logger;
 
 @Path("/country")
 public class Mg {
+
+    @ConfigProperty(name="kafka.bootstrap.servers")
+    String host;
 
     @Inject @Channel("test") Emitter<Country> publisher;
 
@@ -28,6 +32,10 @@ public class Mg {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public void add(Country country) {
+        LOGGER.info("-----------------------------------------");
+        LOGGER.info("EL HOST AL QUE APUNTAMOS ES: " + host);
+        LOGGER.info("-----------------------------------------");
+
         publisher.send(country);
     }
 
