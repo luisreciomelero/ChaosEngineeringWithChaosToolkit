@@ -50,7 +50,7 @@ services:
       - "8084:8084"
       
   ms:
-    image: luisreciomelero/mg-quarkus-producer:v1.0.2
+    image: luisreciomelero/ms-quarkus-consumer:v1.0.1
     command: sh -c "sleep 60"
     depends_on: 
       - zookeeper
@@ -60,7 +60,7 @@ services:
       - kafkastreams-network
     environment:
       KAFKA_HOST: "kafka:9092"
-      POSTGRES_URL: postgres:5432
+      POSTGRES_URL: "postgres:5432"
     ports:
       - "8086:8086"
       
