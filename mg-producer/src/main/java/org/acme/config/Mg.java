@@ -33,6 +33,8 @@ public class Mg {
     @Consumes(MediaType.APPLICATION_JSON)
     public void add(Country country) {
         LOGGER.info("-----------------------------------------");
+        LOGGER.info(System.getenv("KAFKA_HOST"));
+        LOGGER.info("-----------------------------------------");
         LOGGER.info("EL HOST AL QUE APUNTAMOS ES: " + host);
         LOGGER.info("-----------------------------------------");
 
