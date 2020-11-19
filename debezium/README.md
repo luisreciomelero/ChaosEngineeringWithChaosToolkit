@@ -1,0 +1,1 @@
+En este directorio se va a probar el tutorial de Debezium

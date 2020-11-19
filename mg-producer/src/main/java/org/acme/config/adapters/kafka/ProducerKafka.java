@@ -2,6 +2,7 @@ package org.acme.config.adapters.kafka;
 
 
 import org.acme.config.entities.Country;
+import org.acme.config.entities.Usuario;
 import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.reactive.messaging.Emitter;
 import javax.enterprise.context.ApplicationScoped;
@@ -20,9 +21,13 @@ public class ProducerKafka {
     }
 
     @Inject @Channel("test") Emitter<Country> publisher;
-
     public void generate(Country country) {
        publisher.send(country);
+    }
+
+    @Inject @Channel("usuarios") Emitter<Usuario> publisherUsers;
+    public void generate(Usuario usuario) {
+        publisherUsers.send(usuario);
     }
 
 

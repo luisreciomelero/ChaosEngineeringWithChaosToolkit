@@ -47,14 +47,6 @@ public class Country implements Serializable {
     public void setCapital(String capital) {
         this.capital = capital;
     }
-    /*
-    public List<Currency> getCurrencies() {
-        return currencies;
-    }
-
-    public void setCurrencies(List<Currency> currencies) {
-        this.currencies = currencies;
-    }*/
 
     @Override
     public String toString() {
