@@ -3,6 +3,7 @@ package es.upm.dit.muirst.tfm;
 
 import es.upm.dit.muirst.tfm.adapters.PostgresAdapter;
 import es.upm.dit.muirst.tfm.entities.CountryPostgres;
+import es.upm.dit.muirst.tfm.entities.UsuarioPostgres;
 import io.smallrye.reactive.messaging.annotations.Blocking;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 
@@ -32,6 +33,22 @@ public class msConsumer  {
             adapter.persistCountry(country);
         }catch (Exception e){
             LOGGER.severe(e.getMessage());
+        }
+
+
+
+    }
+
+    @Incoming("usuarios")
+    @Blocking
+    @Transactional
+    public void consumer(UsuarioPostgres usuarioPostgres){
+        LOGGER.info("LLEGA: " + usuarioPostgres);
+
+        try{
+            adapter.persistUsuario(usuarioPostgres);
+        }catch (Exception e){
+            LOGGER.severe("Usuario ya registrado");
         }
 
 
