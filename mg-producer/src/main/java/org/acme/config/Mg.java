@@ -3,6 +3,7 @@ package org.acme.config;
 import org.acme.config.adapters.kafka.ProducerKafka;
 import org.acme.config.entities.Country;
 import org.acme.config.entities.Usuario;
+import org.acme.config.messages.UserMessage;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.reactive.messaging.Emitter;
@@ -19,8 +20,10 @@ public class Mg {
     @ConfigProperty(name="kafka.bootstrap.servers")
     String host;
 
-    @Inject @Channel("test") Emitter<Country> publisher;
-    @Inject @Channel("usuarios") Emitter<Usuario> publisherUsers;
+
+    @Inject @Channel("usuarios-create") Emitter<Usuario> createUsers;
+    @Inject @Channel("usuarios-delete") Emitter<Usuario> deleteUsers;
+    @Inject @Channel("usuarios-read") Emitter<Usuario> readUsers;
 
     private ProducerKafka producerKafka = new ProducerKafka();
     private Logger LOGGER = Logger.getLogger("bitacora.subnivel.Control");
@@ -31,19 +34,6 @@ public class Mg {
     }
 
 
-    @POST
-    @Path("/country")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void add(Country country) {
-        LOGGER.info("-----------------------------------------");
-        LOGGER.info(System.getenv("KAFKA_HOST"));
-        LOGGER.info("-----------------------------------------");
-        LOGGER.info("EL HOST AL QUE APUNTAMOS ES: " + host);
-        LOGGER.info("-----------------------------------------");
-
-        publisher.send(country);
-    }
 
     @POST
     @Path("/usuarios")
@@ -56,7 +46,21 @@ public class Mg {
         LOGGER.info("EL HOST AL QUE APUNTAMOS ES: " + host);
         LOGGER.info("-----------------------------------------");
         LOGGER.info(usuario.toString());
-        publisherUsers.send(usuario);
+        createUsers.send(usuario);
+    }
+
+    @DELETE
+    @Path("/usuarios")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void delete(Usuario usuario) {
+        LOGGER.info("-----------------------------------------");
+        LOGGER.info(System.getenv("KAFKA_HOST"));
+        LOGGER.info("-----------------------------------------");
+        LOGGER.info("EL HOST AL QUE APUNTAMOS ES: " + host);
+        LOGGER.info("-----------------------------------------");
+        LOGGER.info(usuario.toString());
+        deleteUsers.send(usuario);
     }
 
 

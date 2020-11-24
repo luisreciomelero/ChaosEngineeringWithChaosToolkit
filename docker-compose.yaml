@@ -37,7 +37,7 @@ services:
       KAFKA_CONFLUENT_LICENSE_TOPIC_REPLICATION_FACTOR: 1
 
   mg:
-    image: luisreciomelero/mg-quarkus-producer:v1.1.0
+    image: luisreciomelero/mg-quarkus-producer:v1.1.2
     command: sh -c "sleep 60"
     depends_on: 
       - zookeeper
@@ -49,8 +49,8 @@ services:
     ports:
       - "8084:8084"
       
-  ms:
-    image: luisreciomelero/ms-quarkus-consumer:v1.0.1
+  mscreate:
+    image: luisreciomelero/ms-quarkus-create:v1.0.3
     command: sh -c "sleep 60"
     depends_on: 
       - zookeeper
@@ -61,8 +61,23 @@ services:
     environment:
       KAFKA_HOST: "kafka:9092"
       POSTGRES_URL: "postgres:5432"
-    ports:
-      - "8086:8086"
+    
+      
+  msdelete:
+    image: luisreciomelero/ms-quarkus-delete:v1.0.3
+    command: sh -c "sleep 60"
+    depends_on: 
+      - zookeeper
+      - kafka
+      - postgres
+      - mscreate
+    networks:
+      - kafkastreams-network
+    environment:
+      KAFKA_HOST: "kafka:9092"
+      POSTGRES_URL: "postgres:5432"
+    
+      
       
   postgres:
     image: postgres:latest

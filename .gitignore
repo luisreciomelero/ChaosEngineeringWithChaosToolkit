@@ -1,11 +1,6 @@
-ms-consumer/.idea
-mg-producer/.idea
-ms-consumer/.mvn
-mg-producer/.mvn
-ms-consumer/target
-mg-producer/target
-ms-consumer/*.iml
-mg-producer/*.iml
-ms-consumer/mvn*
-mg-producer/mvn*
+*/.idea
+*/.mvn
+*/target
+*/*.iml
+*/mvn*
 
