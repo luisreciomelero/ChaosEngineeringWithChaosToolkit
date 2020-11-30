@@ -37,15 +37,17 @@ services:
       KAFKA_CONFLUENT_LICENSE_TOPIC_REPLICATION_FACTOR: 1
 
   mg:
-    image: luisreciomelero/mg-quarkus-producer:v1.1.2
+    image: luisreciomelero/mg-quarkus-producer:v1.1.3
     command: sh -c "sleep 60"
     depends_on: 
       - zookeeper
       - kafka
+  #    - msread
     networks:
       - kafkastreams-network
     environment:
       KAFKA_HOST: "kafka:9092"
+      MSREAD_ADDRESS: "msread:8088"
     ports:
       - "8084:8084"
       
@@ -61,7 +63,8 @@ services:
     environment:
       KAFKA_HOST: "kafka:9092"
       POSTGRES_URL: "postgres:5432"
-    
+    ports:
+      - "8086:8086"
       
   msdelete:
     image: luisreciomelero/ms-quarkus-delete:v1.0.3
@@ -76,8 +79,40 @@ services:
     environment:
       KAFKA_HOST: "kafka:9092"
       POSTGRES_URL: "postgres:5432"
-    
+    ports:
+      - "8087:8087"
       
+  #msread:
+  #  image: luisreciomelero/ms-quarkus-read:v1.0.2
+  #  command: sh -c "sleep 60"
+  #  depends_on: 
+  #    - zookeeper
+  #    - kafka
+  #    - postgres
+  #    - mscreate
+  #  networks:
+  #    - kafkastreams-network
+  #  environment:
+  #    KAFKA_HOST: "kafka:9092"
+  #    POSTGRES_URL: "postgres:5432"
+  #  ports:
+  #    - "8088:8088"
+    
+  msupdate:
+    image: luisreciomelero/ms-quarkus-update:v1.0.1
+    command: sh -c "sleep 60"
+    depends_on: 
+      - zookeeper
+      - kafka
+      - postgres
+      - mscreate
+    networks:
+      - kafkastreams-network
+    environment:
+      KAFKA_HOST: "kafka:9092"
+      POSTGRES_URL: "postgres:5432"
+    ports:
+      - "8089:8089" 
       
   postgres:
     image: postgres:latest
