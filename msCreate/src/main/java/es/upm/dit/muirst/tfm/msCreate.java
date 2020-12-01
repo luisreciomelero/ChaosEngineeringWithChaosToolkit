@@ -16,7 +16,6 @@ import java.util.logging.Logger;
 public class msCreate {
 
     private Logger LOGGER = Logger.getLogger("bitacora.subnivel.Control");
-    private final Executor executor = Executors.newSingleThreadExecutor();
 
 
     @Inject

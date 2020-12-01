@@ -33,6 +33,7 @@ public class Mg {
     @Inject @Channel("usuarios-delete") Emitter<Usuario> deleteUsers;
     @Inject @Channel("usuarios-read") Emitter<Usuario> readUsers;
     @Inject @Channel("usuarios-update") Emitter<Usuario> updateUsers;
+    @Inject @Channel("usuarios-sendEmail") Emitter<Usuario> sendEmailUsers;
 
     private ProducerKafka producerKafka = new ProducerKafka();
     private Logger LOGGER = Logger.getLogger("bitacora.subnivel.Control");
@@ -58,7 +59,22 @@ public class Mg {
         LOGGER.info(usuario.toString());
         createUsers.send(usuario);
     }
-
+//////////////////////////////////////////////////////////////////
+    @POST
+    @Path("/usuarios/send")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void send(Usuario usuario) {
+        LOGGER.info("POST");
+        LOGGER.info("-----------------------------------------");
+        LOGGER.info(System.getenv("KAFKA_HOST"));
+        LOGGER.info("-----------------------------------------");
+        LOGGER.info("EL HOST AL QUE APUNTAMOS ES: " + host);
+        LOGGER.info("-----------------------------------------");
+        LOGGER.info(usuario.toString());
+        sendEmailUsers.send(usuario);
+    }
+///////////////////////////////////////////////////////////////////////
     @DELETE
     @Path("/usuarios")
     @Produces(MediaType.APPLICATION_JSON)
@@ -108,13 +124,13 @@ public class Mg {
         //return bus.<String>request(readAddres, usuario).onItem().transform(Message::body);
     }
 
-    @Incoming("read-usuarios")
+  /*  @Incoming("read-usuarios")
     @Produces(MediaType.APPLICATION_JSON)
     public Usuario getUser(Usuario usuario){
         LOGGER.info("LLEGA: " + usuario);
 
         return usuario;
-    }
+    }*/
 
 
 
