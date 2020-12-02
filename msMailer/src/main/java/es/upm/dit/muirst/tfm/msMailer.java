@@ -2,8 +2,15 @@ package es.upm.dit.muirst.tfm;
 
 import es.upm.dit.muirst.tfm.entities.Usuario;
 import es.upm.dit.muirst.tfm.services.Service;
+import io.smallrye.mutiny.Uni;
 import io.smallrye.reactive.messaging.annotations.Blocking;
+import io.vertx.core.AsyncResult;
+import io.vertx.core.Future;
+import io.vertx.core.Promise;
+import org.eclipse.microprofile.reactive.messaging.Channel;
+import org.eclipse.microprofile.reactive.messaging.Emitter;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
+import org.eclipse.microprofile.reactive.messaging.Outgoing;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -16,6 +23,8 @@ public class msMailer {
     @Inject
     private Service service;
 
+
+
     @Incoming("usuarios-sendEmail")
     @Blocking
     @Transactional
@@ -23,8 +32,8 @@ public class msMailer {
         LOGGER.info("LLEGA: " + usuario);
 
         try{
-            //adapter.persistUsuario(usuarioPostgres);
             service.sendMail(usuario);
+
         }catch (Exception e){
             LOGGER.severe("Problema al enviar: " + e);
         }

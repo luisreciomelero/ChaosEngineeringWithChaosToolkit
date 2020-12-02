@@ -124,13 +124,32 @@ public class Mg {
         //return bus.<String>request(readAddres, usuario).onItem().transform(Message::body);
     }
 
-  /*  @Incoming("read-usuarios")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Usuario getUser(Usuario usuario){
-        LOGGER.info("LLEGA: " + usuario);
+    @Incoming("sendEmail-usuarios")
+    public Usuario incomingUser(Usuario usuario){
+        LOGGER.info("regresa a sendEmail-usuarios: " + usuario);
+        String canalPrefer = usuario.getCanalPrefer();
+        String canalContac = usuario.getCanalContac();
+        String estadoNotif = usuario.getEstadoNofif();
+        if(!canalPrefer.equals(canalContac)){
+            LOGGER.info("Se tendrá que enviar al topic de: "+canalContac);
+        }else if(estadoNotif != null && estadoNotif.contains("Enviado")){
+            LOGGER.info("Procedemos a actualizar el usuario");
+            updateUsers.send(usuario);
 
+        }else{
+            LOGGER.info("Se tendrá que enviar al topic de: "+canalContac);
+            String canal = canalPrefer.toLowerCase();
+            switch (canal){
+                case "email":
+                    //sendEmailUsers.send(usuario);
+                    break;
+                case "telefono":
+                    LOGGER.info("ENVIAR A MSTELEFONO");
+
+            }
+        }
         return usuario;
-    }*/
+    }
 
 
 

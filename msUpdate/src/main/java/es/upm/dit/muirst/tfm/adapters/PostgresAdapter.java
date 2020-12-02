@@ -16,7 +16,7 @@ public class PostgresAdapter {
     public void updateUsuario( UsuarioPostgres usuarioPostgres){
         UsuarioPostgres user = UsuarioPostgres.findById(usuarioPostgres.getDNI());
         if(user!=null){
-            user.setNombre(usuarioPostgres.getNombre());
+            user.setEstadoNofif(usuarioPostgres.getEstadoNofif());
         }
 
     }
