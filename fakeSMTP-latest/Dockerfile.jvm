@@ -1,0 +1,11 @@
+FROM java:8
+
+RUN mkdir -p /output
+
+ADD fakeSMTP-2.0.jar /fakeSMTP.jar
+
+VOLUME /output
+
+EXPOSE 2525
+
+ENTRYPOINT ["java","-jar","/fakeSMTP.jar","--background", "--output-dir", "/output", "--port", "2525", "--start-server"]

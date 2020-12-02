@@ -37,7 +37,7 @@ services:
       KAFKA_CONFLUENT_LICENSE_TOPIC_REPLICATION_FACTOR: 1
 
   mg:
-    image: luisreciomelero/mg-quarkus-producer:v1.1.3
+    image: luisreciomelero/mg-quarkus-producer:v1.1.4
     command: sh -c "sleep 60"
     depends_on: 
       - zookeeper
@@ -99,7 +99,7 @@ services:
   #    - "8088:8088"
     
   msupdate:
-    image: luisreciomelero/ms-quarkus-update:v1.0.1
+    image: luisreciomelero/ms-quarkus-update:v1.0.2
     command: sh -c "sleep 60"
     depends_on: 
       - zookeeper
@@ -113,7 +113,35 @@ services:
       POSTGRES_URL: "postgres:5432"
     ports:
       - "8089:8089" 
+  
+  msmailer:
+    image: luisreciomelero/ms-quarkus-mailer:v1.0.1
+    command: sh -c "sleep 60"
+    networks:
+      - kafkastreams-network
+    depends_on: 
+      - zookeeper
+      - kafka
+      - postgres
+      - mscreate
+    environment:
+      KAFKA_HOST: "kafka:9092"
+     # KAFKA_HOST: "127.0.0.1:9091"
+      SMTP_HOST: "fakesmtp"
+      SMTP_PORT: "2525"
+      SMTP_MAIL_FROM: "tfm.muirst.lrm@gmail.com"
+      SMTP_SSL: "false"
+      SMTP_USERNAME: "apikey"
+      SMTP_PASSWORD: "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"
+    ports:
+      - "8090:8090"
       
+  fakesmtp:
+    image: luisreciomelero/fakesmtp:v1.0.1
+    networks:
+      - kafkastreams-network
+    depends_on:
+      - msmailer
   postgres:
     image: postgres:latest
     restart: always
