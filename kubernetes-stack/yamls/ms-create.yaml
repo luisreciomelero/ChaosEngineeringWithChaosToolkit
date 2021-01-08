@@ -1,0 +1,42 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-create-depl
+  labels:
+    app: ms-create-depl
+  #namespace: openfaas
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-create-depl
+  template:
+    metadata:
+      labels:
+        app: ms-create-depl
+    spec:
+      containers:
+      - name: ms-create
+        image: luisreciomelero/ms-quarkus-create:v1.0.5
+        env:
+          - name: KAFKA_HOST
+            value: kafka:9092
+          - name: POSTGRES_URL
+            value: "postgres:5432"
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: ms-create
+spec:
+  type: ClusterIP
+  selector:
+    app: ms-create
+  ports:
+  - port: 8086
+    targetPort: 8086
+  
+
+

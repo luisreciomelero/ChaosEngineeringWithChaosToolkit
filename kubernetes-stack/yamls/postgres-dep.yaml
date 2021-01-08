@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres-dep
+  labels:
+    app: postgres-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres-dep
+  template:
+    metadata:
+      labels:
+        app: postgres-dep
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:latest
+        env:
+          - name: POSTGRES_PASSWORD
+            value: postgres
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: postgres
+  #namespace: smart-spaces-catedra
+  #namespace: openfaas
+spec:
+  type: NodePort
+  selector:
+    app: postgres-dep
+  ports:
+  - port: 5432
+    targetPort: 5432
+
+
+  
+
