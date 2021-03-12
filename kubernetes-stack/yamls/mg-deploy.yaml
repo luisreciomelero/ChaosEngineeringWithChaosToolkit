@@ -28,8 +28,6 @@ kind: Service
 apiVersion: v1
 metadata:
   name: mg-v1
-  #namespace: smart-spaces-catedra
-  #namespace: openfaas
 spec:
   type: ClusterIP
   selector:

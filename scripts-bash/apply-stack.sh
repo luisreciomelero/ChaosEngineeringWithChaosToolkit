@@ -2,13 +2,16 @@
 
 cd "../kubernetes-stack/yamls"
 
-kubectl create ns "ingress-nginx"
+#kubectl create ns "ingress-nginx"
 
-sleep 10
 
-echo "Arrancamos: Ingress"
+#sleep 10
 
-kubectl apply -f "ingress-controller-nginx-tfm.yaml,ingress-rules-tfm.yaml,ingress-service-tfm.yaml"
+echo "Arrancamos: Ingress-gateway"
+
+kubectl apply -f "ingress-gateway.yaml"
+
+#kubectl apply -f "ingress-controller-nginx-tfm.yaml,ingress-rules-tfm.yaml,ingress-service-tfm.yaml"
 
 echo "Arrancamos: Postgres"
 
@@ -28,6 +31,6 @@ sleep 30
 
 echo "Arrancamos microservicios"
 
-kubectl apply -f "mg-deploy.yaml,ms-create.yaml,ms-delete.yaml,ms-mailer.yaml,ms-update.yaml,fakesmtp.yaml"
+kubectl apply -f "mg-deploy.yaml,ms-create.yaml,ms-delete.yaml,ms-mailer.yaml,ms-update.yaml,fakesmtp.yaml,ms-read.yaml"
 
 cd "../../scripts-bash/"

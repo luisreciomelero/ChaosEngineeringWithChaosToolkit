@@ -2,25 +2,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ms-create-depl
+  name: ms-read-depl
   labels:
-    app: ms-create-depl
+    app: ms-read-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: ms-create-depl
+      app: ms-read-depl
   template:
     metadata:
       labels:
-        app: ms-create-depl
+        app: ms-read-depl
     spec:
       containers:
-      - name: ms-create
-        image: luisreciomelero/ms-quarkus-create:v1.0.5
+      - name: ms-read
+        image: luisreciomelero/ms-quarkus-read:v1.0.9
         env:
-          - name: KAFKA_HOST
-            value: kafka:9092
           - name: POSTGRES_URL
             value: "postgres:5432"
 ---
@@ -28,14 +26,14 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: ms-create
+  name: ms-read
 spec:
   type: ClusterIP
   selector:
-    app: ms-create-depl
+    app: ms-read-depl
   ports:
-  - port: 8086
-    targetPort: 8086
+  - port: 8088
+    targetPort: 8088
   
 
 
