@@ -2,6 +2,8 @@ package es.upm.dit.muirst.tfm.adapters;
 
 import es.upm.dit.muirst.tfm.entities.UsuarioPostgres;
 import io.quarkus.vertx.ConsumeEvent;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
@@ -12,9 +14,12 @@ import java.util.List;
 @Transactional(Transactional.TxType.REQUIRED)
 public class PostgresAdapter {
 
+
+
     @ConsumeEvent(value = "blocking-consumer", blocking = true)
     public void updateUsuario( UsuarioPostgres usuarioPostgres){
         UsuarioPostgres user = UsuarioPostgres.findById(usuarioPostgres.getDNI());
+
         if(user!=null){
             user.setEstadoNofif(usuarioPostgres.getEstadoNofif());
         }
