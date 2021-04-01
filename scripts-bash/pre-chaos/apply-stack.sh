@@ -59,4 +59,8 @@ cd "mailer-app"
 
 kubectl apply -f "ms-mailer.yaml,fakesmtp.yaml"
 
+cd "../VirtualServices"
+
+kubectl apply -f "."
+
 cd "../../../scripts-bash/pre-chaos/"

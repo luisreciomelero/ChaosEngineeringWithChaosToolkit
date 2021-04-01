@@ -25,6 +25,13 @@ spec:
         env:
           - name: POSTGRES_URL
             value: "postgres:5432"
+        resources:
+            limits:
+              cpu: 100m
+              memory: 50Mi
+            requests:
+              cpu: 50m
+              memory: 20Mi
 ---
 
 kind: Service

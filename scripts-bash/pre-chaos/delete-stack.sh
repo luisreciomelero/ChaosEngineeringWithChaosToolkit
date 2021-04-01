@@ -36,4 +36,8 @@ cd "mailer-app"
 
 kubectl delete -f "ms-mailer.yaml,fakesmtp.yaml"
 
+cd "../VirtualServices"
+
+kubectl delete -f "."
+
 cd "../../../scripts-bash/pre-chaos/"

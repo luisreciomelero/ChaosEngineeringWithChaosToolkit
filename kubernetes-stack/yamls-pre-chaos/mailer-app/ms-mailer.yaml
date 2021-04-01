@@ -46,8 +46,14 @@ spec:
               secretKeyRef: 
                 name: smtp-secret
                 key: stmp-password
-            #value: "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"
-            #value: "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"
+        resources:
+            limits:
+              cpu: 100m
+              memory: 50Mi
+            requests:
+              cpu: 50m
+              memory: 20Mi
+
 ---
 
 kind: Service

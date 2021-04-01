@@ -1,5 +1,3 @@
-#!/bin/bash
-
 export INGRESS_PORT=$(kubectl \
     --namespace istio-system \
     get service istio-ingressgateway \
@@ -18,24 +16,13 @@ if [ $# -ne 1 ] || ! [[ $1 =~ $es_numero ]]; then
 
 else
 	echo "Se realizarán $1 periciones"
-	for r in {0..$1}
+	for ((i = 0 ; i < $1 ; i++));
 	do
-		NEW_UUID=$(cat /dev/urandom | tr -dc '0-9-A-Z' | fold -w 9 | head -n 1)
-
-		curl -X POST \
-			-H 'Content-Type: application/json' \
-			-d '{
-		    "DNI":"'${NEW_UUID}'",
-		    "nombre":"Luis",
-		    "apellido":"Recio",
-		    "telefono":"600364231",
-		    "email":"tfm.muirst.lrm@gmail.com",
-		    "password":"12345",
-		    "canalPrefer":"email",
-		    "canalContac":"email",
-		    "estadoNotif":" "
-			}'\
-			"http://"$INGRESS_HOST"/mg/api/usuarios/"
+		echo "peticion"
+		curl -H 'Content-Type: application/json' \
+			"http://"$INGRESS_HOST"/read/api/usuarios/"
+		echo ""
+		echo "------------------------------------------------"
 	done
 	echo "Realizadas todas las peticiones!"
 fi

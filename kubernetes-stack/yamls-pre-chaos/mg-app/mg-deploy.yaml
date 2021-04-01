@@ -23,6 +23,13 @@ spec:
         env:
           - name: KAFKA_HOST
             value: kafka:9092
+        resources:
+            limits:
+              cpu: 100m
+              memory: 50Mi
+            requests:
+              cpu: 50m
+              memory: 20Mi
 ---
 
 kind: Service
