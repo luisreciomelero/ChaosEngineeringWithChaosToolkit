@@ -1,0 +1,5 @@
+org/acme/resources/UsuarioPostgresResource.class
+META-INF/panache-archive.marker
+org/acme/Service.class
+org/acme/repositories/UsuarioPostgresRepository.class
+org/acme/entities/UsuarioPostgres.class

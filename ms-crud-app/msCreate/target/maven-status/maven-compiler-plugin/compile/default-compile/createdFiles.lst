@@ -1,0 +1,5 @@
+META-INF/panache-archive.marker
+es/upm/dit/muirst/tfm/msCreate.class
+es/upm/dit/muirst/tfm/entities/UsuarioPostgres.class
+es/upm/dit/muirst/tfm/adapters/PostgresAdapter.class
+es/upm/dit/muirst/tfm/mappers/deserializer/UsuarioDeserializer.class

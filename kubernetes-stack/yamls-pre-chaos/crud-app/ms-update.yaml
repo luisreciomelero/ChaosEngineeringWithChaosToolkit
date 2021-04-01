@@ -1,0 +1,51 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-update-depl
+  labels:
+    app: crud-app
+    component: ms-update
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crud-app
+      component: ms-update
+  template:
+    metadata:
+      labels:
+        app: crud-app
+        component: ms-update
+        version: ms-update-v1
+    spec:
+      containers:
+      - name: ms-update
+        image: luisreciomelero/ms-quarkus-update:v1.0.2
+        env:
+          - name: KAFKA_HOST
+            value: kafka:9092
+          - name: POSTGRES_URL
+            value: "postgres:5432"
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: ms-update
+  labels:
+    app: crud-app
+    component: ms-update
+  #namespace: smart-spaces-catedra
+  #namespace: openfaas
+spec:
+  type: ClusterIP
+  selector:
+    app: crud-app
+    component: ms-update
+  ports:
+  - port: 8089
+    targetPort: 8089
+  
+
+

@@ -1,0 +1,47 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-read-depl
+  labels:
+    app: read-app
+    component: ms-read
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: read-app
+      component: ms-read
+  template:
+    metadata:
+      labels:
+        app: read-app
+        component: ms-read
+        version: ms-read-v1
+    spec:
+      containers:
+      - name: ms-read
+        image: luisreciomelero/ms-quarkus-read:v1.0.9
+        env:
+          - name: POSTGRES_URL
+            value: "postgres:5432"
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: ms-read
+  labels:
+    app: read-app
+    component: ms-read
+spec:
+  type: ClusterIP
+  selector:
+    app: read-app
+    component: ms-read
+  ports:
+  - port: 8088
+    targetPort: 8088
+  
+
+

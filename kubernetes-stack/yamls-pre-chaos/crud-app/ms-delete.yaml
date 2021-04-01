@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-delete-depl
+  labels:
+    app: crud-app
+    component: ms-delete
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crud-app
+      component: ms-delete
+  template:
+    metadata:
+      labels:
+        app: crud-app
+        component: ms-delete
+        version: ms-delete-v1
+    spec:
+      containers:
+      - name: ms-delete
+        image: luisreciomelero/ms-quarkus-delete:v1.0.3
+        env:
+          - name: KAFKA_HOST
+            value: kafka:9092
+          - name: POSTGRES_URL
+            value: "postgres:5432"
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: ms-delete
+  labels:
+    app: crud-app
+    component: ms-delete
+  #namespace: smart-spaces-catedra
+  #namespace: openfaas
+spec:
+  type: ClusterIP
+  selector:
+    app: crud-app
+    component: ms-delete
+  ports:
+  - port: 8087
+    targetPort: 8087
+  
+
+
