@@ -2,13 +2,13 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: ms-create-vs
+  name: zookeeper-vs
 spec:
   hosts:
-  - ms-create
+  - zookeeper
   http:
   - route:
     - destination:
-        host: ms-create
+        host: zookeeper
         port:
-          number: 8086
+          number: 2181
