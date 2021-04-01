@@ -5,3 +5,4 @@
 */mvn*
 msRead/*
 fakeSMTP-latest/rec*
+**/target/**
