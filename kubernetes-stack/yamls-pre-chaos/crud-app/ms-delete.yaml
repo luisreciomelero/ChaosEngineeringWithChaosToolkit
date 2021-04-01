@@ -35,8 +35,6 @@ metadata:
   labels:
     app: crud-app
     component: ms-delete
-  #namespace: smart-spaces-catedra
-  #namespace: openfaas
 spec:
   type: ClusterIP
   selector:

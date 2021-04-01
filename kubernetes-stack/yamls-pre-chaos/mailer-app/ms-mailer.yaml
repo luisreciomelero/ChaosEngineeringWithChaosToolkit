@@ -20,7 +20,6 @@ spec:
     spec:
       containers:
       - name: ms-mailer
-        #image: luisreciomelero/ms-javax-mailer:v1.0.1
         image: luisreciomelero/ms-quarkus-mailer:v1.0.4
         env:
           - name: KAFKA_HOST
@@ -37,9 +36,17 @@ spec:
             value: "true"
             #value: "false"
           - name: SMTP_USERNAME
-            value: "apikey"
+            valueFrom:
+              secretKeyRef: 
+                name: smtp-secret
+                key: stmp-username
+            #value: "apikey"
           - name: SMTP_PASSWORD
-            value: "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"
+            valueFrom:
+              secretKeyRef: 
+                name: smtp-secret
+                key: stmp-password
+            #value: "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"
             #value: "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"
 ---
 
@@ -58,6 +65,15 @@ spec:
   ports:
   - port: 8090
     targetPort: 8090
-  
 
+---
+  
+apiVersion: v1
+kind: Secret
+metadata:
+  name: smtp-secret
+type: Opaque
+data:
+  stmp-username: YXBpS2V5
+  stmp-password: U0cueW9XbWF6Z3dUSmVaNzlVYlhtYngwZy4welZzc2xocUxmNUVMdi1zbUp2Um5yWml6V3pYVk93S21zcktPcU5WbXlR
 

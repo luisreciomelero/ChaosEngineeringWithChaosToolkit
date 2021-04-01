@@ -6,7 +6,6 @@ metadata:
     app: kafka
     component: zookeeper
   name: zookeeper
-  #namespace: openfaas
 spec:
   replicas: 1
   selector:

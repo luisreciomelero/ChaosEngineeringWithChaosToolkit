@@ -5,7 +5,6 @@ metadata:
     app: kafka
     component: kafka-broker
   name: kafka-broker
-  #namespace: openfaas
 spec:
   replicas: 1
   selector:
