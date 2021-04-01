@@ -17,17 +17,24 @@ spec:
       containers:
       - name: postgres
         image: postgres:latest
+        volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: pgdatavol
         env:
           - name: POSTGRES_PASSWORD
             value: postgres
+      volumes:
+        - name: pgdatavol
+          hostPath:
+            path: /pg/data
+            type: DirectoryOrCreate
+
 ---
 
 kind: Service
 apiVersion: v1
 metadata:
   name: postgres
-  #namespace: smart-spaces-catedra
-  #namespace: openfaas
 spec:
   type: NodePort
   selector:
@@ -35,6 +42,7 @@ spec:
   ports:
   - port: 5432
     targetPort: 5432
+    nodePort: 30100
 
 
   
