@@ -21,20 +21,33 @@ spec:
     spec:
       containers:
       - name: ms-create
-        image: luisreciomelero/ms-quarkus-create:v1.0.6
-        #image: luisreciomelero/ms-quarkus-create-native:v1.0.1
+        image: luisreciomelero/ms-quarkus-create:v1.0.7
         env:
           - name: KAFKA_HOST
             value: kafka:9092
           - name: POSTGRES_URL
             value: "postgres:5432"
         resources:
-            limits:
-              cpu: 100m
-              memory: 50Mi
-            requests:
-              cpu: 50m
-              memory: 20Mi
+          limits:
+            cpu: 1000m
+            memory: 512Mi
+          requests:
+            cpu: 250m
+            memory: 64Mi
+        readinessProbe:
+          exec:
+            command:
+              - curl 
+              - "http://127.0.0.1:8086/q/health/ready"
+          initialDelaySeconds: 105
+          periodSeconds: 10
+        livenessProbe:
+          exec:
+            command:
+              - curl 
+              - "http://127.0.0.1:8086/q/health/live"
+          initialDelaySeconds: 100
+          periodSeconds: 20
 ---
 
 kind: Service

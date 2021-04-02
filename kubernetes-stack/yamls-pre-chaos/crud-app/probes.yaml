@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-probes-depl
+  labels:
+    app: crud-app
+    component: ms-probes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crud-app
+      component: ms-probes
+  template:
+    metadata:
+      labels:
+        app: crud-app
+        component: ms-probes
+        version: ms-probes-v1
+    spec:
+      containers:
+      - name: ms-probes
+        image: luisreciomelero/ms-quarkus-probes:v1.0.1 
+        env:
+          - name: KAFKA_HOST
+            value: kafka:9092
+          - name: POSTGRES_URL
+            value: "postgres:5432"
+        readinessProbe:
+          httpGet:
+            path: /q/health/ready
+            port: 8095
+          initialDelaySeconds: 55
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /q/health/live
+            port: 8095
+          initialDelaySeconds: 45
+          periodSeconds: 20
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: ms-probes
+  labels:
+    app: crud-app
+    component: ms-probes
+spec:
+  type: ClusterIP
+  selector:
+    app: crud-app
+    component: ms-probes
+  ports:
+  - port: 8095
+    targetPort: 8095
+  
