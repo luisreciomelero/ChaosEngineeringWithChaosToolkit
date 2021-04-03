@@ -21,7 +21,9 @@ spec:
     spec:
       containers:
       - name: ms-read
-        image: luisreciomelero/ms-quarkus-read:v1.1.0
+        #image: luisreciomelero/ms-quarkus-read:v1.1.0
+        image: luisreciomelero/ms-quarkus-read-native:v1.0.1
+
         env:
           - name: POSTGRES_URL
             value: "postgres:5432"

@@ -19,7 +19,8 @@ spec:
     spec:
       containers:
       - name: mg
-        image: luisreciomelero/mg-quarkus-producer:v1.1.5
+        #image: luisreciomelero/mg-quarkus-producer:v1.1.5
+        image: luisreciomelero/mg-quarkus-native:v1.0.2
         env:
           - name: KAFKA_HOST
             value: kafka:9092

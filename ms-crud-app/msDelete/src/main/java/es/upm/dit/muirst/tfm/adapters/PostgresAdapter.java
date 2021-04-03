@@ -5,7 +5,6 @@ import io.quarkus.vertx.ConsumeEvent;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.transaction.Transactional;
-import java.util.List;
 
 @ApplicationScoped
 @Transactional(Transactional.TxType.REQUIRED)

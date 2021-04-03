@@ -26,17 +26,13 @@ public class msDelete {
     @Incoming("usuarios-delete")
     @Blocking
     @Transactional
-    public void consumer(UsuarioPostgres usuarioPostgres){
+    public void consumer(UsuarioPostgres usuarioPostgres) {
         LOGGER.info("LLEGA: " + usuarioPostgres);
-
-        try{
+        try {
             adapter.deleteUsuario(usuarioPostgres);
-        }catch (Exception e){
+        } catch (Exception e) {
             LOGGER.severe("No se ha podido eliminar dicho usuario");
         }
-
-
-
     }
 
 

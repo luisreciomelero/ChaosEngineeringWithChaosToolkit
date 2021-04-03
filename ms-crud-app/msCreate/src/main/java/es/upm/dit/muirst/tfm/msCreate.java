@@ -10,8 +10,6 @@ import org.eclipse.microprofile.reactive.messaging.Incoming;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 import java.util.logging.Logger;
 
 
