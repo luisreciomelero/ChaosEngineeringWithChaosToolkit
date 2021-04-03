@@ -21,7 +21,7 @@ public class msMailer {
     private Logger LOGGER = Logger.getLogger("bitacora.subnivel.Control");
 
     @Inject
-    private Service service;
+    Service service;
 
 
 

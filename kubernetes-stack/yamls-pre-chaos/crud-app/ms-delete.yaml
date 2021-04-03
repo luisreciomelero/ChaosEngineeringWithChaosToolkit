@@ -20,12 +20,33 @@ spec:
     spec:
       containers:
       - name: ms-delete
-        image: luisreciomelero/ms-quarkus-delete:v1.0.3
+        image: luisreciomelero/ms-quarkus-delete:v1.0.4
         env:
           - name: KAFKA_HOST
             value: kafka:9092
           - name: POSTGRES_URL
             value: "postgres:5432"
+        resources:
+          limits:
+            cpu: 500m
+            memory: 256Mi
+          requests:
+            cpu: 250m
+            memory: 64Mi
+        readinessProbe:
+          exec:
+            command:
+              - curl 
+              - "http://127.0.0.1:8087/q/health/ready"
+          initialDelaySeconds: 155
+          periodSeconds: 10
+        livenessProbe:
+          exec:
+            command:
+              - curl 
+              - "http://127.0.0.1:8087/q/health/live"
+          initialDelaySeconds: 120
+          periodSeconds: 20
         
 
 ---

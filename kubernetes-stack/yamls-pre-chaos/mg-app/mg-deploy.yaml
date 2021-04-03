@@ -19,10 +19,31 @@ spec:
     spec:
       containers:
       - name: mg
-        image: luisreciomelero/mg-quarkus-producer:v1.1.4
+        image: luisreciomelero/mg-quarkus-producer:v1.1.5
         env:
           - name: KAFKA_HOST
             value: kafka:9092
+        resources:
+          limits:
+            cpu: 500m
+            memory: 256Mi
+          requests:
+            cpu: 250m
+            memory: 64Mi
+        readinessProbe:
+          exec:
+            command:
+              - curl 
+              - "http://127.0.0.1:8084/q/health/ready"
+          initialDelaySeconds: 155
+          periodSeconds: 10
+        livenessProbe:
+          exec:
+            command:
+              - curl 
+              - "http://127.0.0.1:8084/q/health/live"
+          initialDelaySeconds: 120
+          periodSeconds: 20
         
 ---
 

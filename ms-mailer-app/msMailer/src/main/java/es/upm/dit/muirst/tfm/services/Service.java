@@ -55,9 +55,12 @@ public class Service {
     @ConfigProperty(name = "quarkus.mailer.password")
     String password;
 
+    @ConfigProperty(name = "sendsmtp.enable")
+    boolean enable_smtp;
+
     @Inject
     ReactiveMailer reactiveMailer;
-    private Vertx vertx = Vertx.vertx();
+
 
     @Inject @Channel("sendEmail-usuarios")
     Emitter<Usuario> sendEmailUsers;
@@ -69,22 +72,27 @@ public class Service {
         String telefono = usuario.getTelefono();
         LOGGER.info("vamos a enviar un email a: " + email);
         LOGGER.info("From: {"+from+"}, Host: {"+host+"}, port: {"+port+"}, username:{"+username+"}, password: {"+password+"}");
-       Uni<Void> stage = reactiveMailer.send(Mail.withText(email, "Created", "Created: "+nombre));
-        stage.subscribe().with(
-                item -> {
-                    usuario.setEstadoNofif("Enviado por email");
-                    System.out.println("Email enviado: "+ usuario);
-                    sendEmailUsers.send(usuario);
-
-                },
-                failure -> {
-                    System.out.println("No ha sido posible enviar el email ");
-                    if(telefono!=null && !telefono.equals("")){
-                        usuario.setCanalContac("Telefono");
+        if(enable_smtp) {
+            Uni<Void> stage = reactiveMailer.send(Mail.withText(email, "Created", "Created: " + nombre));
+            stage.subscribe().with(
+                    item -> {
+                        usuario.setEstadoNofif("Enviado por email");
+                        System.out.println("Email enviado: " + usuario);
                         sendEmailUsers.send(usuario);
-                    }
-                });
 
+                    },
+                    failure -> {
+                        System.out.println("No ha sido posible enviar el email ");
+                        if (telefono != null && !telefono.equals("")) {
+                            usuario.setCanalContac("Telefono");
+                            sendEmailUsers.send(usuario);
+                        }
+                    });
+        }else{
+            usuario.setEstadoNofif("Enviado por email");
+            System.out.println("Email enviado: " + usuario);
+            sendEmailUsers.send(usuario);
+        }
 
 
     }

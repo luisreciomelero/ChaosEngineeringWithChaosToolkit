@@ -10,4 +10,4 @@ cd "../../kubernetes-stack/yamls-pre-chaos/istio"
 
 kubectl apply -f "istio-addons/"
 
-cd "../../../../scripts-bash"
+#cd "../../../../scripts-bash"

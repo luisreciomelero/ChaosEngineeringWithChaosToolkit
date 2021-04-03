@@ -21,10 +21,31 @@ spec:
     spec:
       containers:
       - name: ms-read
-        image: luisreciomelero/ms-quarkus-read:v1.0.9
+        image: luisreciomelero/ms-quarkus-read:v1.1.0
         env:
           - name: POSTGRES_URL
             value: "postgres:5432"
+        resources:
+          limits:
+            cpu: 500m
+            memory: 256Mi
+          requests:
+            cpu: 250m
+            memory: 64Mi
+        readinessProbe:
+          exec:
+            command:
+              - curl 
+              - "http://127.0.0.1:8088/q/health/ready"
+          initialDelaySeconds: 155
+          periodSeconds: 10
+        livenessProbe:
+          exec:
+            command:
+              - curl 
+              - "http://127.0.0.1:8088/q/health/live"
+          initialDelaySeconds: 120
+          periodSeconds: 20
         
 ---
 

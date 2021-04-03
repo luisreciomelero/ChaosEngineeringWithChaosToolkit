@@ -20,10 +20,12 @@ spec:
     spec:
       containers:
       - name: ms-mailer
-        image: luisreciomelero/ms-quarkus-mailer:v1.0.4
+        image: luisreciomelero/ms-quarkus-mailer:v1.0.6
         env:
           - name: KAFKA_HOST
             value: kafka:9092
+          - name: ENABLE_SMTP
+            value: "false"
           - name: SMTP_HOST
             value: "smtp.sendgrid.net"
             #value: "fakesmtp"
@@ -46,7 +48,27 @@ spec:
               secretKeyRef: 
                 name: smtp-secret
                 key: stmp-password
-      
+        resources:
+          limits:
+            cpu: 500m
+            memory: 256Mi
+          requests:
+            cpu: 250m
+            memory: 64Mi
+        readinessProbe:
+          exec:
+            command:
+              - curl 
+              - "http://127.0.0.1:8090/q/health/ready"
+          initialDelaySeconds: 155
+          periodSeconds: 10
+        livenessProbe:
+          exec:
+            command:
+              - curl 
+              - "http://127.0.0.1:8090/q/health/live"
+          initialDelaySeconds: 120
+          periodSeconds: 20
 ---
 
 kind: Service
