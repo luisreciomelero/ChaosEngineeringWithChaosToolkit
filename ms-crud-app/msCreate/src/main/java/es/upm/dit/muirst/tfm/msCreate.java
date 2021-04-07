@@ -2,7 +2,7 @@ package es.upm.dit.muirst.tfm;
 
 
 import es.upm.dit.muirst.tfm.adapters.PostgresAdapter;
-import es.upm.dit.muirst.tfm.entities.UsuarioPostgres;
+import es.upm.dit.muirst.tfm.entities.Usuario;
 import io.smallrye.reactive.messaging.annotations.Blocking;
 import org.eclipse.microprofile.reactive.messaging.Channel;
 import org.eclipse.microprofile.reactive.messaging.Emitter;
@@ -21,19 +21,19 @@ public class msCreate {
     @Inject
     PostgresAdapter adapter;
 
-    @Inject @Channel("usuarios-sendEmail")
-    Emitter<UsuarioPostgres> sendEmailUsers;
+    @Inject @Channel("usuarios-sendnotification")
+    Emitter<Usuario> sendNotification;
 
 
     @Incoming("usuarios-create")
     @Blocking
     @Transactional
-    public void consumer(UsuarioPostgres usuarioPostgres){
-        LOGGER.info("LLEGA: " + usuarioPostgres);
+    public void consumer(Usuario usuario){
+        LOGGER.info("LLEGA: " + usuario);
 
         try{
-            UsuarioPostgres user = adapter.persistUsuario(usuarioPostgres);
-            sendEmailUsers.send(user);
+            Usuario user = adapter.persistUsuario(usuario);
+            sendNotification.send(user);
         }catch (Exception e){
             LOGGER.severe("Usuario ya registrado");
         }

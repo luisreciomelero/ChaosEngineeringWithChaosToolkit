@@ -3,9 +3,12 @@
 export INGRESS_PORT=$(kubectl \
     --namespace istio-system \
     get service istio-ingressgateway \
-    --output jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
+   --output jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
 
-export INGRESS_HOST=$(minikube ip):$INGRESS_PORT
+#export INGRESS_HOST=$(minikube ip):$INGRESS_PORT
+#export INGRESS_PORT=$(kubectl--namespace istio-system -o jsonpath="{.spec.ports[1].nodePort}" services istio-ingressgateway)
+
+export INGRESS_HOST=$(kubectl get nodes --namespace istio-system -o jsonpath="{.items[0].status.addresses[0].address}"):$INGRESS_PORT
 
 help() {
 	echo "Este script únicamente admite un único argumento numérico. Será el numero de request que realizará "
@@ -31,8 +34,8 @@ else
 		    "telefono":"600364231",
 		    "email":"tfm.muirst.lrm@gmail.com",
 		    "password":"12345",
-		    "canalPrefer":"email",
-		    "canalContac":"email",
+		    "canalPrefer":"telefono",
+		    "canalContac":"telefono",
 		    "estadoNotif":" "
 			}'\
 			"http://"$INGRESS_HOST"/mg/api/usuarios/"

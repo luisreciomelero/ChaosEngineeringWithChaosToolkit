@@ -1,6 +1,6 @@
 package es.upm.dit.muirst.tfm.adapters;
 
-import es.upm.dit.muirst.tfm.entities.UsuarioPostgres;
+import es.upm.dit.muirst.tfm.entities.Usuario;
 import io.quarkus.vertx.ConsumeEvent;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -15,13 +15,13 @@ public class PostgresAdapter {
 
 
     @ConsumeEvent(value = "blocking-consumer", blocking = true)
-    public UsuarioPostgres persistUsuario( UsuarioPostgres usuarioPostgres){
-        UsuarioPostgres user = UsuarioPostgres.findById(usuarioPostgres.getDNI());
+    public Usuario persistUsuario( Usuario usuarioPostgres){
+        Usuario user = Usuario.findById(usuarioPostgres.getDNI());
         if(user!=null){
             LOGGER.info("El usuario ya existe en el sistema");
             return user;
         }else{
-            UsuarioPostgres.persist(usuarioPostgres);
+            Usuario.persist(usuarioPostgres);
             return usuarioPostgres;
         }
 

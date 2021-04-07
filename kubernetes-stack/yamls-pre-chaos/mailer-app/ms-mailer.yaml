@@ -21,7 +21,7 @@ spec:
       containers:
       - name: ms-mailer
         #image: luisreciomelero/ms-quarkus-mailer:v1.0.6
-        image: luisreciomelero/ms-quarkus-mailer-native:v1.0.1
+        image: luisreciomelero/ms-quarkus-mailer-native:v1.0.5
         env:
           - name: KAFKA_HOST
             value: kafka:9092

@@ -13,19 +13,15 @@ cd "istio"
 
 kubectl apply -f "ingress-gateway.yaml"
 
-cd ".."
+cd "../postgres-db"
 
 #kubectl apply -f "ingress-controller-nginx-tfm.yaml,ingress-rules-tfm.yaml,ingress-service-tfm.yaml"
 
 echo "Arrancamos: Postgres"
 
-cd "postgres-db"
-
 kubectl apply -f "postgres-dep.yaml"
 
-cd ".."
-
-cd "kafka-app"
+cd "../kafka-app"
 
 echo "Arrancamos: Zookeeper"
 
@@ -37,30 +33,31 @@ echo "Arrancamos: Kafka"
 
 kubectl apply -f "kafka-svc.yaml,kafka-dep.yaml"
 
-cd ".."
+cd "../mg-app"
 
 sleep 30
 
 echo "Arrancamos microservicios"
 
-cd "mg-app"
 
 kubectl apply -f "mg-deploy.yaml"
 
-cd ".."
-
-cd "crud-app"
+cd "../crud-app"
 
 kubectl apply -f "ms-create.yaml,ms-delete.yaml,ms-update.yaml,ms-read.yaml"
 
-cd ".."
+cd "../mailer-app"
 
-cd "mailer-app"
 
 kubectl apply -f "ms-mailer.yaml,fakesmtp.yaml"
+
+cd "../sendersms-app"
+
+kubectl apply -f "ms-sender.yaml"
 
 cd "../VirtualServices"
 
 kubectl apply -f "."
+
 
 cd "../../../scripts-bash/pre-chaos/"

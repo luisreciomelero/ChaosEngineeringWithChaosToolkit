@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.util.Objects;
 
 @Entity
-public class UsuarioPostgres extends PanacheEntityBase {
+public class Usuario extends PanacheEntityBase {
     @Id
     private String DNI;
     private String nombre;
@@ -95,16 +95,16 @@ public class UsuarioPostgres extends PanacheEntityBase {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UsuarioPostgres usuarioPostgres = (UsuarioPostgres) o;
-        return Objects.equals(DNI, usuarioPostgres.DNI) &&
-                Objects.equals(nombre, usuarioPostgres.nombre) &&
-                Objects.equals(apellido, usuarioPostgres.apellido) &&
-                Objects.equals(telefono, usuarioPostgres.telefono) &&
-                Objects.equals(email, usuarioPostgres.email) &&
-                Objects.equals(password, usuarioPostgres.password) &&
-                Objects.equals(canalPrefer, usuarioPostgres.canalPrefer) &&
-                Objects.equals(canalContac, usuarioPostgres.canalContac) &&
-                Objects.equals(estadoNofif, usuarioPostgres.estadoNofif);
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(DNI, usuario.DNI) &&
+                Objects.equals(nombre, usuario.nombre) &&
+                Objects.equals(apellido, usuario.apellido) &&
+                Objects.equals(telefono, usuario.telefono) &&
+                Objects.equals(email, usuario.email) &&
+                Objects.equals(password, usuario.password) &&
+                Objects.equals(canalPrefer, usuario.canalPrefer) &&
+                Objects.equals(canalContac, usuario.canalContac) &&
+                Objects.equals(estadoNofif, usuario.estadoNofif);
     }
 
     @Override

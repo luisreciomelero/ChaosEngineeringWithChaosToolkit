@@ -62,7 +62,7 @@ public class Service {
     ReactiveMailer reactiveMailer;
 
 
-    @Inject @Channel("sendEmail-usuarios")
+    @Inject @Channel("handlednotification-usuarios")
     Emitter<Usuario> sendEmailUsers;
 
     public void sendMail(Usuario usuario){

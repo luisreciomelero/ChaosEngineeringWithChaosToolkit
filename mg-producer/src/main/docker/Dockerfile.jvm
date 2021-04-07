@@ -7,7 +7,7 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.jvm -t luisreciomelero/mg-quarkus-producer:v1.1.5 .
+# docker build -f src/main/docker/Dockerfile.jvm -t luisreciomelero/mg-quarkus-producer:v1.1.7 .
 #
 # Then run the container using:
 #

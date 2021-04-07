@@ -25,7 +25,7 @@ public class msMailer {
 
 
 
-    @Incoming("usuarios-sendEmail")
+    @Incoming("usuarios-sendemail")
     @Blocking
     @Transactional
     public void consumer(Usuario usuario){
