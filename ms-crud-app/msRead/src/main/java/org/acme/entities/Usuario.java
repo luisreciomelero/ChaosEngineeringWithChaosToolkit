@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class UsuarioPostgres {
+public class Usuario {
 
     @Id
     private String DNI;

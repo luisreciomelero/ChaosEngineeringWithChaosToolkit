@@ -2,7 +2,7 @@ package es.upm.dit.muirst.tfm;
 
 
 import es.upm.dit.muirst.tfm.adapters.PostgresAdapter;
-import es.upm.dit.muirst.tfm.entities.UsuarioPostgres;
+import es.upm.dit.muirst.tfm.entities.Usuario;
 import io.smallrye.reactive.messaging.annotations.Blocking;
 import org.eclipse.microprofile.reactive.messaging.Incoming;
 
@@ -26,10 +26,10 @@ public class msDelete {
     @Incoming("usuarios-delete")
     @Blocking
     @Transactional
-    public void consumer(UsuarioPostgres usuarioPostgres) {
-        LOGGER.info("LLEGA: " + usuarioPostgres);
+    public void consumer(Usuario usuario) {
+        LOGGER.info("LLEGA: " + usuario);
         try {
-            adapter.deleteUsuario(usuarioPostgres);
+            adapter.deleteUsuario(usuario);
         } catch (Exception e) {
             LOGGER.severe("No se ha podido eliminar dicho usuario");
         }

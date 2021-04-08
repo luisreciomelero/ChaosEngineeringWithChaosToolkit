@@ -20,8 +20,8 @@ spec:
     spec:
       containers:
       - name: ms-delete
-        #image: luisreciomelero/ms-quarkus-delete:v1.0.4
-        image: luisreciomelero/ms-quarkus-delete-native:v1.0.1
+        image: luisreciomelero/ms-quarkus-delete:v1.0.5
+        #image: luisreciomelero/ms-quarkus-delete-native:v1.0.1
         env:
           - name: KAFKA_HOST
             value: kafka:9092

@@ -7,7 +7,7 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.jvm -t luisreciomelero/ms-quarkus-mailer:v1.0.6 .
+# docker build -f src/main/docker/Dockerfile.jvm -t luisreciomelero/ms-quarkus-mailer:v1.0.7 .
 #
 # Then run the container using:
 #

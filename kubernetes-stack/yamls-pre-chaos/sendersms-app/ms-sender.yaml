@@ -26,7 +26,10 @@ spec:
           - name: KAFKA_HOST
             value: kafka:9092
           - name: ENABLE_SMS
-            value: "false"
+            valueFrom:
+              configMapKeyRef:
+                name: config-sender
+                key: enable.sms
         resources:
           limits:
             cpu: 500m

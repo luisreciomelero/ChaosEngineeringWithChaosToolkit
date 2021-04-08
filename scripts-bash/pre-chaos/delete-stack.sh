@@ -22,11 +22,11 @@ kubectl delete -f "ms-create.yaml,ms-delete.yaml,ms-update.yaml,ms-read.yaml"
 
 cd "../mailer-app"
 
-kubectl delete -f "ms-mailer.yaml,fakesmtp.yaml"
+kubectl delete -f "."
 
 cd "../sendersms-app"
 
-kubectl delete -f "ms-sender.yaml"
+kubectl delete -f "."
 
 cd "../VirtualServices"
 

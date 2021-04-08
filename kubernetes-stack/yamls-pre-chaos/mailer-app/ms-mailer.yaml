@@ -20,23 +20,38 @@ spec:
     spec:
       containers:
       - name: ms-mailer
-        #image: luisreciomelero/ms-quarkus-mailer:v1.0.6
-        image: luisreciomelero/ms-quarkus-mailer-native:v1.0.5
+        image: luisreciomelero/ms-quarkus-mailer:v1.0.7
+        #image: luisreciomelero/ms-quarkus-mailer-native:v1.0.5
         env:
           - name: KAFKA_HOST
             value: kafka:9092
           - name: ENABLE_SMTP
-            value: "false"
+            valueFrom:
+              configMapKeyRef:
+                name: config-mailer
+                key: enable.smtp
           - name: SMTP_HOST
-            value: "smtp.sendgrid.net"
+            valueFrom:
+              configMapKeyRef:
+                name: config-mailer
+                key: smtp.host
             #value: "fakesmtp"
           - name: SMTP_PORT
             #value: "2525"
-            value: "465"
+            valueFrom:
+              configMapKeyRef:
+                name: config-mailer
+                key: smtp.port
           - name: SMTP_MAIL_FROM
-            value: "tfm.muirst.lrm@gmail.com"
+            valueFrom:
+              configMapKeyRef:
+                name: config-mailer
+                key: smtp.mail.from
           - name: SMTP_SSL
-            value: "true"
+            valueFrom:
+              configMapKeyRef:
+                name: config-mailer
+                key: smtp.ssl
             #value: "false"
           - name: SMTP_USERNAME
             valueFrom:

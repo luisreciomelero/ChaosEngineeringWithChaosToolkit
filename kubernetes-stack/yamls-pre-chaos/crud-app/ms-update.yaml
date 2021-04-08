@@ -21,8 +21,8 @@ spec:
     spec:
       containers:
       - name: ms-update
-        #image: luisreciomelero/ms-quarkus-update:v1.0.2
-        image: luisreciomelero/ms-quarkus-update-native:v1.0.1
+        image: luisreciomelero/ms-quarkus-update:v1.0.3
+        #image: luisreciomelero/ms-quarkus-update-native:v1.0.1
         env:
           - name: KAFKA_HOST
             value: kafka:9092

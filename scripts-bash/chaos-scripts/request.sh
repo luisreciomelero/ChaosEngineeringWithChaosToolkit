@@ -29,9 +29,9 @@ else
 			-H 'Content-Type: application/json' \
 			-d '{
 		    "DNI":"'${NEW_UUID}'",
-		    "nombre":"Luis",
+		    "nombre":"PRUEBA",
 		    "apellido":"Recio",
-		    "telefono":"600364231",
+		    "telefono":"12345678",
 		    "email":"tfm.muirst.lrm@gmail.com",
 		    "password":"12345",
 		    "canalPrefer":"telefono",

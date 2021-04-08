@@ -135,6 +135,7 @@ public class Mg {
                 LOGGER.info("usuarios-sendSMS");
                 sendSMSUsers.send(usuario);
 
+
         }
     }
 

@@ -49,11 +49,11 @@ kubectl apply -f "ms-create.yaml,ms-delete.yaml,ms-update.yaml,ms-read.yaml"
 cd "../mailer-app"
 
 
-kubectl apply -f "ms-mailer.yaml,fakesmtp.yaml"
+kubectl apply -f "."
 
 cd "../sendersms-app"
 
-kubectl apply -f "ms-sender.yaml"
+kubectl apply -f "."
 
 cd "../VirtualServices"
 

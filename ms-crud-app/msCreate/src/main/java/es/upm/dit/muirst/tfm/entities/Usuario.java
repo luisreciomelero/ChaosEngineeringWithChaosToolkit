@@ -126,8 +126,5 @@ public class Usuario extends PanacheEntityBase {
                 ", estadoNofif='" + estadoNofif + '\'' +
                 '}';
     }
-    /*public static void add(UsuarioPostgres usuarioPostgres){
-        usuarioPostgres.persist();
-    }
-    */
+
 }

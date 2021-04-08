@@ -1,7 +1,7 @@
 package org.acme;
 
 import io.quarkus.panache.common.Sort;
-import org.acme.entities.UsuarioPostgres;
+import org.acme.entities.Usuario;
 import org.acme.repositories.UsuarioPostgresRepository;
 
 import javax.inject.Inject;
@@ -18,13 +18,13 @@ public class Service {
 
     @GET
     @Path("/usuarios")
-    public List<UsuarioPostgres> getAll() {
+    public List<Usuario> getAll() {
         return usuarioPostgresRepository.listAll(Sort.by("dni"));
     }
 
     @GET
     @Path("/usuarios/{dni}")
-    public UsuarioPostgres getByDni(@PathParam("dni") String dni) {
+    public Usuario getByDni(@PathParam("dni") String dni) {
         return usuarioPostgresRepository.findByDni(dni);
     }
 
