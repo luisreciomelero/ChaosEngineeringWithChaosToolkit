@@ -1,0 +1,180 @@
+[36m[2021-04-10 13:06:20 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-04-10 13:06:20 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-04-10 13:06:20 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-04-10 13:06:21 DEBUG] [settings:26][39m The Chaos Toolkit settings file could not be found at '/home/luisreciomelero/.chaostoolkit/settings.yaml'.
+[36m[2021-04-10 13:06:21 DEBUG] [__init__:355][39m No controls to apply on 'loader'
+[36m[2021-04-10 13:06:21 DEBUG] [__init__:355][39m No controls to apply on 'loader'
+[36m[2021-04-10 13:06:21 DEBUG] [caching:25][39m Building activity cache...
+[36m[2021-04-10 13:06:21 DEBUG] [caching:35][39m Cached 2 activities
+[32m[2021-04-10 13:06:21 INFO] [experiment:47][39m Validating the experiment's syntax
+[36m[2021-04-10 13:06:21 DEBUG] [configuration:54][39m Loading configuration...
+[36m[2021-04-10 13:06:21 DEBUG] [secret:75][39m Loading secrets...
+[36m[2021-04-10 13:06:21 DEBUG] [secret:92][39m Secrets loaded
+[36m[2021-04-10 13:06:22 DEBUG] [caching:42][39m Clearing activities cache
+[31m[2021-04-10 13:06:22 ERROR] [cli:174][39m argument 'label_selector' is not part of the function signature in activity 'all_microservices_healthy'
+[36m[2021-04-10 13:06:22 DEBUG] [cli:175][39m argument 'label_selector' is not part of the function signature in activity 'all_microservices_healthy'
+[36m[2021-04-10 13:11:58 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-04-10 13:11:58 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-04-10 13:11:58 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-04-10 13:11:58 DEBUG] [settings:26][39m The Chaos Toolkit settings file could not be found at '/home/luisreciomelero/.chaostoolkit/settings.yaml'.
+[36m[2021-04-10 13:11:58 DEBUG] [__init__:355][39m No controls to apply on 'loader'
+[36m[2021-04-10 13:11:58 DEBUG] [__init__:355][39m No controls to apply on 'loader'
+[31m[2021-04-10 13:11:58 ERROR] [cli:164][39m Failed parsing YAML experiment: mapping values are not allowed here
+      in "terminate-cud-random-pod-pause.yaml", line 14, column 15
+[36m[2021-04-10 13:11:58 DEBUG] [cli:165][39m Failed parsing YAML experiment: mapping values are not allowed here
+      in "terminate-cud-random-pod-pause.yaml", line 14, column 15
+[36m[2021-04-10 13:12:23 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-04-10 13:12:23 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-04-10 13:12:23 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-04-10 13:12:24 DEBUG] [settings:26][39m The Chaos Toolkit settings file could not be found at '/home/luisreciomelero/.chaostoolkit/settings.yaml'.
+[36m[2021-04-10 13:12:24 DEBUG] [__init__:355][39m No controls to apply on 'loader'
+[36m[2021-04-10 13:12:24 DEBUG] [__init__:355][39m No controls to apply on 'loader'
+[36m[2021-04-10 13:12:24 DEBUG] [caching:25][39m Building activity cache...
+[36m[2021-04-10 13:12:24 DEBUG] [caching:35][39m Cached 2 activities
+[32m[2021-04-10 13:12:24 INFO] [experiment:47][39m Validating the experiment's syntax
+[36m[2021-04-10 13:12:24 DEBUG] [configuration:54][39m Loading configuration...
+[36m[2021-04-10 13:12:24 DEBUG] [secret:75][39m Loading secrets...
+[36m[2021-04-10 13:12:24 DEBUG] [secret:92][39m Secrets loaded
+[36m[2021-04-10 13:12:25 DEBUG] [caching:42][39m Clearing activities cache
+[31m[2021-04-10 13:12:25 ERROR] [cli:174][39m hypothesis probe must have a tolerance entry
+[36m[2021-04-10 13:12:25 DEBUG] [cli:175][39m hypothesis probe must have a tolerance entry
+[36m[2021-04-10 13:12:51 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-04-10 13:12:51 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-04-10 13:12:51 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-04-10 13:12:52 DEBUG] [settings:26][39m The Chaos Toolkit settings file could not be found at '/home/luisreciomelero/.chaostoolkit/settings.yaml'.
+[36m[2021-04-10 13:12:52 DEBUG] [__init__:355][39m No controls to apply on 'loader'
+[36m[2021-04-10 13:12:52 DEBUG] [__init__:355][39m No controls to apply on 'loader'
+[36m[2021-04-10 13:12:52 DEBUG] [caching:25][39m Building activity cache...
+[36m[2021-04-10 13:12:52 DEBUG] [caching:35][39m Cached 2 activities
+[32m[2021-04-10 13:12:52 INFO] [experiment:47][39m Validating the experiment's syntax
+[36m[2021-04-10 13:12:52 DEBUG] [configuration:54][39m Loading configuration...
+[36m[2021-04-10 13:12:52 DEBUG] [secret:75][39m Loading secrets...
+[36m[2021-04-10 13:12:52 DEBUG] [secret:92][39m Secrets loaded
+[32m[2021-04-10 13:12:53 INFO] [experiment:96][39m Experiment looks valid
+[36m[2021-04-10 13:12:53 DEBUG] [caching:42][39m Clearing activities cache
+[36m[2021-04-10 13:12:53 DEBUG] [caching:25][39m Building activity cache...
+[36m[2021-04-10 13:12:53 DEBUG] [caching:35][39m Cached 2 activities
+[36m[2021-04-10 13:12:53 DEBUG] [configuration:54][39m Loading configuration...
+[36m[2021-04-10 13:12:53 DEBUG] [secret:75][39m Loading secrets...
+[36m[2021-04-10 13:12:53 DEBUG] [secret:92][39m Secrets loaded
+[32m[2021-04-10 13:12:53 INFO] [run:323][39m Running experiment: ¿Qué ocurre cuando eliminamos el microservicio create?
+[36m[2021-04-10 13:12:53 DEBUG] [__init__:39][39m Initializing controls
+[32m[2021-04-10 13:12:53 INFO] [run:342][39m Steady-state strategy: default
+[32m[2021-04-10 13:12:53 INFO] [run:345][39m Rollbacks strategy: default
+[36m[2021-04-10 13:12:53 DEBUG] [__init__:355][39m No controls to apply on 'experiment'
+[36m[2021-04-10 13:12:53 DEBUG] [run:466][39m Running steady-state hypothesis before the method
+[32m[2021-04-10 13:12:53 INFO] [hypothesis:183][39m Steady state hypothesis: Pod exists
+[36m[2021-04-10 13:12:53 DEBUG] [__init__:355][39m No controls to apply on 'hypothesis'
+[36m[2021-04-10 13:12:53 DEBUG] [__init__:355][39m No controls to apply on 'activity'
+[32m[2021-04-10 13:12:53 INFO] [activity:161][39m Probe: all-microservices-healthy
+[36m[2021-04-10 13:12:53 DEBUG] [python:34][39m Activity 'all-microservices-healthy' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosk8s/probes.py'
+[33m[2021-04-10 13:12:53 WARNING] [__init__:152][39m all_microservices_healthy function is DEPRECATED and will be removed in the next         releases, please use all_pods_healthy instead
+[36m[2021-04-10 13:12:53 DEBUG] [__init__:65][39m Using Kubernetes context: default
+[36m[2021-04-10 13:12:53 DEBUG] [probes:277][39m Found 0 failed and 0 not ready pods
+[36m[2021-04-10 13:12:53 DEBUG] [activity:180][39m   => succeeded with 'True'
+[36m[2021-04-10 13:12:53 DEBUG] [__init__:355][39m No controls to apply on 'activity'
+[36m[2021-04-10 13:12:53 DEBUG] [hypothesis:211][39m allowed tolerance is True
+[32m[2021-04-10 13:12:53 INFO] [hypothesis:221][39m Steady state hypothesis is met!
+[36m[2021-04-10 13:12:53 DEBUG] [__init__:355][39m No controls to apply on 'hypothesis'
+[32m[2021-04-10 13:12:53 INFO] [run:553][39m Playing your experiment's method now...
+[36m[2021-04-10 13:12:53 DEBUG] [__init__:355][39m No controls to apply on 'method'
+[36m[2021-04-10 13:12:53 DEBUG] [__init__:355][39m No controls to apply on 'activity'
+[32m[2021-04-10 13:12:53 INFO] [activity:161][39m Action: terminate-pod
+[36m[2021-04-10 13:12:53 DEBUG] [python:34][39m Activity 'terminate-pod' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosk8s/pod/actions.py'
+[36m[2021-04-10 13:12:53 DEBUG] [__init__:65][39m Using Kubernetes context: default
+[36m[2021-04-10 13:12:53 DEBUG] [actions:193][39m Found 3 pods labelled 'app=crud-app' in ns default
+[36m[2021-04-10 13:12:53 DEBUG] [activity:182][39m   => succeeded without any result value
+[32m[2021-04-10 13:12:53 INFO] [activity:198][39m Pausing after activity for 40s...
+[36m[2021-04-10 13:13:33 DEBUG] [__init__:355][39m No controls to apply on 'activity'
+[36m[2021-04-10 13:13:33 DEBUG] [__init__:355][39m No controls to apply on 'method'
+[36m[2021-04-10 13:13:33 DEBUG] [run:496][39m Running steady-state hypothesis after the method
+[32m[2021-04-10 13:13:33 INFO] [hypothesis:183][39m Steady state hypothesis: Pod exists
+[36m[2021-04-10 13:13:33 DEBUG] [__init__:355][39m No controls to apply on 'hypothesis'
+[36m[2021-04-10 13:13:33 DEBUG] [__init__:355][39m No controls to apply on 'activity'
+[32m[2021-04-10 13:13:33 INFO] [activity:161][39m Probe: all-microservices-healthy
+[36m[2021-04-10 13:13:33 DEBUG] [python:34][39m Activity 'all-microservices-healthy' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosk8s/probes.py'
+[33m[2021-04-10 13:13:33 WARNING] [__init__:152][39m all_microservices_healthy function is DEPRECATED and will be removed in the next         releases, please use all_pods_healthy instead
+[36m[2021-04-10 13:13:33 DEBUG] [__init__:65][39m Using Kubernetes context: default
+[36m[2021-04-10 13:13:33 DEBUG] [probes:277][39m Found 0 failed and 0 not ready pods
+[36m[2021-04-10 13:13:33 DEBUG] [activity:180][39m   => succeeded with 'True'
+[36m[2021-04-10 13:13:33 DEBUG] [__init__:355][39m No controls to apply on 'activity'
+[36m[2021-04-10 13:13:33 DEBUG] [hypothesis:211][39m allowed tolerance is True
+[32m[2021-04-10 13:13:33 INFO] [hypothesis:221][39m Steady state hypothesis is met!
+[36m[2021-04-10 13:13:33 DEBUG] [__init__:355][39m No controls to apply on 'hypothesis'
+[32m[2021-04-10 13:13:33 INFO] [run:809][39m Let's rollback...
+[36m[2021-04-10 13:13:33 DEBUG] [__init__:355][39m No controls to apply on 'rollback'
+[32m[2021-04-10 13:13:33 INFO] [rollback:25][39m No declared rollbacks, let's move on.
+[36m[2021-04-10 13:13:33 DEBUG] [__init__:355][39m No controls to apply on 'rollback'
+[32m[2021-04-10 13:13:33 INFO] [run:421][39m Experiment ended with status: completed
+[36m[2021-04-10 13:13:33 DEBUG] [__init__:355][39m No controls to apply on 'experiment'
+[36m[2021-04-10 13:13:33 DEBUG] [__init__:72][39m Cleaning up controls
+[36m[2021-04-10 13:13:33 DEBUG] [caching:42][39m Clearing activities cache
+[36m[2021-04-10 13:16:02 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-04-10 13:16:02 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-04-10 13:16:02 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-04-10 13:16:03 DEBUG] [settings:26][39m The Chaos Toolkit settings file could not be found at '/home/luisreciomelero/.chaostoolkit/settings.yaml'.
+[36m[2021-04-10 13:16:03 DEBUG] [__init__:355][39m No controls to apply on 'loader'
+[36m[2021-04-10 13:16:03 DEBUG] [__init__:355][39m No controls to apply on 'loader'
+[36m[2021-04-10 13:16:03 DEBUG] [caching:25][39m Building activity cache...
+[36m[2021-04-10 13:16:03 DEBUG] [caching:35][39m Cached 2 activities
+[32m[2021-04-10 13:16:03 INFO] [experiment:47][39m Validating the experiment's syntax
+[36m[2021-04-10 13:16:03 DEBUG] [configuration:54][39m Loading configuration...
+[36m[2021-04-10 13:16:03 DEBUG] [secret:75][39m Loading secrets...
+[36m[2021-04-10 13:16:03 DEBUG] [secret:92][39m Secrets loaded
+[32m[2021-04-10 13:16:05 INFO] [experiment:96][39m Experiment looks valid
+[36m[2021-04-10 13:16:05 DEBUG] [caching:42][39m Clearing activities cache
+[36m[2021-04-10 13:16:05 DEBUG] [caching:25][39m Building activity cache...
+[36m[2021-04-10 13:16:05 DEBUG] [caching:35][39m Cached 2 activities
+[36m[2021-04-10 13:16:05 DEBUG] [configuration:54][39m Loading configuration...
+[36m[2021-04-10 13:16:05 DEBUG] [secret:75][39m Loading secrets...
+[36m[2021-04-10 13:16:05 DEBUG] [secret:92][39m Secrets loaded
+[32m[2021-04-10 13:16:05 INFO] [run:323][39m Running experiment: ¿Qué ocurre cuando eliminamos el microservicio create?
+[36m[2021-04-10 13:16:05 DEBUG] [__init__:39][39m Initializing controls
+[32m[2021-04-10 13:16:05 INFO] [run:342][39m Steady-state strategy: default
+[32m[2021-04-10 13:16:05 INFO] [run:345][39m Rollbacks strategy: default
+[36m[2021-04-10 13:16:05 DEBUG] [__init__:355][39m No controls to apply on 'experiment'
+[36m[2021-04-10 13:16:05 DEBUG] [run:466][39m Running steady-state hypothesis before the method
+[32m[2021-04-10 13:16:05 INFO] [hypothesis:183][39m Steady state hypothesis: Pod exists
+[36m[2021-04-10 13:16:05 DEBUG] [__init__:355][39m No controls to apply on 'hypothesis'
+[36m[2021-04-10 13:16:05 DEBUG] [__init__:355][39m No controls to apply on 'activity'
+[32m[2021-04-10 13:16:05 INFO] [activity:161][39m Probe: all-pods-healthy
+[36m[2021-04-10 13:16:05 DEBUG] [python:34][39m Activity 'all-pods-healthy' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosk8s/pod/probes.py'
+[36m[2021-04-10 13:16:05 DEBUG] [__init__:65][39m Using Kubernetes context: default
+[36m[2021-04-10 13:16:05 DEBUG] [probes:277][39m Found 0 failed and 0 not ready pods
+[36m[2021-04-10 13:16:05 DEBUG] [activity:180][39m   => succeeded with 'True'
+[36m[2021-04-10 13:16:05 DEBUG] [__init__:355][39m No controls to apply on 'activity'
+[36m[2021-04-10 13:16:05 DEBUG] [hypothesis:211][39m allowed tolerance is True
+[32m[2021-04-10 13:16:05 INFO] [hypothesis:221][39m Steady state hypothesis is met!
+[36m[2021-04-10 13:16:05 DEBUG] [__init__:355][39m No controls to apply on 'hypothesis'
+[32m[2021-04-10 13:16:05 INFO] [run:553][39m Playing your experiment's method now...
+[36m[2021-04-10 13:16:05 DEBUG] [__init__:355][39m No controls to apply on 'method'
+[36m[2021-04-10 13:16:05 DEBUG] [__init__:355][39m No controls to apply on 'activity'
+[32m[2021-04-10 13:16:05 INFO] [activity:161][39m Action: terminate-pod
+[36m[2021-04-10 13:16:05 DEBUG] [python:34][39m Activity 'terminate-pod' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosk8s/pod/actions.py'
+[36m[2021-04-10 13:16:05 DEBUG] [__init__:65][39m Using Kubernetes context: default
+[36m[2021-04-10 13:16:05 DEBUG] [actions:193][39m Found 3 pods labelled 'app=crud-app' in ns default
+[36m[2021-04-10 13:16:05 DEBUG] [activity:182][39m   => succeeded without any result value
+[32m[2021-04-10 13:16:05 INFO] [activity:198][39m Pausing after activity for 40s...
+[36m[2021-04-10 13:16:45 DEBUG] [__init__:355][39m No controls to apply on 'activity'
+[36m[2021-04-10 13:16:45 DEBUG] [__init__:355][39m No controls to apply on 'method'
+[36m[2021-04-10 13:16:45 DEBUG] [run:496][39m Running steady-state hypothesis after the method
+[32m[2021-04-10 13:16:45 INFO] [hypothesis:183][39m Steady state hypothesis: Pod exists
+[36m[2021-04-10 13:16:45 DEBUG] [__init__:355][39m No controls to apply on 'hypothesis'
+[36m[2021-04-10 13:16:45 DEBUG] [__init__:355][39m No controls to apply on 'activity'
+[32m[2021-04-10 13:16:45 INFO] [activity:161][39m Probe: all-pods-healthy
+[36m[2021-04-10 13:16:45 DEBUG] [python:34][39m Activity 'all-pods-healthy' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosk8s/pod/probes.py'
+[36m[2021-04-10 13:16:45 DEBUG] [__init__:65][39m Using Kubernetes context: default
+[36m[2021-04-10 13:16:45 DEBUG] [probes:277][39m Found 0 failed and 0 not ready pods
+[36m[2021-04-10 13:16:45 DEBUG] [activity:180][39m   => succeeded with 'True'
+[36m[2021-04-10 13:16:45 DEBUG] [__init__:355][39m No controls to apply on 'activity'
+[36m[2021-04-10 13:16:45 DEBUG] [hypothesis:211][39m allowed tolerance is True
+[32m[2021-04-10 13:16:45 INFO] [hypothesis:221][39m Steady state hypothesis is met!
+[36m[2021-04-10 13:16:45 DEBUG] [__init__:355][39m No controls to apply on 'hypothesis'
+[32m[2021-04-10 13:16:45 INFO] [run:809][39m Let's rollback...
+[36m[2021-04-10 13:16:45 DEBUG] [__init__:355][39m No controls to apply on 'rollback'
+[32m[2021-04-10 13:16:45 INFO] [rollback:25][39m No declared rollbacks, let's move on.
+[36m[2021-04-10 13:16:45 DEBUG] [__init__:355][39m No controls to apply on 'rollback'
+[32m[2021-04-10 13:16:45 INFO] [run:421][39m Experiment ended with status: completed
+[36m[2021-04-10 13:16:45 DEBUG] [__init__:355][39m No controls to apply on 'experiment'
+[36m[2021-04-10 13:16:45 DEBUG] [__init__:72][39m Cleaning up controls
+[36m[2021-04-10 13:16:45 DEBUG] [caching:42][39m Clearing activities cache

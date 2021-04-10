@@ -1,43 +1,8 @@
-[36m[2021-04-10 11:19:57 DEBUG] [cli:73][39m ###############################################################################
-[36m[2021-04-10 11:19:57 DEBUG] [cli:74][39m Running command 'run'
-[36m[2021-04-10 11:19:57 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
-[36m[2021-04-10 11:19:58 DEBUG] [settings:26][39m The Chaos Toolkit settings file could not be found at '/home/luisreciomelero/.chaostoolkit/settings.yaml'.
-[36m[2021-04-10 11:19:58 DEBUG] [__init__:355][39m No controls to apply on 'loader'
-[36m[2021-04-10 11:19:58 DEBUG] [__init__:355][39m No controls to apply on 'loader'
-[36m[2021-04-10 11:19:58 DEBUG] [caching:25][39m Building activity cache...
-[36m[2021-04-10 11:19:58 DEBUG] [caching:35][39m Cached 1 activities
-[32m[2021-04-10 11:19:58 INFO] [experiment:47][39m Validating the experiment's syntax
-[36m[2021-04-10 11:19:58 DEBUG] [configuration:54][39m Loading configuration...
-[36m[2021-04-10 11:19:58 DEBUG] [secret:75][39m Loading secrets...
-[36m[2021-04-10 11:19:58 DEBUG] [secret:92][39m Secrets loaded
-[32m[2021-04-10 11:20:05 INFO] [experiment:96][39m Experiment looks valid
-[36m[2021-04-10 11:20:05 DEBUG] [caching:42][39m Clearing activities cache
-[36m[2021-04-10 11:20:05 DEBUG] [caching:25][39m Building activity cache...
-[36m[2021-04-10 11:20:05 DEBUG] [caching:35][39m Cached 1 activities
-[36m[2021-04-10 11:20:05 DEBUG] [configuration:54][39m Loading configuration...
-[36m[2021-04-10 11:20:05 DEBUG] [secret:75][39m Loading secrets...
-[36m[2021-04-10 11:20:05 DEBUG] [secret:92][39m Secrets loaded
-[32m[2021-04-10 11:20:05 INFO] [run:323][39m Running experiment: ¿Qué ocurre cuando eliminamos el microservicio create?
-[36m[2021-04-10 11:20:05 DEBUG] [__init__:39][39m Initializing controls
-[32m[2021-04-10 11:20:05 INFO] [run:342][39m Steady-state strategy: default
-[32m[2021-04-10 11:20:05 INFO] [run:345][39m Rollbacks strategy: default
-[32m[2021-04-10 11:20:05 INFO] [run:350][39m No steady state hypothesis defined. That's ok, just exploring.
-[36m[2021-04-10 11:20:05 DEBUG] [__init__:355][39m No controls to apply on 'experiment'
-[32m[2021-04-10 11:20:05 INFO] [run:553][39m Playing your experiment's method now...
-[36m[2021-04-10 11:20:05 DEBUG] [__init__:355][39m No controls to apply on 'method'
-[36m[2021-04-10 11:20:05 DEBUG] [__init__:355][39m No controls to apply on 'activity'
-[32m[2021-04-10 11:20:05 INFO] [activity:161][39m Action: terminate-pod
-[36m[2021-04-10 11:20:05 DEBUG] [python:34][39m Activity 'terminate-pod' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosk8s/pod/actions.py'
-[36m[2021-04-10 11:20:05 DEBUG] [__init__:65][39m Using Kubernetes context: default
-[36m[2021-04-10 11:20:05 DEBUG] [actions:193][39m Found 1 pods labelled 'app=crud-app, component=ms-create' in ns default
-[36m[2021-04-10 11:20:05 DEBUG] [activity:182][39m   => succeeded without any result value
-[36m[2021-04-10 11:20:05 DEBUG] [__init__:355][39m No controls to apply on 'activity'
-[36m[2021-04-10 11:20:05 DEBUG] [__init__:355][39m No controls to apply on 'method'
-[32m[2021-04-10 11:20:05 INFO] [run:809][39m Let's rollback...
-[36m[2021-04-10 11:20:05 DEBUG] [__init__:355][39m No controls to apply on 'rollback'
-[32m[2021-04-10 11:20:05 INFO] [rollback:25][39m No declared rollbacks, let's move on.
-[36m[2021-04-10 11:20:05 DEBUG] [__init__:355][39m No controls to apply on 'rollback'
-[32m[2021-04-10 11:20:05 INFO] [run:421][39m Experiment ended with status: completed
-[36m[2021-04-10 11:20:05 DEBUG] [__init__:355][39m No controls to apply on 'experiment'
-[36m[2021-04-10 11:20:05 DEBUG] [__init__:72][39m Cleaning up controls
-[36m[2021-04-10 11:20:05 DEBUG] [caching:42][39m Clearing activities cache
+[36m[2021-04-10 11:37:09 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-04-10 11:37:09 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-04-10 11:37:09 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-04-10 11:37:10 DEBUG] [settings:26][39m The Chaos Toolkit settings file could not be found at '/home/luisreciomelero/.chaostoolkit/settings.yaml'.
+[36m[2021-04-10 11:37:10 DEBUG] [__init__:355][39m No controls to apply on 'loader'
+[36m[2021-04-10 11:37:10 DEBUG] [__init__:355][39m No controls to apply on 'loader'
+[31m[2021-04-10 11:37:10 ERROR] [cli:164][39m Path "terminate-create-pod.yaml" does not exist.
+[36m[2021-04-10 11:37:10 DEBUG] [cli:165][39m Path "terminate-create-pod.yaml" does not exist.

@@ -1,0 +1,140 @@
+{
+  "chaoslib-version": "1.19.0",
+  "platform": "Linux-5.8.0-48-generic-x86_64-with-glibc2.29",
+  "node": "luisreciomelero-HP-Pavilion-Laptop-15-ck0xx",
+  "experiment": {
+    "version": "1.0.0",
+    "title": "¿Qué ocurre cuando eliminamos el microservicio create?",
+    "description": "Al estar manejado por un deployment debería levantarse otro de forma inmediata.",
+    "tags": [
+      "k8s",
+      "pod"
+    ],
+    "steady-state-hypothesis": {
+      "title": "Pod exists",
+      "probes": [
+        {
+          "name": "all-pods-healthy",
+          "tolerance": true,
+          "provider": {
+            "func": "all_pods_healthy",
+            "module": "chaosk8s.probes",
+            "type": "python"
+          },
+          "type": "probe",
+          "arguments": {
+            "label_selector": "app=crud-app",
+            "ns": "default"
+          }
+        }
+      ]
+    },
+    "method": [
+      {
+        "type": "action",
+        "name": "terminate-pod",
+        "provider": {
+          "type": "python",
+          "module": "chaosk8s.pod.actions",
+          "func": "terminate_pods",
+          "arguments": {
+            "label_selector": "app=crud-app",
+            "ns": "default"
+          }
+        },
+        "pauses": {
+          "after": 40
+        }
+      }
+    ],
+    "dry": false
+  },
+  "start": "2021-04-10T11:16:05.378401",
+  "status": "completed",
+  "deviated": false,
+  "steady_states": {
+    "before": {
+      "steady_state_met": true,
+      "probes": [
+        {
+          "activity": {
+            "name": "all-pods-healthy",
+            "tolerance": true,
+            "provider": {
+              "func": "all_pods_healthy",
+              "module": "chaosk8s.probes",
+              "type": "python"
+            },
+            "type": "probe",
+            "arguments": {
+              "label_selector": "app=crud-app",
+              "ns": "default"
+            }
+          },
+          "output": true,
+          "status": "succeeded",
+          "start": "2021-04-10T11:16:05.379195",
+          "end": "2021-04-10T11:16:05.477897",
+          "duration": 0.098702,
+          "tolerance_met": true
+        }
+      ]
+    },
+    "after": {
+      "steady_state_met": true,
+      "probes": [
+        {
+          "activity": {
+            "name": "all-pods-healthy",
+            "tolerance": true,
+            "provider": {
+              "func": "all_pods_healthy",
+              "module": "chaosk8s.probes",
+              "type": "python"
+            },
+            "type": "probe",
+            "arguments": {
+              "label_selector": "app=crud-app",
+              "ns": "default"
+            }
+          },
+          "output": true,
+          "status": "succeeded",
+          "start": "2021-04-10T11:16:45.618232",
+          "end": "2021-04-10T11:16:45.724349",
+          "duration": 0.106117,
+          "tolerance_met": true
+        }
+      ]
+    },
+    "during": []
+  },
+  "run": [
+    {
+      "activity": {
+        "type": "action",
+        "name": "terminate-pod",
+        "provider": {
+          "type": "python",
+          "module": "chaosk8s.pod.actions",
+          "func": "terminate_pods",
+          "arguments": {
+            "label_selector": "app=crud-app",
+            "ns": "default"
+          }
+        },
+        "pauses": {
+          "after": 40
+        }
+      },
+      "output": null,
+      "status": "succeeded",
+      "start": "2021-04-10T11:16:05.478360",
+      "end": "2021-04-10T11:16:05.578988",
+      "duration": 0.100628
+    }
+  ],
+  "rollbacks": [],
+  "end": "2021-04-10T11:16:45.724979",
+  "duration": 40.355276346206665
+}

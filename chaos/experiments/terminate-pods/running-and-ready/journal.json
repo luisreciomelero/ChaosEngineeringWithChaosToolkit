@@ -1,0 +1,277 @@
+{
+  "chaoslib-version": "1.19.0",
+  "platform": "Linux-5.8.0-48-generic-x86_64-with-glibc2.29",
+  "node": "luisreciomelero-HP-Pavilion-Laptop-15-ck0xx",
+  "experiment": {
+    "version": "1.0.0",
+    "title": "What happens if we terminate a Pod?",
+    "description": "If a Pod is terminated, a new one should be created in its places.",
+    "tags": [
+      "k8s",
+      "pod"
+    ],
+    "steady-state-hypothesis": {
+      "title": "Pod exists",
+      "probes": [
+        {
+          "name": "pod-exists",
+          "type": "probe",
+          "tolerance": 1,
+          "provider": {
+            "type": "python",
+            "func": "count_pods",
+            "module": "chaosk8s.pod.probes",
+            "arguments": {
+              "label_selector": "app=crud-app, component=ms-create",
+              "ns": "default"
+            }
+          }
+        },
+        {
+          "name": "pod-in-phase",
+          "type": "probe",
+          "tolerance": true,
+          "provider": {
+            "type": "python",
+            "func": "pods_in_phase",
+            "module": "chaosk8s.pod.probes",
+            "arguments": {
+              "label_selector": "app=crud-app, component=ms-create",
+              "ns": "default",
+              "phase": "Running"
+            }
+          }
+        },
+        {
+          "name": "pod-in-conditions",
+          "type": "probe",
+          "tolerance": true,
+          "provider": {
+            "type": "python",
+            "func": "pods_in_conditions",
+            "module": "chaosk8s.pod.probes",
+            "arguments": {
+              "label_selector": "app=crud-app, component=ms-create",
+              "ns": "default",
+              "conditions": [
+                {
+                  "type": "Ready",
+                  "status": "True"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "method": [
+      {
+        "type": "action",
+        "name": "terminate-pod",
+        "provider": {
+          "type": "python",
+          "module": "chaosk8s.pod.actions",
+          "func": "terminate_pods",
+          "arguments": {
+            "label_selector": "app=crud-app, component=ms-create",
+            "ns": "default"
+          }
+        },
+        "pauses": {
+          "after": 200
+        }
+      }
+    ],
+    "dry": false
+  },
+  "start": "2021-04-10T11:40:39.074566",
+  "status": "completed",
+  "deviated": false,
+  "steady_states": {
+    "before": {
+      "steady_state_met": true,
+      "probes": [
+        {
+          "activity": {
+            "name": "pod-exists",
+            "type": "probe",
+            "tolerance": 1,
+            "provider": {
+              "type": "python",
+              "func": "count_pods",
+              "module": "chaosk8s.pod.probes",
+              "arguments": {
+                "label_selector": "app=crud-app, component=ms-create",
+                "ns": "default"
+              }
+            }
+          },
+          "output": 1,
+          "status": "succeeded",
+          "start": "2021-04-10T11:40:39.075499",
+          "end": "2021-04-10T11:40:39.104676",
+          "duration": 0.029177,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "name": "pod-in-phase",
+            "type": "probe",
+            "tolerance": true,
+            "provider": {
+              "type": "python",
+              "func": "pods_in_phase",
+              "module": "chaosk8s.pod.probes",
+              "arguments": {
+                "label_selector": "app=crud-app, component=ms-create",
+                "ns": "default",
+                "phase": "Running"
+              }
+            }
+          },
+          "output": true,
+          "status": "succeeded",
+          "start": "2021-04-10T11:40:39.105057",
+          "end": "2021-04-10T11:40:39.131844",
+          "duration": 0.026787,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "name": "pod-in-conditions",
+            "type": "probe",
+            "tolerance": true,
+            "provider": {
+              "type": "python",
+              "func": "pods_in_conditions",
+              "module": "chaosk8s.pod.probes",
+              "arguments": {
+                "label_selector": "app=crud-app, component=ms-create",
+                "ns": "default",
+                "conditions": [
+                  {
+                    "type": "Ready",
+                    "status": "True"
+                  }
+                ]
+              }
+            }
+          },
+          "output": true,
+          "status": "succeeded",
+          "start": "2021-04-10T11:40:39.132487",
+          "end": "2021-04-10T11:40:39.168320",
+          "duration": 0.035833,
+          "tolerance_met": true
+        }
+      ]
+    },
+    "after": {
+      "steady_state_met": true,
+      "probes": [
+        {
+          "activity": {
+            "name": "pod-exists",
+            "type": "probe",
+            "tolerance": 1,
+            "provider": {
+              "type": "python",
+              "func": "count_pods",
+              "module": "chaosk8s.pod.probes",
+              "arguments": {
+                "label_selector": "app=crud-app, component=ms-create",
+                "ns": "default"
+              }
+            }
+          },
+          "output": 1,
+          "status": "succeeded",
+          "start": "2021-04-10T11:43:59.346133",
+          "end": "2021-04-10T11:43:59.371480",
+          "duration": 0.025347,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "name": "pod-in-phase",
+            "type": "probe",
+            "tolerance": true,
+            "provider": {
+              "type": "python",
+              "func": "pods_in_phase",
+              "module": "chaosk8s.pod.probes",
+              "arguments": {
+                "label_selector": "app=crud-app, component=ms-create",
+                "ns": "default",
+                "phase": "Running"
+              }
+            }
+          },
+          "output": true,
+          "status": "succeeded",
+          "start": "2021-04-10T11:43:59.371705",
+          "end": "2021-04-10T11:43:59.390383",
+          "duration": 0.018678,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "name": "pod-in-conditions",
+            "type": "probe",
+            "tolerance": true,
+            "provider": {
+              "type": "python",
+              "func": "pods_in_conditions",
+              "module": "chaosk8s.pod.probes",
+              "arguments": {
+                "label_selector": "app=crud-app, component=ms-create",
+                "ns": "default",
+                "conditions": [
+                  {
+                    "type": "Ready",
+                    "status": "True"
+                  }
+                ]
+              }
+            }
+          },
+          "output": true,
+          "status": "succeeded",
+          "start": "2021-04-10T11:43:59.390693",
+          "end": "2021-04-10T11:43:59.409928",
+          "duration": 0.019235,
+          "tolerance_met": true
+        }
+      ]
+    },
+    "during": []
+  },
+  "run": [
+    {
+      "activity": {
+        "type": "action",
+        "name": "terminate-pod",
+        "provider": {
+          "type": "python",
+          "module": "chaosk8s.pod.actions",
+          "func": "terminate_pods",
+          "arguments": {
+            "label_selector": "app=crud-app, component=ms-create",
+            "ns": "default"
+          }
+        },
+        "pauses": {
+          "after": 200
+        }
+      },
+      "output": null,
+      "status": "succeeded",
+      "start": "2021-04-10T11:40:39.169011",
+      "end": "2021-04-10T11:40:39.247408",
+      "duration": 0.078397
+    }
+  ],
+  "rollbacks": [],
+  "end": "2021-04-10T11:43:59.410412",
+  "duration": 200.34960889816284
+}
