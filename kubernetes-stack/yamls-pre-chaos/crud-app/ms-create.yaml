@@ -21,8 +21,8 @@ spec:
     spec:
       containers:
       - name: ms-create
-        #image: luisreciomelero/ms-quarkus-create:v1.0.7
-        image: luisreciomelero/ms-quarkus-create-native:v1.0.4
+        image: luisreciomelero/ms-quarkus-create:v1.0.8
+        #image: luisreciomelero/ms-quarkus-create-native:v1.0.4
         env:
           - name: KAFKA_HOST
             value: kafka:9092

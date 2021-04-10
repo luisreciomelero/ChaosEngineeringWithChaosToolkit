@@ -1,0 +1,107 @@
+[36m[2021-04-10 08:35:47 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-04-10 08:35:47 DEBUG] [cli:74][39m Running command 'discover'
+[36m[2021-04-10 08:35:47 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-04-10 08:36:05 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-04-10 08:36:05 DEBUG] [cli:74][39m Running command 'discover'
+[36m[2021-04-10 08:36:05 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-04-10 08:36:21 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-04-10 08:36:21 DEBUG] [cli:74][39m Running command 'discover'
+[36m[2021-04-10 08:36:21 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-04-10 08:36:32 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-04-10 08:36:32 DEBUG] [cli:74][39m Running command 'discover'
+[36m[2021-04-10 08:36:32 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-04-10 08:36:33 DEBUG] [settings:26][39m The Chaos Toolkit settings file could not be found at '/home/luisreciomelero/.chaostoolkit/settings.yaml'.
+[32m[2021-04-10 08:36:33 INFO] [package:22][39m Attempting to download and install package 'chaostoolkit-kubernetes'
+[36m[2021-04-10 08:36:47 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-04-10 08:36:47 DEBUG] [cli:74][39m Running command 'discover'
+[36m[2021-04-10 08:36:47 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-04-10 08:36:48 DEBUG] [settings:26][39m The Chaos Toolkit settings file could not be found at '/home/luisreciomelero/.chaostoolkit/settings.yaml'.
+[32m[2021-04-10 08:36:48 INFO] [package:22][39m Attempting to download and install package 'chaostoolkit-kubernetes'
+[36m[2021-04-10 08:36:53 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-04-10 08:36:53 DEBUG] [cli:74][39m Running command 'discover'
+[36m[2021-04-10 08:36:53 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-04-10 08:36:54 DEBUG] [settings:26][39m The Chaos Toolkit settings file could not be found at '/home/luisreciomelero/.chaostoolkit/settings.yaml'.
+[32m[2021-04-10 08:36:54 INFO] [package:22][39m Attempting to download and install package 'chaostoolkit-kubernetes'
+[36m[2021-04-10 08:36:59 DEBUG] [package:31][39m Defaulting to user installation because normal site-packages is not writeable
+    Requirement already satisfied: chaostoolkit-kubernetes in /home/luisreciomelero/.local/lib/python3.8/site-packages (0.25.1)
+    Requirement already satisfied: logzero in /home/luisreciomelero/.local/lib/python3.8/site-packages (from chaostoolkit-kubernetes) (1.5.0)
+    Requirement already satisfied: chaostoolkit-lib>=0.20.0 in /home/luisreciomelero/.local/lib/python3.8/site-packages (from chaostoolkit-kubernetes) (1.19.0)
+    Requirement already satisfied: kubernetes in /home/luisreciomelero/.local/lib/python3.8/site-packages (from chaostoolkit-kubernetes) (12.0.1)
+    Requirement already satisfied: dateparser in /home/luisreciomelero/.local/lib/python3.8/site-packages (from chaostoolkit-kubernetes) (1.0.0)
+    Requirement already satisfied: pyyaml in /home/luisreciomelero/.local/lib/python3.8/site-packages (from chaostoolkit-kubernetes) (5.4.1)
+    Requirement already satisfied: requests~=2.21 in /usr/lib/python3/dist-packages (from chaostoolkit-lib>=0.20.0->chaostoolkit-kubernetes) (2.22.0)
+    Requirement already satisfied: tzlocal in /home/luisreciomelero/.local/lib/python3.8/site-packages (from dateparser->chaostoolkit-kubernetes) (2.1)
+    Requirement already satisfied: regex!=2019.02.19 in /home/luisreciomelero/.local/lib/python3.8/site-packages (from dateparser->chaostoolkit-kubernetes) (2021.3.17)
+    Requirement already satisfied: python-dateutil in /usr/lib/python3/dist-packages (from dateparser->chaostoolkit-kubernetes) (2.7.3)
+    Requirement already satisfied: pytz in /usr/lib/python3/dist-packages (from dateparser->chaostoolkit-kubernetes) (2019.3)
+    Requirement already satisfied: websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 in /home/luisreciomelero/.local/lib/python3.8/site-packages (from kubernetes->chaostoolkit-kubernetes) (0.58.0)
+    Requirement already satisfied: requests-oauthlib in /home/luisreciomelero/.local/lib/python3.8/site-packages (from kubernetes->chaostoolkit-kubernetes) (1.3.0)
+    Requirement already satisfied: six>=1.9.0 in /usr/lib/python3/dist-packages (from kubernetes->chaostoolkit-kubernetes) (1.14.0)
+    Requirement already satisfied: setuptools>=21.0.0 in /usr/lib/python3/dist-packages (from kubernetes->chaostoolkit-kubernetes) (45.2.0)
+    Requirement already satisfied: google-auth>=1.0.1 in /home/luisreciomelero/.local/lib/python3.8/site-packages (from kubernetes->chaostoolkit-kubernetes) (1.28.0)
+    Requirement already satisfied: certifi>=14.05.14 in /usr/lib/python3/dist-packages (from kubernetes->chaostoolkit-kubernetes) (2019.11.28)
+    Requirement already satisfied: urllib3>=1.24.2 in /usr/lib/python3/dist-packages (from kubernetes->chaostoolkit-kubernetes) (1.25.8)
+    Requirement already satisfied: pyasn1-modules>=0.2.1 in /home/luisreciomelero/.local/lib/python3.8/site-packages (from google-auth>=1.0.1->kubernetes->chaostoolkit-kubernetes) (0.2.8)
+    Requirement already satisfied: cachetools<5.0,>=2.0.0 in /home/luisreciomelero/.local/lib/python3.8/site-packages (from google-auth>=1.0.1->kubernetes->chaostoolkit-kubernetes) (4.2.1)
+    Requirement already satisfied: rsa<5,>=3.1.4 in /home/luisreciomelero/.local/lib/python3.8/site-packages (from google-auth>=1.0.1->kubernetes->chaostoolkit-kubernetes) (4.5)
+    Requirement already satisfied: pyasn1<0.5.0,>=0.4.6 in /home/luisreciomelero/.local/lib/python3.8/site-packages (from pyasn1-modules>=0.2.1->google-auth>=1.0.1->kubernetes->chaostoolkit-kubernetes) (0.4.8)
+    Requirement already satisfied: oauthlib>=3.0.0 in /usr/lib/python3/dist-packages (from requests-oauthlib->kubernetes->chaostoolkit-kubernetes) (3.1.0)
+    
+[32m[2021-04-10 08:36:59 INFO] [package:40][39m Package downloaded and installed in current environment
+[32m[2021-04-10 08:37:01 INFO] [__init__:117][39m Discovering capabilities from chaostoolkit-kubernetes
+[32m[2021-04-10 08:37:01 INFO] [discover:73][39m Searching for actions in chaosk8s.actions
+[32m[2021-04-10 08:37:01 INFO] [discover:81][39m Searching for probes in chaosk8s.probes
+[36m[2021-04-10 08:37:02 DEBUG] [discover:181][39m 'typing.Tuple[typing.Dict[str, typing.Any], typing.Dict[str, typing.Any]]' could not be ported to something meaningful
+[36m[2021-04-10 08:37:02 DEBUG] [discover:181][39m 'typing.Union[bool, NoneType]' could not be ported to something meaningful
+[36m[2021-04-10 08:37:02 DEBUG] [discover:181][39m 'typing.Union[str, NoneType]' could not be ported to something meaningful
+[32m[2021-04-10 08:37:02 INFO] [discover:73][39m Searching for actions in chaosk8s.deployment.actions
+[32m[2021-04-10 08:37:02 INFO] [discover:73][39m Searching for actions in chaosk8s.deployment.probes
+[36m[2021-04-10 08:37:02 DEBUG] [discover:181][39m 'typing.Union[bool, NoneType]' could not be ported to something meaningful
+[36m[2021-04-10 08:37:02 DEBUG] [discover:181][39m 'typing.Union[bool, NoneType]' could not be ported to something meaningful
+[36m[2021-04-10 08:37:02 DEBUG] [discover:181][39m 'typing.Union[bool, NoneType]' could not be ported to something meaningful
+[32m[2021-04-10 08:37:02 INFO] [discover:73][39m Searching for actions in chaosk8s.node.actions
+[36m[2021-04-10 08:37:02 DEBUG] [discover:181][39m '<class 'kubernetes.client.models.v1_node.V1Node'>' could not be ported to something meaningful
+[32m[2021-04-10 08:37:02 INFO] [discover:73][39m Searching for actions in chaosk8s.node.probes
+[32m[2021-04-10 08:37:02 INFO] [discover:73][39m Searching for actions in chaosk8s.pod.actions
+[32m[2021-04-10 08:37:02 INFO] [discover:81][39m Searching for probes in chaosk8s.pod.probes
+[36m[2021-04-10 08:37:02 DEBUG] [discover:181][39m 'typing.Union[str, NoneType]' could not be ported to something meaningful
+[32m[2021-04-10 08:37:02 INFO] [discover:73][39m Searching for actions in chaosk8s.replicaset.actions
+[32m[2021-04-10 08:37:02 INFO] [discover:73][39m Searching for actions in chaosk8s.service.actions
+[32m[2021-04-10 08:37:02 INFO] [discover:73][39m Searching for actions in chaosk8s.service.probes
+[32m[2021-04-10 08:37:02 INFO] [discover:73][39m Searching for actions in chaosk8s.statefulset.actions
+[32m[2021-04-10 08:37:02 INFO] [discover:81][39m Searching for probes in chaosk8s.statefulset.probes
+[32m[2021-04-10 08:37:02 INFO] [discover:73][39m Searching for actions in chaosk8s.crd.actions
+[32m[2021-04-10 08:37:02 INFO] [discover:81][39m Searching for probes in chaosk8s.crd.probes
+[32m[2021-04-10 08:37:02 INFO] [cli:449][39m Discovery outcome saved in ./discovery-chaostoolkit-kubernetes.json
+[36m[2021-04-10 08:38:57 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-04-10 08:38:57 DEBUG] [cli:74][39m Running command 'discover'
+[36m[2021-04-10 08:38:57 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-04-10 08:38:57 DEBUG] [settings:26][39m The Chaos Toolkit settings file could not be found at '/home/luisreciomelero/.chaostoolkit/settings.yaml'.
+[32m[2021-04-10 08:38:57 INFO] [package:22][39m Attempting to download and install package 'chaostoolkit-istio'
+[36m[2021-04-10 08:38:59 DEBUG] [package:31][39m Defaulting to user installation because normal site-packages is not writeable
+    Requirement already satisfied: chaostoolkit-istio in /home/luisreciomelero/.local/lib/python3.8/site-packages (0.1.4)
+    Requirement already satisfied: simplejson>=3.16.0 in /usr/lib/python3/dist-packages (from chaostoolkit-istio) (3.16.0)
+    Requirement already satisfied: chaostoolkit-lib>=0.21.0 in /home/luisreciomelero/.local/lib/python3.8/site-packages (from chaostoolkit-istio) (1.19.0)
+    Requirement already satisfied: logzero==1.5.0 in /home/luisreciomelero/.local/lib/python3.8/site-packages (from chaostoolkit-istio) (1.5.0)
+    Requirement already satisfied: kubernetes>=8.0.0 in /home/luisreciomelero/.local/lib/python3.8/site-packages (from chaostoolkit-istio) (12.0.1)
+    Requirement already satisfied: pyyaml~=5.4 in /home/luisreciomelero/.local/lib/python3.8/site-packages (from chaostoolkit-lib>=0.21.0->chaostoolkit-istio) (5.4.1)
+    Requirement already satisfied: requests~=2.21 in /usr/lib/python3/dist-packages (from chaostoolkit-lib>=0.21.0->chaostoolkit-istio) (2.22.0)
+    Requirement already satisfied: python-dateutil>=2.5.3 in /usr/lib/python3/dist-packages (from kubernetes>=8.0.0->chaostoolkit-istio) (2.7.3)
+    Requirement already satisfied: requests-oauthlib in /home/luisreciomelero/.local/lib/python3.8/site-packages (from kubernetes>=8.0.0->chaostoolkit-istio) (1.3.0)
+    Requirement already satisfied: six>=1.9.0 in /usr/lib/python3/dist-packages (from kubernetes>=8.0.0->chaostoolkit-istio) (1.14.0)
+    Requirement already satisfied: certifi>=14.05.14 in /usr/lib/python3/dist-packages (from kubernetes>=8.0.0->chaostoolkit-istio) (2019.11.28)
+    Requirement already satisfied: websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 in /home/luisreciomelero/.local/lib/python3.8/site-packages (from kubernetes>=8.0.0->chaostoolkit-istio) (0.58.0)
+    Requirement already satisfied: setuptools>=21.0.0 in /usr/lib/python3/dist-packages (from kubernetes>=8.0.0->chaostoolkit-istio) (45.2.0)
+    Requirement already satisfied: google-auth>=1.0.1 in /home/luisreciomelero/.local/lib/python3.8/site-packages (from kubernetes>=8.0.0->chaostoolkit-istio) (1.28.0)
+    Requirement already satisfied: urllib3>=1.24.2 in /usr/lib/python3/dist-packages (from kubernetes>=8.0.0->chaostoolkit-istio) (1.25.8)
+    Requirement already satisfied: pyasn1-modules>=0.2.1 in /home/luisreciomelero/.local/lib/python3.8/site-packages (from google-auth>=1.0.1->kubernetes>=8.0.0->chaostoolkit-istio) (0.2.8)
+    Requirement already satisfied: cachetools<5.0,>=2.0.0 in /home/luisreciomelero/.local/lib/python3.8/site-packages (from google-auth>=1.0.1->kubernetes>=8.0.0->chaostoolkit-istio) (4.2.1)
+    Requirement already satisfied: rsa<5,>=3.1.4 in /home/luisreciomelero/.local/lib/python3.8/site-packages (from google-auth>=1.0.1->kubernetes>=8.0.0->chaostoolkit-istio) (4.5)
+    Requirement already satisfied: pyasn1<0.5.0,>=0.4.6 in /home/luisreciomelero/.local/lib/python3.8/site-packages (from pyasn1-modules>=0.2.1->google-auth>=1.0.1->kubernetes>=8.0.0->chaostoolkit-istio) (0.4.8)
+    Requirement already satisfied: oauthlib>=3.0.0 in /usr/lib/python3/dist-packages (from requests-oauthlib->kubernetes>=8.0.0->chaostoolkit-istio) (3.1.0)
+    
+[32m[2021-04-10 08:38:59 INFO] [package:40][39m Package downloaded and installed in current environment
+[32m[2021-04-10 08:38:59 INFO] [__init__:103][39m Discovering capabilities from chaostoolkit-istio
+[32m[2021-04-10 08:38:59 INFO] [discover:73][39m Searching for actions in chaosistio.fault.actions
+[32m[2021-04-10 08:38:59 INFO] [discover:81][39m Searching for probes in chaosistio.fault.probes
+[32m[2021-04-10 08:38:59 INFO] [cli:449][39m Discovery outcome saved in ./discovery-chaostoolkit-istio.json
