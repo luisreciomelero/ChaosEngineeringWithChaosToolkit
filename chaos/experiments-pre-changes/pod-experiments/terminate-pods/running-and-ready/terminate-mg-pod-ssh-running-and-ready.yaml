@@ -4,6 +4,10 @@ description: Al estar manejado por un deployment debería levantarse otro de for
 tags:
 - k8s
 - pod
+configuration:
+  ingress_host:
+      type: env
+      key: INGRESS_HOST
 steady-state-hypothesis:
   title: Pod exists
   probes:
@@ -44,6 +48,14 @@ steady-state-hypothesis:
         conditions:
         - type: Ready
           status: "True"
+  - name: app-responds-to-requests
+    type: probe
+    tolerance: 200
+    provider:
+      type: http
+      timeout: 3
+      verify_tls: false
+      url: http://${ingress_host}/mg/health
 method:
 - type: action
   name: terminate-pod

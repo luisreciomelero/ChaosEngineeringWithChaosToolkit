@@ -1,0 +1,5 @@
+experiments:
+  846e69e0-c776-46c9-a431-a7de0487556e:
+    ad7ea2e6-37e0-4421-b763-73bb5a55dd9f:
+      terminate-mg-pod-ssh-running-and-ready.yaml:
+        experiment_id: b421c2e8-6bc4-4a69-b2a1-7e0f4673f763
