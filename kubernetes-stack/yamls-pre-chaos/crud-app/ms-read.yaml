@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
       - name: ms-read
-        image: luisreciomelero/ms-quarkus-read:v1.1.1
+        image: luisreciomelero/ms-quarkus-read:v1.1.2
         #image: luisreciomelero/ms-quarkus-read-native:v1.0.2
 
         env:

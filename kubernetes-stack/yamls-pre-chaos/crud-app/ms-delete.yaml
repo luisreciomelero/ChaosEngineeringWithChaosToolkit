@@ -38,7 +38,7 @@ spec:
           exec:
             command:
               - curl 
-              - "http://127.0.0.1:8087/q/health/ready"
+              - "http://127.0.0.1:8087/health"
           initialDelaySeconds: 155
           periodSeconds: 10
         livenessProbe:

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-istioctl install --set profile=demo -y
+istioctl install --set profile=default -y
 
 sleep 30
 

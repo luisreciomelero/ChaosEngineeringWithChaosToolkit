@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: mg
-        image: luisreciomelero/mg-quarkus-producer:v1.1.8
+        image: luisreciomelero/mg-quarkus-producer:v1.2.1
         #image: luisreciomelero/mg-quarkus-native:v1.1.0
         env:
           - name: KAFKA_HOST
@@ -35,14 +35,14 @@ spec:
           exec:
             command:
               - curl 
-              - "http://127.0.0.1:8084/q/health/ready"
+              - "http://127.0.0.1:8084/health/ready"
           initialDelaySeconds: 155
           periodSeconds: 10
         livenessProbe:
           exec:
             command:
               - curl 
-              - "http://127.0.0.1:8084/q/health/live"
+              - "http://127.0.0.1:8084/health/live"
           initialDelaySeconds: 120
           periodSeconds: 20
         

@@ -1,6 +1,6 @@
 
 version: 1.0.0
-title: ¿Qué ocurre cuando eliminamos el microservicio create?
+title: ¿Qué ocurre cuando eliminamos el microservicio mailer?
 description: Al estar manejado por un deployment debería levantarse otro de forma inmediata.
 tags:
 - k8s
@@ -20,8 +20,8 @@ steady-state-hypothesis:
       module: chaosk8s.pod.probes
       arguments:
         label_selector: 
-          app=read-app,
-          component=ms-read
+          app=mailer-app,
+          component=ms-mailer
         ns: default
 method:
 - type: action
@@ -32,8 +32,8 @@ method:
     func: terminate_pods
     arguments:
       label_selector: 
-        app=read-app,
-        component=ms-read
+          app=mailer-app,
+          component=ms-mailer
       ns: default
   pauses: 
     after: 40

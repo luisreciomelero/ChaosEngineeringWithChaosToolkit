@@ -1,6 +1,6 @@
 version: 1.0.0
-title: What happens if we terminate a Pod?
-description: If a Pod is terminated, a new one should be created in its places.
+title: ¿Qué ocurre cuando eliminamos el microservicio sender?
+description: Al estar manejado por un deployment debería levantarse otro de forma inmediata.
 tags:
 - k8s
 - pod
@@ -16,8 +16,8 @@ steady-state-hypothesis:
       module: chaosk8s.pod.probes
       arguments:
         label_selector: 
-          app=crud-app,
-          component=ms-create
+          app=sender-app,
+          component=ms-sender
         ns: default
   - name: pod-in-phase
     type: probe
@@ -28,8 +28,8 @@ steady-state-hypothesis:
       module: chaosk8s.pod.probes
       arguments:
         label_selector: 
-          app=crud-app,
-          component=ms-create
+          app=sender-app,
+          component=ms-sender
         ns: default
         phase: Running
   - name: pod-in-conditions
@@ -41,8 +41,8 @@ steady-state-hypothesis:
       module: chaosk8s.pod.probes
       arguments:
         label_selector: 
-          app=crud-app,
-          component=ms-create
+          app=sender-app,
+          component=ms-sender
         ns: default
         conditions:
         - type: Ready
@@ -56,8 +56,8 @@ method:
     func: terminate_pods
     arguments:
         label_selector: 
-          app=crud-app,
-          component=ms-create
+          app=sender-app,
+          component=ms-sender
         ns: default
   pauses: 
     after: 200

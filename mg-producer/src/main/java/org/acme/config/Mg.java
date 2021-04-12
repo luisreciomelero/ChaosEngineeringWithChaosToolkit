@@ -9,8 +9,8 @@ import org.eclipse.microprofile.reactive.messaging.Incoming;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.Locale;
 import java.util.logging.Logger;
+
 
 @Path("/api")
 public class Mg {
@@ -48,22 +48,7 @@ public class Mg {
         LOGGER.info(usuario.toString());
         createUsers.send(usuario);
     }
-//////////////////////////////////////////////////////////////////
-    @POST
-    @Path("/usuarios/send")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void send(Usuario usuario) {
-        LOGGER.info("POST");
-        LOGGER.info("-----------------------------------------");
-        LOGGER.info(System.getenv("KAFKA_HOST"));
-        LOGGER.info("-----------------------------------------");
-        LOGGER.info("EL HOST AL QUE APUNTAMOS ES: " + host);
-        LOGGER.info("-----------------------------------------");
-        LOGGER.info(usuario.toString());
-        sendEmailUsers.send(usuario);
-    }
-///////////////////////////////////////////////////////////////////////
+
     @DELETE
     @Path("/usuarios")
     @Produces(MediaType.APPLICATION_JSON)

@@ -4,8 +4,8 @@
   "node": "luisreciomelero-HP-Pavilion-Laptop-15-ck0xx",
   "experiment": {
     "version": "1.0.0",
-    "title": "What happens if we terminate a Pod?",
-    "description": "If a Pod is terminated, a new one should be created in its places.",
+    "title": "¿Qué ocurre cuando eliminamos el pod en el que se ejecuta el contenedor de Kafka?",
+    "description": "Al estar manejado por un deployment debería levantarse otro de forma inmediata.",
     "tags": [
       "k8s",
       "pod"
@@ -22,7 +22,7 @@
             "func": "count_pods",
             "module": "chaosk8s.pod.probes",
             "arguments": {
-              "label_selector": "app=crud-app, component=ms-create",
+              "label_selector": "app=kafka, component=kafka-broker",
               "ns": "default"
             }
           }
@@ -36,7 +36,7 @@
             "func": "pods_in_phase",
             "module": "chaosk8s.pod.probes",
             "arguments": {
-              "label_selector": "app=crud-app, component=ms-create",
+              "label_selector": "app=kafka, component=kafka-broker",
               "ns": "default",
               "phase": "Running"
             }
@@ -51,7 +51,7 @@
             "func": "pods_in_conditions",
             "module": "chaosk8s.pod.probes",
             "arguments": {
-              "label_selector": "app=crud-app, component=ms-create",
+              "label_selector": "app=kafka, component=kafka-broker",
               "ns": "default",
               "conditions": [
                 {
@@ -73,7 +73,7 @@
           "module": "chaosk8s.pod.actions",
           "func": "terminate_pods",
           "arguments": {
-            "label_selector": "app=crud-app, component=ms-create",
+            "label_selector": "app=kafka, component=kafka-broker",
             "ns": "default"
           }
         },
@@ -84,7 +84,7 @@
     ],
     "dry": false
   },
-  "start": "2021-04-10T11:40:39.074566",
+  "start": "2021-04-11T12:27:11.832178",
   "status": "completed",
   "deviated": false,
   "steady_states": {
@@ -101,16 +101,16 @@
               "func": "count_pods",
               "module": "chaosk8s.pod.probes",
               "arguments": {
-                "label_selector": "app=crud-app, component=ms-create",
+                "label_selector": "app=kafka, component=kafka-broker",
                 "ns": "default"
               }
             }
           },
           "output": 1,
           "status": "succeeded",
-          "start": "2021-04-10T11:40:39.075499",
-          "end": "2021-04-10T11:40:39.104676",
-          "duration": 0.029177,
+          "start": "2021-04-11T12:27:11.832742",
+          "end": "2021-04-11T12:27:11.887938",
+          "duration": 0.055196,
           "tolerance_met": true
         },
         {
@@ -123,7 +123,7 @@
               "func": "pods_in_phase",
               "module": "chaosk8s.pod.probes",
               "arguments": {
-                "label_selector": "app=crud-app, component=ms-create",
+                "label_selector": "app=kafka, component=kafka-broker",
                 "ns": "default",
                 "phase": "Running"
               }
@@ -131,9 +131,9 @@
           },
           "output": true,
           "status": "succeeded",
-          "start": "2021-04-10T11:40:39.105057",
-          "end": "2021-04-10T11:40:39.131844",
-          "duration": 0.026787,
+          "start": "2021-04-11T12:27:11.888184",
+          "end": "2021-04-11T12:27:11.906671",
+          "duration": 0.018487,
           "tolerance_met": true
         },
         {
@@ -146,7 +146,7 @@
               "func": "pods_in_conditions",
               "module": "chaosk8s.pod.probes",
               "arguments": {
-                "label_selector": "app=crud-app, component=ms-create",
+                "label_selector": "app=kafka, component=kafka-broker",
                 "ns": "default",
                 "conditions": [
                   {
@@ -159,9 +159,9 @@
           },
           "output": true,
           "status": "succeeded",
-          "start": "2021-04-10T11:40:39.132487",
-          "end": "2021-04-10T11:40:39.168320",
-          "duration": 0.035833,
+          "start": "2021-04-11T12:27:11.906894",
+          "end": "2021-04-11T12:27:11.924686",
+          "duration": 0.017792,
           "tolerance_met": true
         }
       ]
@@ -179,16 +179,16 @@
               "func": "count_pods",
               "module": "chaosk8s.pod.probes",
               "arguments": {
-                "label_selector": "app=crud-app, component=ms-create",
+                "label_selector": "app=kafka, component=kafka-broker",
                 "ns": "default"
               }
             }
           },
           "output": 1,
           "status": "succeeded",
-          "start": "2021-04-10T11:43:59.346133",
-          "end": "2021-04-10T11:43:59.371480",
-          "duration": 0.025347,
+          "start": "2021-04-11T12:30:32.044355",
+          "end": "2021-04-11T12:30:32.068757",
+          "duration": 0.024402,
           "tolerance_met": true
         },
         {
@@ -201,7 +201,7 @@
               "func": "pods_in_phase",
               "module": "chaosk8s.pod.probes",
               "arguments": {
-                "label_selector": "app=crud-app, component=ms-create",
+                "label_selector": "app=kafka, component=kafka-broker",
                 "ns": "default",
                 "phase": "Running"
               }
@@ -209,9 +209,9 @@
           },
           "output": true,
           "status": "succeeded",
-          "start": "2021-04-10T11:43:59.371705",
-          "end": "2021-04-10T11:43:59.390383",
-          "duration": 0.018678,
+          "start": "2021-04-11T12:30:32.069230",
+          "end": "2021-04-11T12:30:32.097035",
+          "duration": 0.027805,
           "tolerance_met": true
         },
         {
@@ -224,7 +224,7 @@
               "func": "pods_in_conditions",
               "module": "chaosk8s.pod.probes",
               "arguments": {
-                "label_selector": "app=crud-app, component=ms-create",
+                "label_selector": "app=kafka, component=kafka-broker",
                 "ns": "default",
                 "conditions": [
                   {
@@ -237,9 +237,9 @@
           },
           "output": true,
           "status": "succeeded",
-          "start": "2021-04-10T11:43:59.390693",
-          "end": "2021-04-10T11:43:59.409928",
-          "duration": 0.019235,
+          "start": "2021-04-11T12:30:32.097364",
+          "end": "2021-04-11T12:30:32.118431",
+          "duration": 0.021067,
           "tolerance_met": true
         }
       ]
@@ -256,7 +256,7 @@
           "module": "chaosk8s.pod.actions",
           "func": "terminate_pods",
           "arguments": {
-            "label_selector": "app=crud-app, component=ms-create",
+            "label_selector": "app=kafka, component=kafka-broker",
             "ns": "default"
           }
         },
@@ -266,12 +266,12 @@
       },
       "output": null,
       "status": "succeeded",
-      "start": "2021-04-10T11:40:39.169011",
-      "end": "2021-04-10T11:40:39.247408",
-      "duration": 0.078397
+      "start": "2021-04-11T12:27:11.925089",
+      "end": "2021-04-11T12:27:11.947390",
+      "duration": 0.022301
     }
   ],
   "rollbacks": [],
-  "end": "2021-04-10T11:43:59.410412",
-  "duration": 200.34960889816284
+  "end": "2021-04-11T12:30:32.119009",
+  "duration": 200.29554796218872
 }

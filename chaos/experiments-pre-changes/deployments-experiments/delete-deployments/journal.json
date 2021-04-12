@@ -1,0 +1,187 @@
+{
+  "chaoslib-version": "1.19.0",
+  "platform": "Linux-5.8.0-48-generic-x86_64-with-glibc2.29",
+  "node": "luisreciomelero-HP-Pavilion-Laptop-15-ck0xx",
+  "experiment": {
+    "version": "1.0.0",
+    "title": "¿Qué ocurre cuando eliminamos el deployment que gestiona el microservicio create?",
+    "description": "Observamos como reacciona nuestro cluster al eliminar el deployment",
+    "tags": [
+      "k8s",
+      "deployment"
+    ],
+    "steady-state-hypothesis": {
+      "title": "Deployment available",
+      "probes": [
+        {
+          "name": "deployment-fully-available",
+          "tolerance": true,
+          "provider": {
+            "arguments": {
+              "name": "ms-create-depl"
+            },
+            "func": "deployment_fully_available",
+            "module": "chaosk8s.deployment.probes",
+            "type": "python"
+          },
+          "ns": "default",
+          "type": "probe"
+        }
+      ]
+    },
+    "method": [
+      {
+        "type": "action",
+        "name": "delete-deployment",
+        "provider": {
+          "arguments": {
+            "name": "ms-create-depl"
+          },
+          "func": "delete_deployment",
+          "module": "chaosk8s.deployment.actions",
+          "type": "python"
+        },
+        "ns": "default",
+        "pauses": {
+          "after": 20
+        }
+      }
+    ],
+    "rollbacks": [
+      {
+        "name": "create-deployment",
+        "provider": {
+          "arguments": {
+            "spec_path": "/home/luisreciomelero/Escritorio/TFM/TFM/kubernetes-stack/yamls-pre-chaos/crud-app/ms-create.yaml"
+          },
+          "func": "create_deployment",
+          "module": "chaosk8s.deployment.actions",
+          "type": "python"
+        },
+        "ns": "default",
+        "type": "action"
+      }
+    ],
+    "dry": false
+  },
+  "start": "2021-04-11T14:03:51.000025",
+  "status": "completed",
+  "deviated": false,
+  "steady_states": {
+    "before": {
+      "steady_state_met": true,
+      "probes": [
+        {
+          "activity": {
+            "name": "deployment-fully-available",
+            "tolerance": true,
+            "provider": {
+              "arguments": {
+                "name": "ms-create-depl"
+              },
+              "func": "deployment_fully_available",
+              "module": "chaosk8s.deployment.probes",
+              "type": "python"
+            },
+            "ns": "default",
+            "type": "probe"
+          },
+          "output": true,
+          "status": "succeeded",
+          "start": "2021-04-11T14:03:51.000561",
+          "end": "2021-04-11T14:03:51.016365",
+          "duration": 0.015804,
+          "tolerance_met": true
+        }
+      ]
+    },
+    "after": {
+      "steady_state_met": true,
+      "probes": [
+        {
+          "activity": {
+            "name": "deployment-fully-available",
+            "tolerance": true,
+            "provider": {
+              "arguments": {
+                "name": "ms-create-depl"
+              },
+              "func": "deployment_fully_available",
+              "module": "chaosk8s.deployment.probes",
+              "type": "python"
+            },
+            "ns": "default",
+            "type": "probe"
+          },
+          "output": true,
+          "status": "succeeded",
+          "start": "2021-04-11T14:04:11.049282",
+          "end": "2021-04-11T14:04:11.070173",
+          "duration": 0.020891,
+          "tolerance_met": true
+        }
+      ]
+    },
+    "during": []
+  },
+  "run": [
+    {
+      "activity": {
+        "type": "action",
+        "name": "delete-deployment",
+        "provider": {
+          "arguments": {
+            "name": "ms-create-depl"
+          },
+          "func": "delete_deployment",
+          "module": "chaosk8s.deployment.actions",
+          "type": "python"
+        },
+        "ns": "default",
+        "pauses": {
+          "after": 20
+        }
+      },
+      "output": null,
+      "status": "succeeded",
+      "start": "2021-04-11T14:03:51.016763",
+      "end": "2021-04-11T14:03:51.028272",
+      "duration": 0.011509
+    }
+  ],
+  "rollbacks": [
+    {
+      "activity": {
+        "name": "create-deployment",
+        "provider": {
+          "arguments": {
+            "spec_path": "/home/luisreciomelero/Escritorio/TFM/TFM/kubernetes-stack/yamls-pre-chaos/crud-app/ms-create.yaml"
+          },
+          "func": "create_deployment",
+          "module": "chaosk8s.deployment.actions",
+          "type": "python"
+        },
+        "ns": "default",
+        "type": "action"
+      },
+      "output": null,
+      "status": "failed",
+      "exception": [
+        "Traceback (most recent call last):\n",
+        "  File \"/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoslib/provider/python.py\", line 55, in run_python_activity\n    return func(**arguments)\n",
+        "  File \"/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosk8s/deployment/actions.py\", line 29, in create_deployment\n    deployment = yaml.load(f.read())\n",
+        "  File \"/home/luisreciomelero/.local/lib/python3.8/site-packages/yaml/__init__.py\", line 114, in load\n    return loader.get_single_data()\n",
+        "  File \"/home/luisreciomelero/.local/lib/python3.8/site-packages/yaml/constructor.py\", line 49, in get_single_data\n    node = self.get_single_node()\n",
+        "  File \"/home/luisreciomelero/.local/lib/python3.8/site-packages/yaml/composer.py\", line 41, in get_single_node\n    raise ComposerError(\"expected a single document in the stream\",\n",
+        "yaml.composer.ComposerError: expected a single document in the stream\n  in \"<unicode string>\", line 2, column 1:\n    apiVersion: apps/v1\n    ^\nbut found another document\n  in \"<unicode string>\", line 52, column 1:\n    ---\n    ^\n",
+        "\nDuring handling of the above exception, another exception occurred:\n\n",
+        "chaoslib.exceptions.ActivityFailed: yaml.composer.ComposerError: expected a single document in the stream\n  in \"<unicode string>\", line 2, column 1:\n    apiVersion: apps/v1\n    ^\nbut found another document\n  in \"<unicode string>\", line 52, column 1:\n    ---\n    ^\n"
+      ],
+      "start": "2021-04-11T14:04:11.070804",
+      "end": "2021-04-11T14:04:11.081264",
+      "duration": 0.01046
+    }
+  ],
+  "end": "2021-04-11T14:04:11.081415",
+  "duration": 20.08982539176941
+}

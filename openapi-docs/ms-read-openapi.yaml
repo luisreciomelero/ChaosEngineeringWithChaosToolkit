@@ -1,0 +1,151 @@
+---
+openapi: 3.0.3
+info:
+  title: Generated API
+  version: "1.0"
+paths:
+  /api/usuarios:
+    get:
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Usuario'
+  /api/usuarios/{dni}:
+    get:
+      parameters:
+      - name: dni
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Usuario'
+  /q/health:
+    summary: MicroProfile Health provides a way for your application to distribute
+      information about its healthiness state to state whether or not it is able to
+      function properly
+    description: MicroProfile Health Endpoint
+    get:
+      tags:
+      - MicroProfile Health
+      summary: An aggregated view of the Liveness and Readiness of this application
+      description: Check the health of the application
+      operationId: microprofile_health_root
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheckResponse'
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheckResponse'
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheckResponse'
+  /q/health/live:
+    summary: Liveness checks are utilized to tell whether the application should be
+      restarted
+    description: MicroProfile Health - Liveness Endpoint
+    get:
+      tags:
+      - MicroProfile Health
+      summary: The Liveness check of this application
+      description: Check the liveness of the application
+      operationId: microprofile_health_liveness
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheckResponse'
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheckResponse'
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheckResponse'
+  /q/health/ready:
+    summary: Readiness checks are used to tell whether the application is able to
+      process requests
+    description: MicroProfile Health - Readiness Endpoint
+    get:
+      tags:
+      - MicroProfile Health
+      summary: The Readiness check of this application
+      description: Check the readiness of the application
+      operationId: microprofile_health_readiness
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheckResponse'
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheckResponse'
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthCheckResponse'
+components:
+  schemas:
+    Usuario:
+      type: object
+      properties:
+        DNI:
+          type: string
+        apellido:
+          type: string
+        canalContac:
+          type: string
+        canalPrefer:
+          type: string
+        email:
+          type: string
+        estadoNofif:
+          type: string
+        nombre:
+          type: string
+        password:
+          type: string
+        telefono:
+          type: string
+        dNI:
+          type: string
+    HealthCheckResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          nullable: true
+        name:
+          type: string
+        state:
+          $ref: '#/components/schemas/State'
+    State:
+      enum:
+      - DOWN
+      - UP
+      type: string
