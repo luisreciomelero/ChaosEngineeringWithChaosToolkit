@@ -43,6 +43,7 @@ spec:
   - port: 5432
     targetPort: 5432
     nodePort: 30100
+    #name: http-portgres
 
 
   

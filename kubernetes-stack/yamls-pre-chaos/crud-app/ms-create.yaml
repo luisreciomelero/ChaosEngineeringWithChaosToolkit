@@ -45,8 +45,8 @@ spec:
         livenessProbe:
           exec:
             command:
-              - curl 
-              - "http://127.0.0.1:8086/health/live"
+             - curl 
+             - "http://127.0.0.1:8086/health/live"
           initialDelaySeconds: 120
           periodSeconds: 20
 ---
@@ -65,6 +65,7 @@ spec:
     component: ms-create
   ports:
   - port: 8086
+    name: http-create
     targetPort: 8086
   
 

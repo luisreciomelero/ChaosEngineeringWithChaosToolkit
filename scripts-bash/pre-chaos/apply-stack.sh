@@ -13,7 +13,13 @@ cd "istio"
 
 kubectl apply -f "ingress-gateway.yaml"
 
-cd "../postgres-db"
+cd "../yamls-post-chaos/istio"
+
+#kubectl apply -f "istio-prueba.yaml"
+
+cd "../../yamls-pre-chaos/postgres-db"
+
+#cd "../postgres-db"
 
 #kubectl apply -f "ingress-controller-nginx-tfm.yaml,ingress-rules-tfm.yaml,ingress-service-tfm.yaml"
 

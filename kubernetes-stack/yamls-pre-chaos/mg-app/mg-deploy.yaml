@@ -52,12 +52,15 @@ kind: Service
 apiVersion: v1
 metadata:
   name: mg-v1
+  labels:
+    app: mg-backend
 spec:
   type: ClusterIP
   selector:
     app: mg-backend
   ports:
   - port: 8081
+    name: http-mg
     targetPort: 8084
   
 

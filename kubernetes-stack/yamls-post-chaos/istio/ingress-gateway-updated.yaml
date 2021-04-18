@@ -1,0 +1,123 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: ingress-gateway
+spec:
+  selector:
+    istio: ingressgateway # use Istio default gateway implementation
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+
+---
+
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: httpbin
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - ingress-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /mg
+    rewrite:
+      uri: " "
+    delegate:
+      name: mg-vs
+      namespace: default
+    retries:
+      attempts: 10
+      perTryTimeout: 3s
+      retryOn: 5xx,connect-failure
+    timeout: 10s
+  - match:
+    - uri:
+        prefix: /read
+    rewrite:
+      uri: " "
+    delegate:
+      name: ms-read-vs
+      namespace: default
+
+
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: mg-v1
+spec:
+  host: mg-v1
+  subsets:
+  - name: primary
+    labels:
+      app: mg-backend
+
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: ms-read
+spec:
+  host: ms-read
+  subsets:
+  - name: primary
+    labels:
+      app: read-app
+      component: ms-read
+
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: mg-vs
+spec:
+  http:
+  - route:
+    - destination:
+        port:
+          number: 8081
+        host: mg-v1
+        subset: primary
+    retries:
+      attempts: 10
+      perTryTimeout: 3s
+      retryOn: 5xx,connect-failure
+    timeout: 10s
+    
+
+    
+
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: ms-read-vs
+spec:
+  http:
+  - route:
+    - destination:
+        port:
+          number: 8088
+        host: ms-read
+        subset: primary
+    retries:
+      attempts: 10
+      perTryTimeout: 3s
+      retryOn: 5xx,connect-failure
+    timeout: 10s
+
+---
+

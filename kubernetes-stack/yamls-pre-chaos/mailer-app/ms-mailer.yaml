@@ -101,6 +101,7 @@ spec:
     component: ms-mailer
   ports:
   - port: 8090
+    name: http-mailer
     targetPort: 8090
 
 ---

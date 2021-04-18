@@ -65,6 +65,7 @@ spec:
     component: ms-read
   ports:
   - port: 8088
+    name: http-read
     targetPort: 8088
   
 

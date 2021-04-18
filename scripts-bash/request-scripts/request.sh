@@ -10,6 +10,8 @@ export INGRESS_PORT=$(kubectl \
 
 export INGRESS_HOST=$(kubectl get nodes --namespace istio-system -o jsonpath="{.items[0].status.addresses[0].address}"):$INGRESS_PORT
 
+echo "URL: ${INGRESS_HOST}"
+
 help() {
 	echo "Este script únicamente admite un único argumento numérico. Será el numero de request que realizará "
 	exit 1
@@ -29,7 +31,7 @@ else
 			-H 'Content-Type: application/json' \
 			-d '{
 		    "DNI":"'${NEW_UUID}'",
-		    "nombre":"PRUEBA",
+		    "nombre":"PRUEBA7",
 		    "apellido":"Recio",
 		    "telefono":"12345678",
 		    "email":"tfm.muirst.lrm@gmail.com",

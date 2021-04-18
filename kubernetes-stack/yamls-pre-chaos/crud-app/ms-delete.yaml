@@ -48,7 +48,7 @@ spec:
               - "http://127.0.0.1:8087/q/health/live"
           initialDelaySeconds: 120
           periodSeconds: 20
-        
+       
 
 ---
 
@@ -66,6 +66,7 @@ spec:
     component: ms-delete
   ports:
   - port: 8087
+    #name: http-delete
     targetPort: 8087
   
 

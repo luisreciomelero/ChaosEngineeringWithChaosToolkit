@@ -67,6 +67,7 @@ spec:
     component: ms-sender
   ports:
   - port: 8091
+    name: http-sender
     targetPort: 8091
 
 ---

@@ -10,6 +10,7 @@ spec:
   ports:
   - port: 2181
     name: zookeeper-port
+    #name: tcp-zookeeper
     targetPort: 2181
     protocol: TCP
   selector:
