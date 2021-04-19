@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: ingress-gateway
-  #namespace: istio-system
+  namespace: istio-system
 spec:
   selector:
     istio: ingressgateway # use Istio default gateway implementation
@@ -21,7 +21,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: http-mg-mread-vs
-  #namespace: istio-system
+  namespace: istio-system
 spec:
   hosts:
   - "*"
@@ -39,6 +39,11 @@ spec:
           number: 8081
         host: mg-v1.default.svc.cluster.local
         subset: primary
+    retries:
+      attempts: 12
+      perTryTimeout: 4s
+      retryOn: 5xx,connect-failure
+    timeout: 30s
   - match:
     - uri:
         prefix: /read
@@ -57,7 +62,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: mg-v1
-  #namespace: istio-system
+  namespace: istio-system
 spec:
   host: mg-v1.default.svc.cluster.local
   subsets:
@@ -71,7 +76,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: ms-read
-  #namespace: istio-system
+  namespace: istio-system
 spec:
   host: ms-read.default.svc.cluster.local
   subsets:

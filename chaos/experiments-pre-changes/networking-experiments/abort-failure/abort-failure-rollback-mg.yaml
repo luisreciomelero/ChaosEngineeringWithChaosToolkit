@@ -40,17 +40,17 @@ method:
     module: chaosistio.fault.actions
     func: add_abort_fault
     arguments:
-      virtual_service_name: vs-prueba
+      virtual_service_name: http-mg-mread-vs
       http_status: 500
       routes:
         - destination:
-            host: mg-v1
+            host: mg-v1.default.svc.cluster.local
             subset: primary
       percentage: 50
       version: networking.istio.io/v1alpha3
       ns: default
   pauses: 
-    after: 1
+    after: 5
 rollbacks:
 - type: action
   name: remove-abort-failure
@@ -59,10 +59,10 @@ rollbacks:
     func: remove_abort_fault
     module: chaosistio.fault.actions
     arguments:
-      virtual_service_name: vs-prueba
+      virtual_service_name: http-mg-mread-vs
       routes:
         - destination:
-            host: mg-v1
+            host: mg-v1.default.svc.cluster.local
             subset: primary
       version: networking.istio.io/v1alpha3
       ns: default
