@@ -55,7 +55,7 @@ kubectl apply -f "ms-create.yaml,ms-delete.yaml,ms-update.yaml,ms-read.yaml"
 cd "../mailer-app"
 
 
-kubectl apply -f "."
+kubectl apply -f "config-mailer.yaml,ms-mailer.yaml"
 
 cd "../sendersms-app"
 

@@ -1,6 +1,6 @@
 version: 1.0.0
-title: What happens if we abort responses
-description: If responses are aborted, the dependant application should retry and/or timeout requests
+title: What happens if we abort and delay responses
+description: If responses are aborted and delayed, the dependant application should retry and/or timeout requests
 tags:
 - k8s
 - istio
@@ -12,12 +12,12 @@ configuration:
 steady-state-hypothesis:
   title: The app is healthy
   probes:
-  - name: app-responds-to-requests
-    type: probe
+  - type: probe
+    name: app-responds-to-requests
     tolerance: 200
     provider:
       type: http
-      timeout: 20
+      timeout: 15
       verify_tls: false
       url: http://${ingress_host}/mg/health
   - type: probe
@@ -34,14 +34,14 @@ steady-state-hypothesis:
     ref: app-responds-to-requests
 method:
 - type: action
-  name: abort-failure
+  name: delay
   provider:
     type: python
     module: chaosistio.fault.actions
-    func: add_abort_fault
+    func: add_delay_fault
     arguments:
-      virtual_service_name: mg-v1-delegate
-      http_status: 503
+      virtual_service_name: http-mg-mread-vs
+      fixed_delay: 10s
       routes:
         - destination:
             host: mg-v1.default.svc.cluster.local
@@ -53,15 +53,16 @@ method:
     after: 5
 rollbacks:
 - type: action
-  name: remove-abort-failure
+  name: remove-delay
   provider:
     type: python
-    func: remove_abort_fault
+    func: remove_delay_fault
     module: chaosistio.fault.actions
     arguments:
-      virtual_service_name: mg-v1-delegate
+      virtual_service_name: http-mg-mread-vs
       routes:
         - destination:
             host: mg-v1.default.svc.cluster.local
             subset: primary
       version: networking.istio.io/v1alpha3
+     # ns: istio-system

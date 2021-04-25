@@ -10,26 +10,26 @@ tags:
 steady-state-hypothesis:
   title: Deployment available
   probes:
-  - name: deployment-fully-available
+  - type: probe
     tolerance: true
     provider:
+      name: probe
       arguments:
         label_selector: 
-          app=mailer-app,
-          component=ms-mailer
+          app=crud-app,
+          component=ms-delete
+        ns: default
       func: deployment_fully_available
       module: chaosk8s.deployment.probes
       type: python
     ns: default
-    type: probe
+    name: deployment-fully-available
 method:
 - type: action
   name: delete-deployment
   provider:
     arguments:
-      label_selector: 
-          app=mailer-app,
-          component=ms-mailer
+      name: ms-delete-depl
     func: delete_deployment
     module: chaosk8s.deployment.actions
     type: python
@@ -40,7 +40,7 @@ rollbacks:
 - name: create-deployment
   provider:
     arguments:
-      spec_path: '/home/luisreciomelero/Escritorio/TFM/TFM/kubernetes-stack/yamls-pre-chaos/crud-app/ms-create.yaml'
+      spec_path: '../../../../kubernetes-stack/yamls-pre-chaos/crud-app/ms-delete.yaml'
     func: create_deployment
     module: chaosk8s.deployment.actions
     type: python

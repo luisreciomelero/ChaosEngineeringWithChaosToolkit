@@ -1,9 +1,10 @@
 ---
 
-apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: mg-hpa
+  name: mg-hpa-primary
+  namespace: default
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
@@ -15,8 +16,41 @@ spec:
   - type: Resource
     resource:
       name: cpu
-      targetAverageUtilization: 80
+      target:
+        type: Utilization
+        averageUtilization: 80
   - type: Resource
     resource:
       name: memory
-      targetAverageUtilization: 80
+      target:
+        type: Utilization
+        averageUtilization: 80
+
+---
+
+
+#apiVersion: autoscaling/v2beta2
+#kind: HorizontalPodAutoscaler
+#metadata:
+#  name: mg-hpa-secondary
+#  namespace: default
+#spec:
+#  scaleTargetRef:
+#    apiVersion: apps/v1
+#    kind: Deployment
+#    name: mg-depl-secondary
+#  minReplicas: 2
+#  maxReplicas: 6
+#  metrics:
+#  - type: Resource
+#    resource:
+#      name: cpu
+#      target:
+#        type: Utilization
+#        averageUtilization: 80
+#  - type: Resource
+#    resource:
+#      name: memory
+#      target:
+#        type: Utilization
+#        averageUtilization: 80

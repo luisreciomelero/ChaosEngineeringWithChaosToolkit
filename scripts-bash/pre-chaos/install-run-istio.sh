@@ -1,10 +1,10 @@
 #!/bin/bash
 
-istioctl install --set profile=default -y
+istioctl install --set profile=default --set meshConfig.accessLogFile=/dev/stdout -y
 
 sleep 30
 
-kubectl label namespace default istio-injection=enabled
+kubectl label namespace default istio-injection=enabled 
 
 cd "../../kubernetes-stack/yamls-pre-chaos/istio"
 

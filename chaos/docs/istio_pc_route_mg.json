@@ -1,0 +1,2223 @@
+
+[
+    {
+        "name": "80",
+        "virtualHosts": [
+            {
+                "name": "allow_any",
+                "domains": [
+                    "*"
+                ],
+                "routes": [
+                    {
+                        "name": "allow_any",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "PassthroughCluster",
+                            "timeout": "0s",
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "istio-ingressgateway.istio-system.svc.cluster.local:80",
+                "domains": [
+                    "istio-ingressgateway.istio-system.svc.cluster.local",
+                    "istio-ingressgateway.istio-system.svc.cluster.local:80",
+                    "istio-ingressgateway.istio-system",
+                    "istio-ingressgateway.istio-system:80",
+                    "istio-ingressgateway.istio-system.svc.cluster",
+                    "istio-ingressgateway.istio-system.svc.cluster:80",
+                    "istio-ingressgateway.istio-system.svc",
+                    "istio-ingressgateway.istio-system.svc:80",
+                    "10.105.107.11",
+                    "10.105.107.11:80"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|80||istio-ingressgateway.istio-system.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "istio-ingressgateway.istio-system.svc.cluster.local:80/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "kafka.default.svc.cluster.local:80",
+                "domains": [
+                    "kafka.default.svc.cluster.local",
+                    "kafka.default.svc.cluster.local:80"
+                ],
+                "routes": [
+                    {
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|9092||kafka.default.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "metadata": {
+                            "filterMetadata": {
+                                "istio": {
+                                    "config": "/apis/networking.istio.io/v1alpha3/namespaces/default/virtual-service/kafka-vs"
+                                }
+                            }
+                        },
+                        "decorator": {
+                            "operation": "kafka.default.svc.cluster.local:9092/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "ms-create.default.svc.cluster.local:80",
+                "domains": [
+                    "ms-create.default.svc.cluster.local",
+                    "ms-create.default.svc.cluster.local:80"
+                ],
+                "routes": [
+                    {
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|8086||ms-create.default.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "metadata": {
+                            "filterMetadata": {
+                                "istio": {
+                                    "config": "/apis/networking.istio.io/v1alpha3/namespaces/default/virtual-service/ms-create-vs"
+                                }
+                            }
+                        },
+                        "decorator": {
+                            "operation": "ms-create.default.svc.cluster.local:8086/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "ms-delete.default.svc.cluster.local:80",
+                "domains": [
+                    "ms-delete.default.svc.cluster.local",
+                    "ms-delete.default.svc.cluster.local:80"
+                ],
+                "routes": [
+                    {
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|8087||ms-delete.default.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "metadata": {
+                            "filterMetadata": {
+                                "istio": {
+                                    "config": "/apis/networking.istio.io/v1alpha3/namespaces/default/virtual-service/ms-delete-vs"
+                                }
+                            }
+                        },
+                        "decorator": {
+                            "operation": "ms-delete.default.svc.cluster.local:8087/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "ms-mailer.default.svc.cluster.local:80",
+                "domains": [
+                    "ms-mailer.default.svc.cluster.local",
+                    "ms-mailer.default.svc.cluster.local:80"
+                ],
+                "routes": [
+                    {
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|8090||ms-mailer.default.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "metadata": {
+                            "filterMetadata": {
+                                "istio": {
+                                    "config": "/apis/networking.istio.io/v1alpha3/namespaces/default/virtual-service/ms-mailer-vs"
+                                }
+                            }
+                        },
+                        "decorator": {
+                            "operation": "ms-mailer.default.svc.cluster.local:8090/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "ms-sender.default.svc.cluster.local:80",
+                "domains": [
+                    "ms-sender.default.svc.cluster.local",
+                    "ms-sender.default.svc.cluster.local:80"
+                ],
+                "routes": [
+                    {
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|8091||ms-sender.default.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "metadata": {
+                            "filterMetadata": {
+                                "istio": {
+                                    "config": "/apis/networking.istio.io/v1alpha3/namespaces/default/virtual-service/ms-sender-vs"
+                                }
+                            }
+                        },
+                        "decorator": {
+                            "operation": "ms-sender.default.svc.cluster.local:8091/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "ms-update.default.svc.cluster.local:80",
+                "domains": [
+                    "ms-update.default.svc.cluster.local",
+                    "ms-update.default.svc.cluster.local:80"
+                ],
+                "routes": [
+                    {
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|8089||ms-update.default.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "metadata": {
+                            "filterMetadata": {
+                                "istio": {
+                                    "config": "/apis/networking.istio.io/v1alpha3/namespaces/default/virtual-service/ms-update-vs"
+                                }
+                            }
+                        },
+                        "decorator": {
+                            "operation": "ms-update.default.svc.cluster.local:8089/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "postgres.default.svc.cluster.local:80",
+                "domains": [
+                    "postgres.default.svc.cluster.local",
+                    "postgres.default.svc.cluster.local:80"
+                ],
+                "routes": [
+                    {
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|5432||postgres.default.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "metadata": {
+                            "filterMetadata": {
+                                "istio": {
+                                    "config": "/apis/networking.istio.io/v1alpha3/namespaces/default/virtual-service/postgres-vs"
+                                }
+                            }
+                        },
+                        "decorator": {
+                            "operation": "postgres.default.svc.cluster.local:5432/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "tracing.istio-system.svc.cluster.local:80",
+                "domains": [
+                    "tracing.istio-system.svc.cluster.local",
+                    "tracing.istio-system.svc.cluster.local:80",
+                    "tracing.istio-system",
+                    "tracing.istio-system:80",
+                    "tracing.istio-system.svc.cluster",
+                    "tracing.istio-system.svc.cluster:80",
+                    "tracing.istio-system.svc",
+                    "tracing.istio-system.svc:80",
+                    "10.101.96.252",
+                    "10.101.96.252:80"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|80||tracing.istio-system.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "tracing.istio-system.svc.cluster.local:80/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "zookeeper.default.svc.cluster.local:80",
+                "domains": [
+                    "zookeeper.default.svc.cluster.local",
+                    "zookeeper.default.svc.cluster.local:80"
+                ],
+                "routes": [
+                    {
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|2181||zookeeper.default.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "metadata": {
+                            "filterMetadata": {
+                                "istio": {
+                                    "config": "/apis/networking.istio.io/v1alpha3/namespaces/default/virtual-service/zookeeper-vs"
+                                }
+                            }
+                        },
+                        "decorator": {
+                            "operation": "zookeeper.default.svc.cluster.local:2181/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "8081",
+        "virtualHosts": [
+            {
+                "name": "allow_any",
+                "domains": [
+                    "*"
+                ],
+                "routes": [
+                    {
+                        "name": "allow_any",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "PassthroughCluster",
+                            "timeout": "0s",
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "mg-v1.default.svc.cluster.local:8081",
+                "domains": [
+                    "mg-v1.default.svc.cluster.local",
+                    "mg-v1.default.svc.cluster.local:8081",
+                    "mg-v1",
+                    "mg-v1:8081",
+                    "mg-v1.default.svc.cluster",
+                    "mg-v1.default.svc.cluster:8081",
+                    "mg-v1.default.svc",
+                    "mg-v1.default.svc:8081",
+                    "mg-v1.default",
+                    "mg-v1.default:8081",
+                    "10.109.45.135",
+                    "10.109.45.135:8081"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|8081||mg-v1.default.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "mg-v1.default.svc.cluster.local:8081/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "8086",
+        "virtualHosts": [
+            {
+                "name": "allow_any",
+                "domains": [
+                    "*"
+                ],
+                "routes": [
+                    {
+                        "name": "allow_any",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "PassthroughCluster",
+                            "timeout": "0s",
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "ms-create.default.svc.cluster.local:8086",
+                "domains": [
+                    "ms-create.default.svc.cluster.local",
+                    "ms-create.default.svc.cluster.local:8086",
+                    "ms-create",
+                    "ms-create:8086",
+                    "ms-create.default.svc.cluster",
+                    "ms-create.default.svc.cluster:8086",
+                    "ms-create.default.svc",
+                    "ms-create.default.svc:8086",
+                    "ms-create.default",
+                    "ms-create.default:8086",
+                    "10.109.163.103",
+                    "10.109.163.103:8086"
+                ],
+                "routes": [
+                    {
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|8086||ms-create.default.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "metadata": {
+                            "filterMetadata": {
+                                "istio": {
+                                    "config": "/apis/networking.istio.io/v1alpha3/namespaces/default/virtual-service/ms-create-vs"
+                                }
+                            }
+                        },
+                        "decorator": {
+                            "operation": "ms-create.default.svc.cluster.local:8086/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "8088",
+        "virtualHosts": [
+            {
+                "name": "allow_any",
+                "domains": [
+                    "*"
+                ],
+                "routes": [
+                    {
+                        "name": "allow_any",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "PassthroughCluster",
+                            "timeout": "0s",
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "ms-read.default.svc.cluster.local:8088",
+                "domains": [
+                    "ms-read.default.svc.cluster.local",
+                    "ms-read.default.svc.cluster.local:8088",
+                    "ms-read",
+                    "ms-read:8088",
+                    "ms-read.default.svc.cluster",
+                    "ms-read.default.svc.cluster:8088",
+                    "ms-read.default.svc",
+                    "ms-read.default.svc:8088",
+                    "ms-read.default",
+                    "ms-read.default:8088",
+                    "10.109.193.229",
+                    "10.109.193.229:8088"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|8088||ms-read.default.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "ms-read.default.svc.cluster.local:8088/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "8090",
+        "virtualHosts": [
+            {
+                "name": "allow_any",
+                "domains": [
+                    "*"
+                ],
+                "routes": [
+                    {
+                        "name": "allow_any",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "PassthroughCluster",
+                            "timeout": "0s",
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "ms-mailer.default.svc.cluster.local:8090",
+                "domains": [
+                    "ms-mailer.default.svc.cluster.local",
+                    "ms-mailer.default.svc.cluster.local:8090",
+                    "ms-mailer",
+                    "ms-mailer:8090",
+                    "ms-mailer.default.svc.cluster",
+                    "ms-mailer.default.svc.cluster:8090",
+                    "ms-mailer.default.svc",
+                    "ms-mailer.default.svc:8090",
+                    "ms-mailer.default",
+                    "ms-mailer.default:8090",
+                    "10.110.32.1",
+                    "10.110.32.1:8090"
+                ],
+                "routes": [
+                    {
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|8090||ms-mailer.default.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "metadata": {
+                            "filterMetadata": {
+                                "istio": {
+                                    "config": "/apis/networking.istio.io/v1alpha3/namespaces/default/virtual-service/ms-mailer-vs"
+                                }
+                            }
+                        },
+                        "decorator": {
+                            "operation": "ms-mailer.default.svc.cluster.local:8090/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "8091",
+        "virtualHosts": [
+            {
+                "name": "allow_any",
+                "domains": [
+                    "*"
+                ],
+                "routes": [
+                    {
+                        "name": "allow_any",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "PassthroughCluster",
+                            "timeout": "0s",
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "ms-sender.default.svc.cluster.local:8091",
+                "domains": [
+                    "ms-sender.default.svc.cluster.local",
+                    "ms-sender.default.svc.cluster.local:8091",
+                    "ms-sender",
+                    "ms-sender:8091",
+                    "ms-sender.default.svc.cluster",
+                    "ms-sender.default.svc.cluster:8091",
+                    "ms-sender.default.svc",
+                    "ms-sender.default.svc:8091",
+                    "ms-sender.default",
+                    "ms-sender.default:8091",
+                    "10.97.102.143",
+                    "10.97.102.143:8091"
+                ],
+                "routes": [
+                    {
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|8091||ms-sender.default.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "metadata": {
+                            "filterMetadata": {
+                                "istio": {
+                                    "config": "/apis/networking.istio.io/v1alpha3/namespaces/default/virtual-service/ms-sender-vs"
+                                }
+                            }
+                        },
+                        "decorator": {
+                            "operation": "ms-sender.default.svc.cluster.local:8091/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "9000",
+        "virtualHosts": [
+            {
+                "name": "allow_any",
+                "domains": [
+                    "*"
+                ],
+                "routes": [
+                    {
+                        "name": "allow_any",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "PassthroughCluster",
+                            "timeout": "0s",
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "portainer.portainer.svc.cluster.local:9000",
+                "domains": [
+                    "portainer.portainer.svc.cluster.local",
+                    "portainer.portainer.svc.cluster.local:9000",
+                    "portainer.portainer",
+                    "portainer.portainer:9000",
+                    "portainer.portainer.svc.cluster",
+                    "portainer.portainer.svc.cluster:9000",
+                    "portainer.portainer.svc",
+                    "portainer.portainer.svc:9000",
+                    "10.99.129.131",
+                    "10.99.129.131:9000"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|9000||portainer.portainer.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "portainer.portainer.svc.cluster.local:9000/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "9090",
+        "virtualHosts": [
+            {
+                "name": "allow_any",
+                "domains": [
+                    "*"
+                ],
+                "routes": [
+                    {
+                        "name": "allow_any",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "PassthroughCluster",
+                            "timeout": "0s",
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "kiali.istio-system.svc.cluster.local:9090",
+                "domains": [
+                    "kiali.istio-system.svc.cluster.local",
+                    "kiali.istio-system.svc.cluster.local:9090",
+                    "kiali.istio-system",
+                    "kiali.istio-system:9090",
+                    "kiali.istio-system.svc.cluster",
+                    "kiali.istio-system.svc.cluster:9090",
+                    "kiali.istio-system.svc",
+                    "kiali.istio-system.svc:9090",
+                    "10.100.47.188",
+                    "10.100.47.188:9090"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|9090||kiali.istio-system.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "kiali.istio-system.svc.cluster.local:9090/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "prometheus.istio-system.svc.cluster.local:9090",
+                "domains": [
+                    "prometheus.istio-system.svc.cluster.local",
+                    "prometheus.istio-system.svc.cluster.local:9090",
+                    "prometheus.istio-system",
+                    "prometheus.istio-system:9090",
+                    "prometheus.istio-system.svc.cluster",
+                    "prometheus.istio-system.svc.cluster:9090",
+                    "prometheus.istio-system.svc",
+                    "prometheus.istio-system.svc:9090",
+                    "10.104.71.129",
+                    "10.104.71.129:9090"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|9090||prometheus.istio-system.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "prometheus.istio-system.svc.cluster.local:9090/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "9411",
+        "virtualHosts": [
+            {
+                "name": "allow_any",
+                "domains": [
+                    "*"
+                ],
+                "routes": [
+                    {
+                        "name": "allow_any",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "PassthroughCluster",
+                            "timeout": "0s",
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "zipkin.istio-system.svc.cluster.local:9411",
+                "domains": [
+                    "zipkin.istio-system.svc.cluster.local",
+                    "zipkin.istio-system.svc.cluster.local:9411",
+                    "zipkin.istio-system",
+                    "zipkin.istio-system:9411",
+                    "zipkin.istio-system.svc.cluster",
+                    "zipkin.istio-system.svc.cluster:9411",
+                    "zipkin.istio-system.svc",
+                    "zipkin.istio-system.svc:9411",
+                    "10.104.59.249",
+                    "10.104.59.249:9411"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|9411||zipkin.istio-system.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "zipkin.istio-system.svc.cluster.local:9411/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "15010",
+        "virtualHosts": [
+            {
+                "name": "allow_any",
+                "domains": [
+                    "*"
+                ],
+                "routes": [
+                    {
+                        "name": "allow_any",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "PassthroughCluster",
+                            "timeout": "0s",
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "istiod.istio-system.svc.cluster.local:15010",
+                "domains": [
+                    "istiod.istio-system.svc.cluster.local",
+                    "istiod.istio-system.svc.cluster.local:15010",
+                    "istiod.istio-system",
+                    "istiod.istio-system:15010",
+                    "istiod.istio-system.svc.cluster",
+                    "istiod.istio-system.svc.cluster:15010",
+                    "istiod.istio-system.svc",
+                    "istiod.istio-system.svc:15010",
+                    "10.104.179.34",
+                    "10.104.179.34:15010"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|15010||istiod.istio-system.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "istiod.istio-system.svc.cluster.local:15010/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "15014",
+        "virtualHosts": [
+            {
+                "name": "allow_any",
+                "domains": [
+                    "*"
+                ],
+                "routes": [
+                    {
+                        "name": "allow_any",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "PassthroughCluster",
+                            "timeout": "0s",
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "istiod.istio-system.svc.cluster.local:15014",
+                "domains": [
+                    "istiod.istio-system.svc.cluster.local",
+                    "istiod.istio-system.svc.cluster.local:15014",
+                    "istiod.istio-system",
+                    "istiod.istio-system:15014",
+                    "istiod.istio-system.svc.cluster",
+                    "istiod.istio-system.svc.cluster:15014",
+                    "istiod.istio-system.svc",
+                    "istiod.istio-system.svc:15014",
+                    "10.104.179.34",
+                    "10.104.179.34:15014"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|15014||istiod.istio-system.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "istiod.istio-system.svc.cluster.local:15014/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "jaeger-collector.istio-system.svc.cluster.local:14250",
+        "virtualHosts": [
+            {
+                "name": "jaeger-collector.istio-system.svc.cluster.local:14250",
+                "domains": [
+                    "jaeger-collector.istio-system.svc.cluster.local",
+                    "jaeger-collector.istio-system.svc.cluster.local:14250",
+                    "jaeger-collector.istio-system",
+                    "jaeger-collector.istio-system:14250",
+                    "jaeger-collector.istio-system.svc.cluster",
+                    "jaeger-collector.istio-system.svc.cluster:14250",
+                    "jaeger-collector.istio-system.svc",
+                    "jaeger-collector.istio-system.svc:14250",
+                    "10.109.173.247",
+                    "10.109.173.247:14250"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|14250||jaeger-collector.istio-system.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "jaeger-collector.istio-system.svc.cluster.local:14250/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "jaeger-collector.istio-system.svc.cluster.local:14268",
+        "virtualHosts": [
+            {
+                "name": "jaeger-collector.istio-system.svc.cluster.local:14268",
+                "domains": [
+                    "jaeger-collector.istio-system.svc.cluster.local",
+                    "jaeger-collector.istio-system.svc.cluster.local:14268",
+                    "jaeger-collector.istio-system",
+                    "jaeger-collector.istio-system:14268",
+                    "jaeger-collector.istio-system.svc.cluster",
+                    "jaeger-collector.istio-system.svc.cluster:14268",
+                    "jaeger-collector.istio-system.svc",
+                    "jaeger-collector.istio-system.svc:14268",
+                    "10.109.173.247",
+                    "10.109.173.247:14268"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|14268||jaeger-collector.istio-system.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "jaeger-collector.istio-system.svc.cluster.local:14268/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "portainer.portainer.svc.cluster.local:30776",
+        "virtualHosts": [
+            {
+                "name": "portainer.portainer.svc.cluster.local:30776",
+                "domains": [
+                    "portainer.portainer.svc.cluster.local",
+                    "portainer.portainer.svc.cluster.local:30776",
+                    "portainer.portainer",
+                    "portainer.portainer:30776",
+                    "portainer.portainer.svc.cluster",
+                    "portainer.portainer.svc.cluster:30776",
+                    "portainer.portainer.svc",
+                    "portainer.portainer.svc:30776",
+                    "10.99.129.131",
+                    "10.99.129.131:30776"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|30776||portainer.portainer.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "portainer.portainer.svc.cluster.local:30776/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "fakesmtp.default.svc.cluster.local:2525",
+        "virtualHosts": [
+            {
+                "name": "fakesmtp.default.svc.cluster.local:2525",
+                "domains": [
+                    "fakesmtp.default.svc.cluster.local",
+                    "fakesmtp.default.svc.cluster.local:2525",
+                    "fakesmtp",
+                    "fakesmtp:2525",
+                    "fakesmtp.default.svc.cluster",
+                    "fakesmtp.default.svc.cluster:2525",
+                    "fakesmtp.default.svc",
+                    "fakesmtp.default.svc:2525",
+                    "fakesmtp.default",
+                    "fakesmtp.default:2525",
+                    "10.110.114.94",
+                    "10.110.114.94:2525"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|2525||fakesmtp.default.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "fakesmtp.default.svc.cluster.local:2525/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "grafana.istio-system.svc.cluster.local:3000",
+        "virtualHosts": [
+            {
+                "name": "grafana.istio-system.svc.cluster.local:3000",
+                "domains": [
+                    "grafana.istio-system.svc.cluster.local",
+                    "grafana.istio-system.svc.cluster.local:3000",
+                    "grafana.istio-system",
+                    "grafana.istio-system:3000",
+                    "grafana.istio-system.svc.cluster",
+                    "grafana.istio-system.svc.cluster:3000",
+                    "grafana.istio-system.svc",
+                    "grafana.istio-system.svc:3000",
+                    "10.107.130.251",
+                    "10.107.130.251:3000"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|3000||grafana.istio-system.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "grafana.istio-system.svc.cluster.local:3000/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "zookeeper.default.svc.cluster.local:2181",
+        "virtualHosts": [
+            {
+                "name": "zookeeper.default.svc.cluster.local:2181",
+                "domains": [
+                    "zookeeper.default.svc.cluster.local",
+                    "zookeeper.default.svc.cluster.local:2181",
+                    "zookeeper",
+                    "zookeeper:2181",
+                    "zookeeper.default.svc.cluster",
+                    "zookeeper.default.svc.cluster:2181",
+                    "zookeeper.default.svc",
+                    "zookeeper.default.svc:2181",
+                    "zookeeper.default",
+                    "zookeeper.default:2181",
+                    "10.106.43.79",
+                    "10.106.43.79:2181"
+                ],
+                "routes": [
+                    {
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|2181||zookeeper.default.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "metadata": {
+                            "filterMetadata": {
+                                "istio": {
+                                    "config": "/apis/networking.istio.io/v1alpha3/namespaces/default/virtual-service/zookeeper-vs"
+                                }
+                            }
+                        },
+                        "decorator": {
+                            "operation": "zookeeper.default.svc.cluster.local:2181/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "istio-ingressgateway.istio-system.svc.cluster.local:15021",
+        "virtualHosts": [
+            {
+                "name": "istio-ingressgateway.istio-system.svc.cluster.local:15021",
+                "domains": [
+                    "istio-ingressgateway.istio-system.svc.cluster.local",
+                    "istio-ingressgateway.istio-system.svc.cluster.local:15021",
+                    "istio-ingressgateway.istio-system",
+                    "istio-ingressgateway.istio-system:15021",
+                    "istio-ingressgateway.istio-system.svc.cluster",
+                    "istio-ingressgateway.istio-system.svc.cluster:15021",
+                    "istio-ingressgateway.istio-system.svc",
+                    "istio-ingressgateway.istio-system.svc:15021",
+                    "10.105.107.11",
+                    "10.105.107.11:15021"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|15021||istio-ingressgateway.istio-system.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "istio-ingressgateway.istio-system.svc.cluster.local:15021/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "kafka.default.svc.cluster.local:9092",
+        "virtualHosts": [
+            {
+                "name": "kafka.default.svc.cluster.local:9092",
+                "domains": [
+                    "kafka.default.svc.cluster.local",
+                    "kafka.default.svc.cluster.local:9092",
+                    "kafka",
+                    "kafka:9092",
+                    "kafka.default.svc.cluster",
+                    "kafka.default.svc.cluster:9092",
+                    "kafka.default.svc",
+                    "kafka.default.svc:9092",
+                    "kafka.default",
+                    "kafka.default:9092",
+                    "10.105.148.197",
+                    "10.105.148.197:9092"
+                ],
+                "routes": [
+                    {
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|9092||kafka.default.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "metadata": {
+                            "filterMetadata": {
+                                "istio": {
+                                    "config": "/apis/networking.istio.io/v1alpha3/namespaces/default/virtual-service/kafka-vs"
+                                }
+                            }
+                        },
+                        "decorator": {
+                            "operation": "kafka.default.svc.cluster.local:9092/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "ms-update.default.svc.cluster.local:8089",
+        "virtualHosts": [
+            {
+                "name": "ms-update.default.svc.cluster.local:8089",
+                "domains": [
+                    "ms-update.default.svc.cluster.local",
+                    "ms-update.default.svc.cluster.local:8089",
+                    "ms-update",
+                    "ms-update:8089",
+                    "ms-update.default.svc.cluster",
+                    "ms-update.default.svc.cluster:8089",
+                    "ms-update.default.svc",
+                    "ms-update.default.svc:8089",
+                    "ms-update.default",
+                    "ms-update.default:8089",
+                    "10.110.213.52",
+                    "10.110.213.52:8089"
+                ],
+                "routes": [
+                    {
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|8089||ms-update.default.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "metadata": {
+                            "filterMetadata": {
+                                "istio": {
+                                    "config": "/apis/networking.istio.io/v1alpha3/namespaces/default/virtual-service/ms-update-vs"
+                                }
+                            }
+                        },
+                        "decorator": {
+                            "operation": "ms-update.default.svc.cluster.local:8089/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "virtualHosts": [
+            {
+                "name": "backend",
+                "domains": [
+                    "*"
+                ],
+                "routes": [
+                    {
+                        "match": {
+                            "prefix": "/stats/prometheus"
+                        },
+                        "route": {
+                            "cluster": "prometheus_stats"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "ms-delete.default.svc.cluster.local:8087",
+        "virtualHosts": [
+            {
+                "name": "ms-delete.default.svc.cluster.local:8087",
+                "domains": [
+                    "ms-delete.default.svc.cluster.local",
+                    "ms-delete.default.svc.cluster.local:8087",
+                    "ms-delete",
+                    "ms-delete:8087",
+                    "ms-delete.default.svc.cluster",
+                    "ms-delete.default.svc.cluster:8087",
+                    "ms-delete.default.svc",
+                    "ms-delete.default.svc:8087",
+                    "ms-delete.default",
+                    "ms-delete.default:8087",
+                    "10.104.229.137",
+                    "10.104.229.137:8087"
+                ],
+                "routes": [
+                    {
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|8087||ms-delete.default.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "metadata": {
+                            "filterMetadata": {
+                                "istio": {
+                                    "config": "/apis/networking.istio.io/v1alpha3/namespaces/default/virtual-service/ms-delete-vs"
+                                }
+                            }
+                        },
+                        "decorator": {
+                            "operation": "ms-delete.default.svc.cluster.local:8087/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "postgres.default.svc.cluster.local:5432",
+        "virtualHosts": [
+            {
+                "name": "postgres.default.svc.cluster.local:5432",
+                "domains": [
+                    "postgres.default.svc.cluster.local",
+                    "postgres.default.svc.cluster.local:5432",
+                    "postgres",
+                    "postgres:5432",
+                    "postgres.default.svc.cluster",
+                    "postgres.default.svc.cluster:5432",
+                    "postgres.default.svc",
+                    "postgres.default.svc:5432",
+                    "postgres.default",
+                    "postgres.default:5432",
+                    "10.100.92.107",
+                    "10.100.92.107:5432"
+                ],
+                "routes": [
+                    {
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|5432||postgres.default.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "metadata": {
+                            "filterMetadata": {
+                                "istio": {
+                                    "config": "/apis/networking.istio.io/v1alpha3/namespaces/default/virtual-service/postgres-vs"
+                                }
+                            }
+                        },
+                        "decorator": {
+                            "operation": "postgres.default.svc.cluster.local:5432/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "kube-dns.kube-system.svc.cluster.local:9153",
+        "virtualHosts": [
+            {
+                "name": "kube-dns.kube-system.svc.cluster.local:9153",
+                "domains": [
+                    "kube-dns.kube-system.svc.cluster.local",
+                    "kube-dns.kube-system.svc.cluster.local:9153",
+                    "kube-dns.kube-system",
+                    "kube-dns.kube-system:9153",
+                    "kube-dns.kube-system.svc.cluster",
+                    "kube-dns.kube-system.svc.cluster:9153",
+                    "kube-dns.kube-system.svc",
+                    "kube-dns.kube-system.svc:9153",
+                    "10.96.0.10",
+                    "10.96.0.10:9153"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|9153||kube-dns.kube-system.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "kube-dns.kube-system.svc.cluster.local:9153/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "virtualHosts": [
+            {
+                "name": "backend",
+                "domains": [
+                    "*"
+                ],
+                "routes": [
+                    {
+                        "match": {
+                            "prefix": "/healthz/ready"
+                        },
+                        "route": {
+                            "cluster": "agent"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "InboundPassthroughClusterIpv4",
+        "virtualHosts": [
+            {
+                "name": "inbound|http|0",
+                "domains": [
+                    "*"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "InboundPassthroughClusterIpv4",
+                            "timeout": "0s",
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": ":0/*"
+                        }
+                    }
+                ]
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "inbound|8084||",
+        "virtualHosts": [
+            {
+                "name": "inbound|http|8081",
+                "domains": [
+                    "*"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "inbound|8084||",
+                            "timeout": "0s",
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "mg-v1.default.svc.cluster.local:8081/*"
+                        }
+                    }
+                ]
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "InboundPassthroughClusterIpv4",
+        "virtualHosts": [
+            {
+                "name": "inbound|http|0",
+                "domains": [
+                    "*"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "InboundPassthroughClusterIpv4",
+                            "timeout": "0s",
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": ":0/*"
+                        }
+                    }
+                ]
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "20001",
+        "virtualHosts": [
+            {
+                "name": "allow_any",
+                "domains": [
+                    "*"
+                ],
+                "routes": [
+                    {
+                        "name": "allow_any",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "PassthroughCluster",
+                            "timeout": "0s",
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            },
+            {
+                "name": "kiali.istio-system.svc.cluster.local:20001",
+                "domains": [
+                    "kiali.istio-system.svc.cluster.local",
+                    "kiali.istio-system.svc.cluster.local:20001",
+                    "kiali.istio-system",
+                    "kiali.istio-system:20001",
+                    "kiali.istio-system.svc.cluster",
+                    "kiali.istio-system.svc.cluster:20001",
+                    "kiali.istio-system.svc",
+                    "kiali.istio-system.svc:20001",
+                    "10.100.47.188",
+                    "10.100.47.188:20001"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "outbound|20001||kiali.istio-system.svc.cluster.local",
+                            "timeout": "0s",
+                            "retryPolicy": {
+                                "retryOn": "connect-failure,refused-stream,unavailable,cancelled,retriable-status-codes",
+                                "numRetries": 2,
+                                "retryHostPredicate": [
+                                    {
+                                        "name": "envoy.retry_host_predicates.previous_hosts"
+                                    }
+                                ],
+                                "hostSelectionRetryMaxAttempts": "5",
+                                "retriableStatusCodes": [
+                                    503
+                                ]
+                            },
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "kiali.istio-system.svc.cluster.local:20001/*"
+                        }
+                    }
+                ],
+                "includeRequestAttemptCount": true
+            }
+        ],
+        "validateClusters": false
+    },
+    {
+        "name": "inbound|8084||",
+        "virtualHosts": [
+            {
+                "name": "inbound|http|8081",
+                "domains": [
+                    "*"
+                ],
+                "routes": [
+                    {
+                        "name": "default",
+                        "match": {
+                            "prefix": "/"
+                        },
+                        "route": {
+                            "cluster": "inbound|8084||",
+                            "timeout": "0s",
+                            "maxStreamDuration": {
+                                "maxStreamDuration": "0s"
+                            }
+                        },
+                        "decorator": {
+                            "operation": "mg-v1.default.svc.cluster.local:8081/*"
+                        }
+                    }
+                ]
+            }
+        ],
+        "validateClusters": false
+    }
+]

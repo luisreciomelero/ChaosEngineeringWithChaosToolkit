@@ -19,7 +19,7 @@ steady-state-hypothesis:
       type: http
       timeout: 5
       verify_tls: false
-      url: http://${ingress_host}/mg/health
+      url: http://${ingress_host}/read/q/health
   - type: probe
     tolerance: 200
     ref: app-responds-to-requests
@@ -40,14 +40,28 @@ method:
     module: chaosistio.fault.actions
     func: add_abort_fault
     arguments:
-      virtual_service_name: mg-vs
-      http_status: 500
+      virtual_service_name: http-mg-mread-vs
+      http_status: 503
       routes:
         - destination:
-            host: mg-v1
+            host: ms-read.default.svc.cluster.local
             subset: primary
       percentage: 50
       version: networking.istio.io/v1alpha3
       ns: default
   pauses: 
     after: 1
+rollbacks:
+- type: action
+  name: remove-abort-failure
+  provider:
+    type: python
+    func: remove_abort_fault
+    module: chaosistio.fault.actions
+    arguments:
+      virtual_service_name: http-mg-mread-vs
+      routes:
+        - destination:
+            host: ms-read.default.svc.cluster.local
+            subset: primary
+      version: networking.istio.io/v1alpha3

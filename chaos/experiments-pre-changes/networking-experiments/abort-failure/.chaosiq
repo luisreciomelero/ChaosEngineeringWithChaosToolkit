@@ -5,3 +5,5 @@ experiments:
         experiment_id: 5d271440-bde4-4a3e-96fd-c780781a553f
       abort-failure-rollback-mg.yaml:
         experiment_id: c3f6b1ac-3a1d-4e09-b289-14c2fae1ecc5
+      abort-failure-rollback-read.yaml:
+        experiment_id: aed96dc0-cc2c-4416-bbb6-de87b13833c3

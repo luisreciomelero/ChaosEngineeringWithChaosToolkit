@@ -1,6 +1,6 @@
 {
   "chaoslib-version": "1.19.0",
-  "platform": "Linux-5.8.0-48-generic-x86_64-with-glibc2.29",
+  "platform": "Linux-5.8.0-50-generic-x86_64-with-glibc2.29",
   "node": "luisreciomelero-HP-Pavilion-Laptop-15-ck0xx",
   "experiment": {
     "version": "1.0.0",
@@ -26,7 +26,7 @@
           "tolerance": 200,
           "provider": {
             "type": "http",
-            "timeout": 5,
+            "timeout": 20,
             "verify_tls": false,
             "url": "http://${ingress_host}/mg/health"
           }
@@ -62,23 +62,22 @@
           "module": "chaosistio.fault.actions",
           "func": "add_abort_fault",
           "arguments": {
-            "virtual_service_name": "mg-vs",
-            "http_status": 500,
+            "virtual_service_name": "mg-v1-delegate",
+            "http_status": 503,
             "routes": [
               {
                 "destination": {
-                  "host": "mg-v1",
+                  "host": "mg-v1.default.svc.cluster.local",
                   "subset": "primary"
                 }
               }
             ],
             "percentage": 50,
-            "version": "networking.istio.io/v1alpha3",
-            "ns": "default"
+            "version": "networking.istio.io/v1alpha3"
           }
         },
         "pauses": {
-          "after": 1
+          "after": 5
         }
       }
     ],
@@ -91,17 +90,16 @@
           "func": "remove_abort_fault",
           "module": "chaosistio.fault.actions",
           "arguments": {
-            "virtual_service_name": "mg-vs",
+            "virtual_service_name": "mg-v1-delegate",
             "routes": [
               {
                 "destination": {
-                  "host": "mg-v1",
+                  "host": "mg-v1.default.svc.cluster.local",
                   "subset": "primary"
                 }
               }
             ],
-            "version": "networking.istio.io/v1alpha3",
-            "ns": "default"
+            "version": "networking.istio.io/v1alpha3"
           }
         }
       }
@@ -110,167 +108,17 @@
       {
         "name": "chaosiq",
         "experiment_id": "c3f6b1ac-3a1d-4e09-b289-14c2fae1ecc5",
-        "execution_id": "2c2648ed-232d-4165-8326-bd2cd45f627e",
+        "execution_id": "064adaf6-96b2-4619-a692-c09f8c407e2f",
         "experiment_path": "None"
       }
     ],
     "dry": false
   },
-  "start": "2021-04-13T22:53:20.966404",
+  "start": "2021-04-22T22:10:36.325956",
   "status": "failed",
-  "deviated": true,
+  "deviated": false,
   "steady_states": {
     "before": {
-      "steady_state_met": true,
-      "probes": [
-        {
-          "activity": {
-            "name": "app-responds-to-requests",
-            "type": "probe",
-            "tolerance": 200,
-            "provider": {
-              "type": "http",
-              "timeout": 5,
-              "verify_tls": false,
-              "url": "http://${ingress_host}/mg/health"
-            }
-          },
-          "output": {
-            "status": 200,
-            "headers": {
-              "content-type": "application/json; charset=UTF-8",
-              "content-length": "1284",
-              "x-envoy-upstream-service-time": "23",
-              "date": "Tue, 13 Apr 2021 22:53:38 GMT",
-              "server": "istio-envoy"
-            },
-            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - liveness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - readiness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        }\n    ]\n}"
-          },
-          "status": "succeeded",
-          "start": "2021-04-13T22:53:38.769099",
-          "end": "2021-04-13T22:53:38.802197",
-          "duration": 0.033098,
-          "tolerance_met": true
-        },
-        {
-          "activity": {
-            "name": "app-responds-to-requests",
-            "type": "probe",
-            "tolerance": 200,
-            "provider": {
-              "type": "http",
-              "timeout": 5,
-              "verify_tls": false,
-              "url": "http://${ingress_host}/mg/health"
-            }
-          },
-          "output": {
-            "status": 200,
-            "headers": {
-              "content-type": "application/json; charset=UTF-8",
-              "content-length": "1284",
-              "x-envoy-upstream-service-time": "23",
-              "date": "Tue, 13 Apr 2021 22:53:46 GMT",
-              "server": "istio-envoy"
-            },
-            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - liveness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - readiness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        }\n    ]\n}"
-          },
-          "status": "succeeded",
-          "start": "2021-04-13T22:53:46.679776",
-          "end": "2021-04-13T22:53:46.712411",
-          "duration": 0.032635,
-          "tolerance_met": true
-        },
-        {
-          "activity": {
-            "name": "app-responds-to-requests",
-            "type": "probe",
-            "tolerance": 200,
-            "provider": {
-              "type": "http",
-              "timeout": 5,
-              "verify_tls": false,
-              "url": "http://${ingress_host}/mg/health"
-            }
-          },
-          "output": {
-            "status": 200,
-            "headers": {
-              "content-type": "application/json; charset=UTF-8",
-              "content-length": "1284",
-              "x-envoy-upstream-service-time": "18",
-              "date": "Tue, 13 Apr 2021 22:53:54 GMT",
-              "server": "istio-envoy"
-            },
-            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - liveness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - readiness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        }\n    ]\n}"
-          },
-          "status": "succeeded",
-          "start": "2021-04-13T22:53:54.631907",
-          "end": "2021-04-13T22:53:54.656866",
-          "duration": 0.024959,
-          "tolerance_met": true
-        },
-        {
-          "activity": {
-            "name": "app-responds-to-requests",
-            "type": "probe",
-            "tolerance": 200,
-            "provider": {
-              "type": "http",
-              "timeout": 5,
-              "verify_tls": false,
-              "url": "http://${ingress_host}/mg/health"
-            }
-          },
-          "output": {
-            "status": 200,
-            "headers": {
-              "content-type": "application/json; charset=UTF-8",
-              "content-length": "1284",
-              "x-envoy-upstream-service-time": "24",
-              "date": "Tue, 13 Apr 2021 22:54:02 GMT",
-              "server": "istio-envoy"
-            },
-            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - liveness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - readiness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        }\n    ]\n}"
-          },
-          "status": "succeeded",
-          "start": "2021-04-13T22:54:02.610099",
-          "end": "2021-04-13T22:54:02.645441",
-          "duration": 0.035342,
-          "tolerance_met": true
-        },
-        {
-          "activity": {
-            "name": "app-responds-to-requests",
-            "type": "probe",
-            "tolerance": 200,
-            "provider": {
-              "type": "http",
-              "timeout": 5,
-              "verify_tls": false,
-              "url": "http://${ingress_host}/mg/health"
-            }
-          },
-          "output": {
-            "status": 200,
-            "headers": {
-              "content-type": "application/json; charset=UTF-8",
-              "content-length": "1284",
-              "x-envoy-upstream-service-time": "20",
-              "date": "Tue, 13 Apr 2021 22:54:10 GMT",
-              "server": "istio-envoy"
-            },
-            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - liveness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - readiness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        }\n    ]\n}"
-          },
-          "status": "succeeded",
-          "start": "2021-04-13T22:54:10.601041",
-          "end": "2021-04-13T22:54:10.629806",
-          "duration": 0.028765,
-          "tolerance_met": true
-        }
-      ]
-    },
-    "after": {
       "steady_state_met": false,
       "probes": [
         {
@@ -280,153 +128,32 @@
             "tolerance": 200,
             "provider": {
               "type": "http",
-              "timeout": 5,
+              "timeout": 20,
               "verify_tls": false,
               "url": "http://${ingress_host}/mg/health"
             }
           },
           "output": {
-            "status": 500,
+            "status": 404,
             "headers": {
-              "content-length": "18",
-              "content-type": "text/plain",
-              "date": "Tue, 13 Apr 2021 22:54:44 GMT",
-              "server": "istio-envoy"
+              "date": "Thu, 22 Apr 2021 22:10:43 GMT",
+              "server": "istio-envoy",
+              "content-length": "0"
             },
-            "body": "fault filter abort"
+            "body": ""
           },
           "status": "succeeded",
-          "start": "2021-04-13T22:54:44.716336",
-          "end": "2021-04-13T22:54:44.725637",
-          "duration": 0.009301,
+          "start": "2021-04-22T22:10:43.667483",
+          "end": "2021-04-22T22:10:43.719283",
+          "duration": 0.0518,
           "tolerance_met": false
         }
       ]
     },
+    "after": null,
     "during": []
   },
-  "run": [
-    {
-      "activity": {
-        "type": "action",
-        "name": "abort-failure",
-        "provider": {
-          "type": "python",
-          "module": "chaosistio.fault.actions",
-          "func": "add_abort_fault",
-          "arguments": {
-            "virtual_service_name": "mg-vs",
-            "http_status": 500,
-            "routes": [
-              {
-                "destination": {
-                  "host": "mg-v1",
-                  "subset": "primary"
-                }
-              }
-            ],
-            "percentage": 50,
-            "version": "networking.istio.io/v1alpha3",
-            "ns": "default"
-          }
-        },
-        "pauses": {
-          "after": 1
-        }
-      },
-      "output": {
-        "status": 200,
-        "body": {
-          "apiVersion": "networking.istio.io/v1alpha3",
-          "kind": "VirtualService",
-          "metadata": {
-            "annotations": {
-              "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"networking.istio.io/v1alpha3\",\"kind\":\"VirtualService\",\"metadata\":{\"annotations\":{},\"name\":\"mg-vs\",\"namespace\":\"default\"},\"spec\":{\"http\":[{\"retries\":{\"attempts\":10,\"perTryTimeout\":\"3s\",\"retryOn\":\"5xx,connect-failure\"},\"route\":[{\"destination\":{\"host\":\"mg-v1\",\"port\":{\"number\":8081},\"subset\":\"primary\"}}],\"timeout\":\"10s\"}]}}\n"
-            },
-            "creationTimestamp": "2021-04-13T21:43:19Z",
-            "generation": 9,
-            "managedFields": [
-              {
-                "apiVersion": "networking.istio.io/v1alpha3",
-                "fieldsType": "FieldsV1",
-                "fieldsV1": {
-                  "f:metadata": {
-                    "f:annotations": {
-                      ".": {},
-                      "f:kubectl.kubernetes.io/last-applied-configuration": {}
-                    }
-                  },
-                  "f:spec": {}
-                },
-                "manager": "kubectl-client-side-apply",
-                "operation": "Update",
-                "time": "2021-04-13T22:48:17Z"
-              },
-              {
-                "apiVersion": "networking.istio.io/v1alpha3",
-                "fieldsType": "FieldsV1",
-                "fieldsV1": {
-                  "f:spec": {
-                    "f:http": {}
-                  }
-                },
-                "manager": "OpenAPI-Generator",
-                "operation": "Update",
-                "time": "2021-04-13T22:51:43Z"
-              }
-            ],
-            "name": "mg-vs",
-            "namespace": "default",
-            "resourceVersion": "8930",
-            "uid": "cb6237c6-6515-484e-b798-6853ff60ef2d"
-          },
-          "spec": {
-            "http": [
-              {
-                "fault": {
-                  "abort": {
-                    "httpStatus": 500,
-                    "percentage": {
-                      "value": 50
-                    }
-                  }
-                },
-                "retries": {
-                  "attempts": 10,
-                  "perTryTimeout": "3s",
-                  "retryOn": "5xx,connect-failure"
-                },
-                "route": [
-                  {
-                    "destination": {
-                      "host": "mg-v1",
-                      "port": {
-                        "number": 8081
-                      },
-                      "subset": "primary"
-                    }
-                  }
-                ],
-                "timeout": "10s"
-              }
-            ]
-          }
-        },
-        "headers": {
-          "Cache-Control": "no-cache, private",
-          "Content-Type": "application/json",
-          "X-Kubernetes-Pf-Flowschema-Uid": "f1ceb1db-0ade-4244-aac9-8b5b4edc061e",
-          "X-Kubernetes-Pf-Prioritylevel-Uid": "c53fb14d-506f-4a79-b4e1-f0cd21da922b",
-          "Date": "Tue, 13 Apr 2021 22:54:27 GMT",
-          "Content-Length": "1460"
-        }
-      },
-      "status": "succeeded",
-      "start": "2021-04-13T22:54:27.598732",
-      "end": "2021-04-13T22:54:27.647022",
-      "duration": 0.04829
-    }
-  ],
+  "run": [],
   "rollbacks": [
     {
       "activity": {
@@ -437,17 +164,16 @@
           "func": "remove_abort_fault",
           "module": "chaosistio.fault.actions",
           "arguments": {
-            "virtual_service_name": "mg-vs",
+            "virtual_service_name": "mg-v1-delegate",
             "routes": [
               {
                 "destination": {
-                  "host": "mg-v1",
+                  "host": "mg-v1.default.svc.cluster.local",
                   "subset": "primary"
                 }
               }
             ],
-            "version": "networking.istio.io/v1alpha3",
-            "ns": "default"
+            "version": "networking.istio.io/v1alpha3"
           }
         }
       },
@@ -458,10 +184,10 @@
           "kind": "VirtualService",
           "metadata": {
             "annotations": {
-              "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"networking.istio.io/v1alpha3\",\"kind\":\"VirtualService\",\"metadata\":{\"annotations\":{},\"name\":\"mg-vs\",\"namespace\":\"default\"},\"spec\":{\"http\":[{\"retries\":{\"attempts\":10,\"perTryTimeout\":\"3s\",\"retryOn\":\"5xx,connect-failure\"},\"route\":[{\"destination\":{\"host\":\"mg-v1\",\"port\":{\"number\":8081},\"subset\":\"primary\"}}],\"timeout\":\"10s\"}]}}\n"
+              "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"networking.istio.io/v1alpha3\",\"kind\":\"VirtualService\",\"metadata\":{\"annotations\":{},\"name\":\"mg-v1-delegate\",\"namespace\":\"default\"},\"spec\":{\"hosts\":[\"http-mg-mread-vs\"],\"http\":[{\"route\":[{\"destination\":{\"host\":\"mg-v1.default.svc.cluster.local\",\"port\":{\"number\":8081},\"subset\":\"primary\"}}],\"timeout\":\"5s\"}]}}\n"
             },
-            "creationTimestamp": "2021-04-13T21:43:19Z",
-            "generation": 10,
+            "creationTimestamp": "2021-04-22T21:09:58Z",
+            "generation": 1,
             "managedFields": [
               {
                 "apiVersion": "networking.istio.io/v1alpha3",
@@ -473,42 +199,32 @@
                       "f:kubectl.kubernetes.io/last-applied-configuration": {}
                     }
                   },
-                  "f:spec": {}
-                },
-                "manager": "kubectl-client-side-apply",
-                "operation": "Update",
-                "time": "2021-04-13T22:48:17Z"
-              },
-              {
-                "apiVersion": "networking.istio.io/v1alpha3",
-                "fieldsType": "FieldsV1",
-                "fieldsV1": {
                   "f:spec": {
+                    ".": {},
+                    "f:hosts": {},
                     "f:http": {}
                   }
                 },
-                "manager": "OpenAPI-Generator",
+                "manager": "kubectl-client-side-apply",
                 "operation": "Update",
-                "time": "2021-04-13T22:51:43Z"
+                "time": "2021-04-22T21:09:58Z"
               }
             ],
-            "name": "mg-vs",
+            "name": "mg-v1-delegate",
             "namespace": "default",
-            "resourceVersion": "8978",
-            "uid": "cb6237c6-6515-484e-b798-6853ff60ef2d"
+            "resourceVersion": "5050",
+            "uid": "57f532f1-b21d-4a67-9d3b-d8e928ef85a4"
           },
           "spec": {
+            "hosts": [
+              "http-mg-mread-vs"
+            ],
             "http": [
               {
-                "retries": {
-                  "attempts": 10,
-                  "perTryTimeout": "3s",
-                  "retryOn": "5xx,connect-failure"
-                },
                 "route": [
                   {
                     "destination": {
-                      "host": "mg-v1",
+                      "host": "mg-v1.default.svc.cluster.local",
                       "port": {
                         "number": 8081
                       },
@@ -516,7 +232,7 @@
                     }
                   }
                 ],
-                "timeout": "10s"
+                "timeout": "5s"
               }
             ]
           }
@@ -524,24 +240,24 @@
         "headers": {
           "Cache-Control": "no-cache, private",
           "Content-Type": "application/json",
-          "X-Kubernetes-Pf-Flowschema-Uid": "f1ceb1db-0ade-4244-aac9-8b5b4edc061e",
-          "X-Kubernetes-Pf-Prioritylevel-Uid": "c53fb14d-506f-4a79-b4e1-f0cd21da922b",
-          "Date": "Tue, 13 Apr 2021 22:55:02 GMT",
-          "Content-Length": "1398"
+          "X-Kubernetes-Pf-Flowschema-Uid": "3834efba-5ed2-43ba-b824-fe014f259c2d",
+          "X-Kubernetes-Pf-Prioritylevel-Uid": "3a0df545-c8bc-4fb2-98c4-bc127522cf5a",
+          "Date": "Thu, 22 Apr 2021 22:10:50 GMT",
+          "Content-Length": "1201"
         }
       },
       "status": "succeeded",
-      "start": "2021-04-13T22:55:02.345903",
-      "end": "2021-04-13T22:55:02.377199",
-      "duration": 0.031296
+      "start": "2021-04-22T22:10:50.220507",
+      "end": "2021-04-22T22:10:50.297113",
+      "duration": 0.076606
     }
   ],
-  "end": "2021-04-13T22:55:10.715426",
-  "duration": 109.75769019126892,
+  "end": "2021-04-22T22:10:53.291159",
+  "duration": 17.03466248512268,
   "extensions": [
     {
       "name": "chaosiq",
-      "execution_id": "2c2648ed-232d-4165-8326-bd2cd45f627e",
+      "execution_id": "064adaf6-96b2-4619-a692-c09f8c407e2f",
       "experiment_id": "c3f6b1ac-3a1d-4e09-b289-14c2fae1ecc5",
       "safeguards": null
     }
