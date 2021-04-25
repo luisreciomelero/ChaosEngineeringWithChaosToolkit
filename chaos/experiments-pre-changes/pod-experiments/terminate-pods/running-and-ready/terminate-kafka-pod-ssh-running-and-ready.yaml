@@ -9,7 +9,7 @@ steady-state-hypothesis:
   probes:
   - name: pod-exists
     type: probe
-    tolerance: 1
+    tolerance: 3
     provider:
       type: python
       func: count_pods
@@ -60,4 +60,4 @@ method:
           component=kafka-broker
         ns: default
   pauses: 
-    after: 200
+    after: 300

@@ -9,9 +9,15 @@ metadata:
 spec:
   ports:
   - port: 2181
-    name: zookeeper-port
+    name: zookeeper-client
     #name: tcp-zookeeper
     targetPort: 2181
+    protocol: TCP
+  - port: 2888
+    name: zookeeper-follower
+    protocol: TCP
+  - port: 3888
+    name: zookeeper-leader
     protocol: TCP
   selector:
     app: kafka

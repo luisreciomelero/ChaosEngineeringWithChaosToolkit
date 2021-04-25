@@ -1,12 +1,13 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   labels:
     app: kafka
     component: kafka-broker
   name: kafka-broker
 spec:
-  replicas: 1
+  replicas: 3
+  serviceName: kafka
   selector:
     matchLabels:
       app: kafka
@@ -35,3 +36,12 @@ spec:
             value: zookeeper:2181
           - name: KAFKA_RESERVED_BROKER_MAX_ID
             value: "1001"
+        volumeMounts:
+            - name: logs
+              mountPath: /kafka-logs
+              subPath: logs
+      volumes:
+        - name: logs
+          hostPath:
+            path: /logs/data
+            type: DirectoryOrCreate

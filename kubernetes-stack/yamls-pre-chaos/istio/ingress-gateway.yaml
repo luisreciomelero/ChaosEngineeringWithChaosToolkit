@@ -89,10 +89,10 @@ spec:
       loadBalancer:
         simple: RANDOM
       outlierDetection:
-        baseEjectionTime: 5m
+        baseEjectionTime: 1m
         consecutive5xxErrors: 1
         consecutiveGatewayErrors: 5
-        interval: 5m
+        interval: 1m
         maxEjectionPercent: 100
   subsets:
   - name: primary

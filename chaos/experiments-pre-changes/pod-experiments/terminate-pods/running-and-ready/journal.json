@@ -1,34 +1,28 @@
 {
   "chaoslib-version": "1.19.0",
-  "platform": "Linux-5.8.0-48-generic-x86_64-with-glibc2.29",
+  "platform": "Linux-5.8.0-50-generic-x86_64-with-glibc2.29",
   "node": "luisreciomelero-HP-Pavilion-Laptop-15-ck0xx",
   "experiment": {
     "version": "1.0.0",
-    "title": "¿Qué ocurre cuando eliminamos el pod donde se ejecuta el microgateway?",
+    "title": "¿Qué ocurre cuando eliminamos el pod en el que se ejecuta el contenedor de Kafka?",
     "description": "Al estar manejado por un deployment debería levantarse otro de forma inmediata.",
     "tags": [
       "k8s",
       "pod"
     ],
-    "configuration": {
-      "ingress_host": {
-        "type": "env",
-        "key": "INGRESS_HOST"
-      }
-    },
     "steady-state-hypothesis": {
       "title": "Pod exists",
       "probes": [
         {
           "name": "pod-exists",
           "type": "probe",
-          "tolerance": 1,
+          "tolerance": 2,
           "provider": {
             "type": "python",
             "func": "count_pods",
             "module": "chaosk8s.pod.probes",
             "arguments": {
-              "label_selector": "app=mg-backend",
+              "label_selector": "app=kafka, component=kafka-broker",
               "ns": "default"
             }
           }
@@ -42,7 +36,7 @@
             "func": "pods_in_phase",
             "module": "chaosk8s.pod.probes",
             "arguments": {
-              "label_selector": "app=mg-backend",
+              "label_selector": "app=kafka, component=kafka-broker",
               "ns": "default",
               "phase": "Running"
             }
@@ -57,7 +51,7 @@
             "func": "pods_in_conditions",
             "module": "chaosk8s.pod.probes",
             "arguments": {
-              "label_selector": "app=mg-backend",
+              "label_selector": "app=kafka, component=kafka-broker",
               "ns": "default",
               "conditions": [
                 {
@@ -66,17 +60,6 @@
                 }
               ]
             }
-          }
-        },
-        {
-          "name": "app-responds-to-requests",
-          "type": "probe",
-          "tolerance": 200,
-          "provider": {
-            "type": "http",
-            "timeout": 3,
-            "verify_tls": false,
-            "url": "http://${ingress_host}/mg/health"
           }
         }
       ]
@@ -90,25 +73,25 @@
           "module": "chaosk8s.pod.actions",
           "func": "terminate_pods",
           "arguments": {
-            "label_selector": "app=mg-backend",
+            "label_selector": "app=kafka, component=kafka-broker",
             "ns": "default"
           }
         },
         "pauses": {
-          "after": 200
+          "after": 300
         }
       }
     ],
     "extensions": [
       {
         "name": "chaosiq",
-        "experiment_id": "b421c2e8-6bc4-4a69-b2a1-7e0f4673f763",
-        "experiment_path": "terminate-mg-pod-ssh-running-and-ready.yaml"
+        "experiment_id": "ac909764-e844-468e-b429-c6dd688194d3",
+        "experiment_path": "terminate-kafka-pod-ssh-running-and-ready.yaml"
       }
     ],
     "dry": false
   },
-  "start": "2021-04-12T17:01:22.430269",
+  "start": "2021-04-25T18:40:42.740699",
   "status": "completed",
   "deviated": false,
   "steady_states": {
@@ -119,22 +102,22 @@
           "activity": {
             "name": "pod-exists",
             "type": "probe",
-            "tolerance": 1,
+            "tolerance": 2,
             "provider": {
               "type": "python",
               "func": "count_pods",
               "module": "chaosk8s.pod.probes",
               "arguments": {
-                "label_selector": "app=mg-backend",
+                "label_selector": "app=kafka, component=kafka-broker",
                 "ns": "default"
               }
             }
           },
-          "output": 1,
+          "output": 2,
           "status": "succeeded",
-          "start": "2021-04-12T17:01:24.973136",
-          "end": "2021-04-12T17:01:25.034392",
-          "duration": 0.061256,
+          "start": "2021-04-25T18:40:45.384569",
+          "end": "2021-04-25T18:40:46.138743",
+          "duration": 0.754174,
           "tolerance_met": true
         },
         {
@@ -147,7 +130,7 @@
               "func": "pods_in_phase",
               "module": "chaosk8s.pod.probes",
               "arguments": {
-                "label_selector": "app=mg-backend",
+                "label_selector": "app=kafka, component=kafka-broker",
                 "ns": "default",
                 "phase": "Running"
               }
@@ -155,9 +138,9 @@
           },
           "output": true,
           "status": "succeeded",
-          "start": "2021-04-12T17:01:25.035781",
-          "end": "2021-04-12T17:01:25.056476",
-          "duration": 0.020695,
+          "start": "2021-04-25T18:40:46.139774",
+          "end": "2021-04-25T18:40:46.178330",
+          "duration": 0.038556,
           "tolerance_met": true
         },
         {
@@ -170,7 +153,7 @@
               "func": "pods_in_conditions",
               "module": "chaosk8s.pod.probes",
               "arguments": {
-                "label_selector": "app=mg-backend",
+                "label_selector": "app=kafka, component=kafka-broker",
                 "ns": "default",
                 "conditions": [
                   {
@@ -183,38 +166,9 @@
           },
           "output": true,
           "status": "succeeded",
-          "start": "2021-04-12T17:01:25.057394",
-          "end": "2021-04-12T17:01:25.075571",
-          "duration": 0.018177,
-          "tolerance_met": true
-        },
-        {
-          "activity": {
-            "name": "app-responds-to-requests",
-            "type": "probe",
-            "tolerance": 200,
-            "provider": {
-              "type": "http",
-              "timeout": 3,
-              "verify_tls": false,
-              "url": "http://${ingress_host}/mg/health"
-            }
-          },
-          "output": {
-            "status": 200,
-            "headers": {
-              "content-type": "application/json; charset=UTF-8",
-              "content-length": "1284",
-              "x-envoy-upstream-service-time": "7",
-              "date": "Mon, 12 Apr 2021 17:01:25 GMT",
-              "server": "istio-envoy"
-            },
-            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - liveness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - readiness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        }\n    ]\n}"
-          },
-          "status": "succeeded",
-          "start": "2021-04-12T17:01:25.076468",
-          "end": "2021-04-12T17:01:25.085858",
-          "duration": 0.00939,
+          "start": "2021-04-25T18:40:46.179438",
+          "end": "2021-04-25T18:40:46.204965",
+          "duration": 0.025527,
           "tolerance_met": true
         }
       ]
@@ -226,22 +180,22 @@
           "activity": {
             "name": "pod-exists",
             "type": "probe",
-            "tolerance": 1,
+            "tolerance": 2,
             "provider": {
               "type": "python",
               "func": "count_pods",
               "module": "chaosk8s.pod.probes",
               "arguments": {
-                "label_selector": "app=mg-backend",
+                "label_selector": "app=kafka, component=kafka-broker",
                 "ns": "default"
               }
             }
           },
-          "output": 1,
+          "output": 2,
           "status": "succeeded",
-          "start": "2021-04-12T17:04:45.216398",
-          "end": "2021-04-12T17:04:45.246853",
-          "duration": 0.030455,
+          "start": "2021-04-25T18:45:46.760369",
+          "end": "2021-04-25T18:45:46.785915",
+          "duration": 0.025546,
           "tolerance_met": true
         },
         {
@@ -254,7 +208,7 @@
               "func": "pods_in_phase",
               "module": "chaosk8s.pod.probes",
               "arguments": {
-                "label_selector": "app=mg-backend",
+                "label_selector": "app=kafka, component=kafka-broker",
                 "ns": "default",
                 "phase": "Running"
               }
@@ -262,9 +216,9 @@
           },
           "output": true,
           "status": "succeeded",
-          "start": "2021-04-12T17:04:45.247800",
-          "end": "2021-04-12T17:04:45.278211",
-          "duration": 0.030411,
+          "start": "2021-04-25T18:45:46.787002",
+          "end": "2021-04-25T18:45:46.814459",
+          "duration": 0.027457,
           "tolerance_met": true
         },
         {
@@ -277,7 +231,7 @@
               "func": "pods_in_conditions",
               "module": "chaosk8s.pod.probes",
               "arguments": {
-                "label_selector": "app=mg-backend",
+                "label_selector": "app=kafka, component=kafka-broker",
                 "ns": "default",
                 "conditions": [
                   {
@@ -290,38 +244,9 @@
           },
           "output": true,
           "status": "succeeded",
-          "start": "2021-04-12T17:04:45.279124",
-          "end": "2021-04-12T17:04:45.295669",
-          "duration": 0.016545,
-          "tolerance_met": true
-        },
-        {
-          "activity": {
-            "name": "app-responds-to-requests",
-            "type": "probe",
-            "tolerance": 200,
-            "provider": {
-              "type": "http",
-              "timeout": 3,
-              "verify_tls": false,
-              "url": "http://${ingress_host}/mg/health"
-            }
-          },
-          "output": {
-            "status": 200,
-            "headers": {
-              "content-type": "application/json; charset=UTF-8",
-              "content-length": "1284",
-              "x-envoy-upstream-service-time": "17",
-              "date": "Mon, 12 Apr 2021 17:04:45 GMT",
-              "server": "istio-envoy"
-            },
-            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - liveness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - readiness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        }\n    ]\n}"
-          },
-          "status": "succeeded",
-          "start": "2021-04-12T17:04:45.296635",
-          "end": "2021-04-12T17:04:45.324228",
-          "duration": 0.027593,
+          "start": "2021-04-25T18:45:46.815379",
+          "end": "2021-04-25T18:45:46.842745",
+          "duration": 0.027366,
           "tolerance_met": true
         }
       ]
@@ -338,29 +263,29 @@
           "module": "chaosk8s.pod.actions",
           "func": "terminate_pods",
           "arguments": {
-            "label_selector": "app=mg-backend",
+            "label_selector": "app=kafka, component=kafka-broker",
             "ns": "default"
           }
         },
         "pauses": {
-          "after": 200
+          "after": 300
         }
       },
       "output": null,
       "status": "succeeded",
-      "start": "2021-04-12T17:01:25.087535",
-      "end": "2021-04-12T17:01:25.110296",
-      "duration": 0.022761
+      "start": "2021-04-25T18:40:46.206670",
+      "end": "2021-04-25T18:40:46.660300",
+      "duration": 0.45363
     }
   ],
   "rollbacks": [],
-  "end": "2021-04-12T17:04:45.325915",
-  "duration": 202.97159123420715,
+  "end": "2021-04-25T18:45:46.844852",
+  "duration": 304.23646092414856,
   "extensions": [
     {
       "name": "chaosiq",
       "execution_id": null,
-      "experiment_id": "b421c2e8-6bc4-4a69-b2a1-7e0f4673f763",
+      "experiment_id": "ac909764-e844-468e-b429-c6dd688194d3",
       "safeguards": null
     }
   ]

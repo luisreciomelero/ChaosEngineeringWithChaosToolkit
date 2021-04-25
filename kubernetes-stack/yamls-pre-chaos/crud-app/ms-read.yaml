@@ -7,7 +7,7 @@ metadata:
     app: read-app
     component: ms-read
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: read-app
@@ -21,8 +21,8 @@ spec:
     spec:
       containers:
       - name: ms-read
-        image: luisreciomelero/ms-quarkus-read:v1.1.2
-        #image: luisreciomelero/ms-quarkus-read-native:v1.0.2
+        #image: luisreciomelero/ms-quarkus-read:v1.1.2
+        image: luisreciomelero/ms-quarkus-read-native:v1.0.3
 
         env:
           - name: POSTGRES_URL
