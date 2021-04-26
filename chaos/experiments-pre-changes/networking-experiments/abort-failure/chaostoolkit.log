@@ -5866,3 +5866,451 @@
 [36m[2021-04-23 00:10:55 DEBUG] [__init__:188][39m Cleaning up global control 'chaosiq-cloud'
 [36m[2021-04-23 00:10:55 DEBUG] [python:159][39m Control module '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py' does not declare 'cleanup_control'
 [36m[2021-04-23 00:10:55 DEBUG] [caching:42][39m Clearing activities cache
+[36m[2021-04-26 21:26:57 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-04-26 21:26:57 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-04-26 21:26:57 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-04-26 21:26:58 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-04-26 21:26:58 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-04-26 21:26:58 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:26:58 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-04-26 21:26:58 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:26:58 DEBUG] [controls:109][39m Using experiment ID c3f6b1ac-3a1d-4e09-b289-14c2fae1ecc5 from workspace for experiment at location abort-failure-rollback-mg.yaml
+[36m[2021-04-26 21:26:58 DEBUG] [caching:25][39m Building activity cache...
+[36m[2021-04-26 21:26:58 DEBUG] [caching:35][39m Cached 2 activities
+[32m[2021-04-26 21:26:58 INFO] [experiment:47][39m Validating the experiment's syntax
+[36m[2021-04-26 21:26:58 DEBUG] [configuration:54][39m Loading configuration...
+[36m[2021-04-26 21:26:58 DEBUG] [secret:75][39m Loading secrets...
+[36m[2021-04-26 21:26:58 DEBUG] [secret:92][39m Secrets loaded
+[32m[2021-04-26 21:27:03 INFO] [experiment:96][39m Experiment looks valid
+[36m[2021-04-26 21:27:03 DEBUG] [caching:42][39m Clearing activities cache
+[36m[2021-04-26 21:27:03 DEBUG] [caching:25][39m Building activity cache...
+[36m[2021-04-26 21:27:03 DEBUG] [caching:35][39m Cached 2 activities
+[36m[2021-04-26 21:27:03 DEBUG] [configuration:54][39m Loading configuration...
+[36m[2021-04-26 21:27:03 DEBUG] [secret:75][39m Loading secrets...
+[36m[2021-04-26 21:27:03 DEBUG] [secret:92][39m Secrets loaded
+[32m[2021-04-26 21:27:03 INFO] [run:323][39m Running experiment: What happens if we abort responses
+[36m[2021-04-26 21:27:04 DEBUG] [__init__:136][39m Initializing global control 'chaosiq-cloud'
+[36m[2021-04-26 21:27:04 DEBUG] [python:166][39m Control 'configure_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:27:06 INFO] [execution:64][39m Execution available at http://console.chaosiq.io/tfm/luisreciomelero/executions/bc214f88-1f0a-426b-bd17-4fad5140b3ac
+[36m[2021-04-26 21:27:06 DEBUG] [workspace:108][39m Saving workspace at .chaosiq
+[36m[2021-04-26 21:27:07 DEBUG] [__init__:39][39m Initializing controls
+[32m[2021-04-26 21:27:07 INFO] [run:342][39m Steady-state strategy: default
+[32m[2021-04-26 21:27:07 INFO] [run:345][39m Rollbacks strategy: default
+[36m[2021-04-26 21:27:07 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'experiment'
+[36m[2021-04-26 21:27:07 DEBUG] [python:166][39m Control 'before_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:27:08 DEBUG] [run:466][39m Running steady-state hypothesis before the method
+[32m[2021-04-26 21:27:08 INFO] [hypothesis:183][39m Steady state hypothesis: The app is healthy
+[36m[2021-04-26 21:27:08 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'hypothesis'
+[36m[2021-04-26 21:27:08 DEBUG] [python:166][39m Control 'before_hypothesis_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:27:10 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:27:10 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:27:11 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:27:12 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '1284', 'x-envoy-upstream-service-time': '54', 'date': 'Mon, 26 Apr 2021 19:27:11 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - liveness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - readiness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:27:12 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:27:12 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:27:13 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:27:13 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:27:13 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:27:15 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:27:15 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '1284', 'x-envoy-upstream-service-time': '62', 'date': 'Mon, 26 Apr 2021 19:27:14 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - liveness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - readiness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:27:15 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:27:15 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:27:16 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:27:16 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:27:16 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:27:18 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:27:18 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '1284', 'x-envoy-upstream-service-time': '33', 'date': 'Mon, 26 Apr 2021 19:27:18 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - liveness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - readiness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:27:18 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:27:18 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:27:20 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:27:20 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:27:20 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:27:21 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:27:21 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '1284', 'x-envoy-upstream-service-time': '28', 'date': 'Mon, 26 Apr 2021 19:27:21 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - liveness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - readiness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:27:21 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:27:21 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:27:23 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:27:23 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:27:23 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:27:25 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:27:25 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '1284', 'x-envoy-upstream-service-time': '31', 'date': 'Mon, 26 Apr 2021 19:27:24 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - liveness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - readiness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:27:25 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:27:25 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:27:26 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[32m[2021-04-26 21:27:26 INFO] [hypothesis:221][39m Steady state hypothesis is met!
+[36m[2021-04-26 21:27:26 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'hypothesis'
+[36m[2021-04-26 21:27:26 DEBUG] [python:166][39m Control 'after_hypothesis_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:27:28 INFO] [run:553][39m Playing your experiment's method now...
+[36m[2021-04-26 21:27:28 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'method'
+[36m[2021-04-26 21:27:28 DEBUG] [python:166][39m Control 'before_method_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:27:30 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:27:30 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:27:31 INFO] [activity:161][39m Action: abort-failure
+[36m[2021-04-26 21:27:31 DEBUG] [python:34][39m Activity 'abort-failure' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosistio/fault/actions.py'
+[36m[2021-04-26 21:27:31 DEBUG] [__init__:67][39m Using Kubernetes context: default
+[36m[2021-04-26 21:27:31 DEBUG] [activity:235][39m Activity failed
+    Traceback (most recent call last):
+      File "/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoslib/provider/python.py", line 55, in run_python_activity
+        return func(**arguments)
+      File "/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosistio/fault/actions.py", line 228, in add_abort_fault
+        return set_fault(
+      File "/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosistio/fault/actions.py", line 54, in set_fault
+        target = (destination["host"], destination["subset"])
+    KeyError: 'subset'
+    
+    During handling of the above exception, another exception occurred:
+    
+    Traceback (most recent call last):
+      File "/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoslib/activity.py", line 228, in run_activity
+        result = run_python_activity(activity, configuration, secrets)
+      File "/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoslib/provider/python.py", line 57, in run_python_activity
+        raise ActivityFailed(
+      File "/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoslib/provider/python.py", line 55, in run_python_activity
+        return func(**arguments)
+      File "/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosistio/fault/actions.py", line 228, in add_abort_fault
+        return set_fault(
+      File "/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosistio/fault/actions.py", line 54, in set_fault
+        target = (destination["host"], destination["subset"])
+    chaoslib.exceptions.ActivityFailed: KeyError: 'subset'
+[31m[2021-04-26 21:27:31 ERROR] [activity:188][39m   => failed: KeyError: 'subset'
+[32m[2021-04-26 21:27:31 INFO] [activity:198][39m Pausing after activity for 5s...
+[36m[2021-04-26 21:27:36 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:27:36 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:27:38 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'method'
+[36m[2021-04-26 21:27:38 DEBUG] [python:166][39m Control 'after_method_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:27:40 DEBUG] [run:496][39m Running steady-state hypothesis after the method
+[32m[2021-04-26 21:27:40 INFO] [hypothesis:183][39m Steady state hypothesis: The app is healthy
+[36m[2021-04-26 21:27:40 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'hypothesis'
+[36m[2021-04-26 21:27:40 DEBUG] [python:166][39m Control 'before_hypothesis_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:27:41 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:27:41 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:27:43 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:27:43 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '1284', 'x-envoy-upstream-service-time': '19', 'date': 'Mon, 26 Apr 2021 19:27:43 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - liveness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - readiness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:27:43 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:27:43 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:27:44 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:27:44 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:27:44 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:27:45 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:27:45 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:27:46 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'hypothesis'
+[36m[2021-04-26 21:27:46 DEBUG] [python:166][39m Control 'after_hypothesis_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[33m[2021-04-26 21:27:48 WARNING] [run:390][39m Received a termination signal (Ctrl-C)...
+[32m[2021-04-26 21:27:48 INFO] [run:421][39m Experiment ended with status: interrupted
+[36m[2021-04-26 21:27:48 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'experiment'
+[36m[2021-04-26 21:27:48 DEBUG] [python:166][39m Control 'after_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:27:50 DEBUG] [__init__:72][39m Cleaning up controls
+[36m[2021-04-26 21:27:50 DEBUG] [__init__:188][39m Cleaning up global control 'chaosiq-cloud'
+[36m[2021-04-26 21:27:50 DEBUG] [python:159][39m Control module '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py' does not declare 'cleanup_control'
+[36m[2021-04-26 21:27:50 DEBUG] [caching:42][39m Clearing activities cache
+[36m[2021-04-26 21:32:25 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-04-26 21:32:25 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-04-26 21:32:25 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-04-26 21:32:36 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-04-26 21:32:36 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-04-26 21:32:36 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-04-26 21:32:37 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-04-26 21:32:37 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-04-26 21:32:37 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:32:37 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-04-26 21:32:37 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:32:37 DEBUG] [controls:109][39m Using experiment ID c3f6b1ac-3a1d-4e09-b289-14c2fae1ecc5 from workspace for experiment at location abort-failure-rollback-mg.yaml
+[36m[2021-04-26 21:32:37 DEBUG] [caching:25][39m Building activity cache...
+[36m[2021-04-26 21:32:37 DEBUG] [caching:35][39m Cached 2 activities
+[32m[2021-04-26 21:32:37 INFO] [experiment:47][39m Validating the experiment's syntax
+[36m[2021-04-26 21:32:37 DEBUG] [configuration:54][39m Loading configuration...
+[36m[2021-04-26 21:32:37 DEBUG] [secret:75][39m Loading secrets...
+[36m[2021-04-26 21:32:37 DEBUG] [secret:92][39m Secrets loaded
+[32m[2021-04-26 21:32:37 INFO] [experiment:96][39m Experiment looks valid
+[36m[2021-04-26 21:32:37 DEBUG] [caching:42][39m Clearing activities cache
+[36m[2021-04-26 21:32:37 DEBUG] [caching:25][39m Building activity cache...
+[36m[2021-04-26 21:32:37 DEBUG] [caching:35][39m Cached 2 activities
+[36m[2021-04-26 21:32:37 DEBUG] [configuration:54][39m Loading configuration...
+[36m[2021-04-26 21:32:37 DEBUG] [secret:75][39m Loading secrets...
+[36m[2021-04-26 21:32:37 DEBUG] [secret:92][39m Secrets loaded
+[32m[2021-04-26 21:32:37 INFO] [run:323][39m Running experiment: What happens if we abort responses
+[36m[2021-04-26 21:32:37 DEBUG] [__init__:136][39m Initializing global control 'chaosiq-cloud'
+[36m[2021-04-26 21:32:37 DEBUG] [python:166][39m Control 'configure_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:32:39 INFO] [execution:64][39m Execution available at http://console.chaosiq.io/tfm/luisreciomelero/executions/37d209d5-4c52-43a4-b9ea-67146f4332e3
+[36m[2021-04-26 21:32:39 DEBUG] [workspace:108][39m Saving workspace at .chaosiq
+[36m[2021-04-26 21:32:39 DEBUG] [__init__:39][39m Initializing controls
+[32m[2021-04-26 21:32:39 INFO] [run:342][39m Steady-state strategy: default
+[32m[2021-04-26 21:32:39 INFO] [run:345][39m Rollbacks strategy: always
+[36m[2021-04-26 21:32:39 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'experiment'
+[36m[2021-04-26 21:32:39 DEBUG] [python:166][39m Control 'before_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:32:41 DEBUG] [run:466][39m Running steady-state hypothesis before the method
+[32m[2021-04-26 21:32:41 INFO] [hypothesis:183][39m Steady state hypothesis: The app is healthy
+[36m[2021-04-26 21:32:41 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'hypothesis'
+[36m[2021-04-26 21:32:41 DEBUG] [python:166][39m Control 'before_hypothesis_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:32:43 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:32:43 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:32:45 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:32:45 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '1284', 'x-envoy-upstream-service-time': '39', 'date': 'Mon, 26 Apr 2021 19:32:45 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - liveness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - readiness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:32:45 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:32:45 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:32:46 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:32:46 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:32:46 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:32:48 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:32:48 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '1284', 'x-envoy-upstream-service-time': '18', 'date': 'Mon, 26 Apr 2021 19:32:48 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - liveness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - readiness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:32:48 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:32:48 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:32:50 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:32:50 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:32:50 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:32:51 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:32:51 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '1284', 'x-envoy-upstream-service-time': '39', 'date': 'Mon, 26 Apr 2021 19:32:51 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - liveness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - readiness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:32:51 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:32:51 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:32:53 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:32:53 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:32:53 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:32:55 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:32:55 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '1284', 'x-envoy-upstream-service-time': '9', 'date': 'Mon, 26 Apr 2021 19:32:54 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - liveness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - readiness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:32:55 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:32:55 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:32:56 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:32:56 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:32:56 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:32:58 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:32:58 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '1284', 'x-envoy-upstream-service-time': '26', 'date': 'Mon, 26 Apr 2021 19:32:58 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - liveness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - readiness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:32:58 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:32:58 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:32:59 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[32m[2021-04-26 21:32:59 INFO] [hypothesis:221][39m Steady state hypothesis is met!
+[36m[2021-04-26 21:32:59 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'hypothesis'
+[36m[2021-04-26 21:32:59 DEBUG] [python:166][39m Control 'after_hypothesis_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:33:01 INFO] [run:553][39m Playing your experiment's method now...
+[36m[2021-04-26 21:33:01 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'method'
+[36m[2021-04-26 21:33:01 DEBUG] [python:166][39m Control 'before_method_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:33:03 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:33:03 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:33:05 INFO] [activity:161][39m Action: abort-failure
+[36m[2021-04-26 21:33:05 DEBUG] [python:34][39m Activity 'abort-failure' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosistio/fault/actions.py'
+[36m[2021-04-26 21:33:05 DEBUG] [__init__:67][39m Using Kubernetes context: default
+[36m[2021-04-26 21:33:05 DEBUG] [__init__:67][39m Using Kubernetes context: default
+[36m[2021-04-26 21:33:05 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'body': {'apiVersion': 'networking.istio.io/v1alpha3', 'kind': 'VirtualService', 'metadata': {'annotations': {'kubectl.kubernetes.io/last-applied-configuration': '{"apiVersion":"networking.istio.io/v1alpha3","kind":"VirtualService","metadata":{"annotations":{},"name":"mg-v1-vs","namespace":"default"},"spec":{"hosts":["mg-v1"],"http":[{"route":[{"destination":{"host":"mg-v1","port":{"number":8081},"subset":"primary"}}]}]}}\n'}, 'creationTimestamp': '2021-04-26T19:12:53Z', 'generation': 2, 'managedFields': [{'apiVersion': 'networking.istio.io/v1alpha3', 'fieldsType': 'FieldsV1', 'fieldsV1': {'f:metadata': {'f:annotations': {'.': {}, 'f:kubectl.kubernetes.io/last-applied-configuration': {}}}, 'f:spec': {'.': {}, 'f:hosts': {}, 'f:http': {}}}, 'manager': 'kubectl-client-side-apply', 'operation': 'Update', 'time': '2021-04-26T19:12:53Z'}], 'name': 'mg-v1-vs', 'namespace': 'default', 'resourceVersion': '3504', 'uid': '14949f29-652e-4db8-8951-371976c9fe8f'}, 'spec': {'hosts': ['mg-v1'], 'http': [{'route': [{'destination': {'host': 'mg-v1', 'port': {'number': 8081}, 'subset': 'primary'}}]}]}}, 'headers': {'Cache-Control': 'no-cache, private', 'Content-Type': 'application/json', 'X-Kubernetes-Pf-Flowschema-Uid': 'ca338ed9-6f9e-4cbe-97a8-df98999be000', 'X-Kubernetes-Pf-Prioritylevel-Uid': 'b23d468f-1284-456c-b90c-415700e009a5', 'Date': 'Mon, 26 Apr 2021 19:33:05 GMT', 'Content-Length': '1081'}}'
+[32m[2021-04-26 21:33:05 INFO] [activity:198][39m Pausing after activity for 5s...
+[36m[2021-04-26 21:33:10 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:33:10 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:33:11 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'method'
+[36m[2021-04-26 21:33:11 DEBUG] [python:166][39m Control 'after_method_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:33:13 DEBUG] [run:496][39m Running steady-state hypothesis after the method
+[32m[2021-04-26 21:33:13 INFO] [hypothesis:183][39m Steady state hypothesis: The app is healthy
+[36m[2021-04-26 21:33:13 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'hypothesis'
+[36m[2021-04-26 21:33:13 DEBUG] [python:166][39m Control 'before_hypothesis_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:33:15 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:33:15 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:33:16 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:33:16 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '1284', 'x-envoy-upstream-service-time': '27', 'date': 'Mon, 26 Apr 2021 19:33:16 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - liveness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - readiness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:33:16 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:33:16 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:33:18 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:33:18 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:33:18 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:33:20 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:33:20 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '1284', 'x-envoy-upstream-service-time': '22', 'date': 'Mon, 26 Apr 2021 19:33:19 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - liveness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - readiness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:33:20 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:33:20 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:33:21 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:33:21 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:33:21 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:33:23 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:33:23 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '1284', 'x-envoy-upstream-service-time': '22', 'date': 'Mon, 26 Apr 2021 19:33:22 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - liveness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - readiness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:33:23 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:33:23 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:33:24 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:33:24 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:33:24 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:33:26 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:33:26 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '1284', 'x-envoy-upstream-service-time': '47', 'date': 'Mon, 26 Apr 2021 19:33:26 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - liveness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - readiness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:33:26 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:33:26 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:33:27 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:33:27 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:33:27 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:33:29 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:33:29 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '1284', 'x-envoy-upstream-service-time': '24', 'date': 'Mon, 26 Apr 2021 19:33:29 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - liveness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - readiness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:33:29 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:33:29 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:33:31 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[32m[2021-04-26 21:33:31 INFO] [hypothesis:221][39m Steady state hypothesis is met!
+[36m[2021-04-26 21:33:31 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'hypothesis'
+[36m[2021-04-26 21:33:31 DEBUG] [python:166][39m Control 'after_hypothesis_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[33m[2021-04-26 21:33:33 WARNING] [run:580][39m Rollbacks were explicitly requested to be played
+[32m[2021-04-26 21:33:33 INFO] [run:809][39m Let's rollback...
+[36m[2021-04-26 21:33:33 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'rollback'
+[36m[2021-04-26 21:33:33 DEBUG] [python:166][39m Control 'before_rollback_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:33:34 INFO] [rollback:28][39m Rollback: remove-abort-failure
+[36m[2021-04-26 21:33:34 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:33:34 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:33:36 INFO] [activity:161][39m Action: remove-abort-failure
+[36m[2021-04-26 21:33:36 DEBUG] [python:34][39m Activity 'remove-abort-failure' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosistio/fault/actions.py'
+[36m[2021-04-26 21:33:36 DEBUG] [__init__:67][39m Using Kubernetes context: default
+[36m[2021-04-26 21:33:36 DEBUG] [__init__:67][39m Using Kubernetes context: default
+[36m[2021-04-26 21:33:36 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'body': {'apiVersion': 'networking.istio.io/v1alpha3', 'kind': 'VirtualService', 'metadata': {'annotations': {'kubectl.kubernetes.io/last-applied-configuration': '{"apiVersion":"networking.istio.io/v1alpha3","kind":"VirtualService","metadata":{"annotations":{},"name":"mg-v1-vs","namespace":"default"},"spec":{"hosts":["mg-v1"],"http":[{"route":[{"destination":{"host":"mg-v1","port":{"number":8081},"subset":"primary"}}]}]}}\n'}, 'creationTimestamp': '2021-04-26T19:12:53Z', 'generation': 2, 'managedFields': [{'apiVersion': 'networking.istio.io/v1alpha3', 'fieldsType': 'FieldsV1', 'fieldsV1': {'f:metadata': {'f:annotations': {'.': {}, 'f:kubectl.kubernetes.io/last-applied-configuration': {}}}, 'f:spec': {'.': {}, 'f:hosts': {}, 'f:http': {}}}, 'manager': 'kubectl-client-side-apply', 'operation': 'Update', 'time': '2021-04-26T19:12:53Z'}], 'name': 'mg-v1-vs', 'namespace': 'default', 'resourceVersion': '3504', 'uid': '14949f29-652e-4db8-8951-371976c9fe8f'}, 'spec': {'hosts': ['mg-v1'], 'http': [{'route': [{'destination': {'host': 'mg-v1', 'port': {'number': 8081}, 'subset': 'primary'}}]}]}}, 'headers': {'Cache-Control': 'no-cache, private', 'Content-Type': 'application/json', 'X-Kubernetes-Pf-Flowschema-Uid': 'ca338ed9-6f9e-4cbe-97a8-df98999be000', 'X-Kubernetes-Pf-Prioritylevel-Uid': 'b23d468f-1284-456c-b90c-415700e009a5', 'Date': 'Mon, 26 Apr 2021 19:33:36 GMT', 'Content-Length': '1081'}}'
+[36m[2021-04-26 21:33:36 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:33:36 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:33:38 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'rollback'
+[36m[2021-04-26 21:33:38 DEBUG] [python:166][39m Control 'after_rollback_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:33:39 INFO] [run:421][39m Experiment ended with status: completed
+[36m[2021-04-26 21:33:39 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'experiment'
+[36m[2021-04-26 21:33:39 DEBUG] [python:166][39m Control 'after_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:33:42 DEBUG] [__init__:72][39m Cleaning up controls
+[36m[2021-04-26 21:33:42 DEBUG] [__init__:188][39m Cleaning up global control 'chaosiq-cloud'
+[36m[2021-04-26 21:33:42 DEBUG] [python:159][39m Control module '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py' does not declare 'cleanup_control'
+[36m[2021-04-26 21:33:42 DEBUG] [caching:42][39m Clearing activities cache
+[36m[2021-04-26 21:37:07 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-04-26 21:37:07 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-04-26 21:37:07 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-04-26 21:37:08 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-04-26 21:37:08 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-04-26 21:37:08 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:37:08 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-04-26 21:37:08 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:37:08 DEBUG] [controls:109][39m Using experiment ID aed96dc0-cc2c-4416-bbb6-de87b13833c3 from workspace for experiment at location abort-failure-rollback-read.yaml
+[36m[2021-04-26 21:37:08 DEBUG] [caching:25][39m Building activity cache...
+[36m[2021-04-26 21:37:08 DEBUG] [caching:35][39m Cached 2 activities
+[32m[2021-04-26 21:37:08 INFO] [experiment:47][39m Validating the experiment's syntax
+[36m[2021-04-26 21:37:08 DEBUG] [configuration:54][39m Loading configuration...
+[36m[2021-04-26 21:37:08 DEBUG] [secret:75][39m Loading secrets...
+[36m[2021-04-26 21:37:08 DEBUG] [secret:92][39m Secrets loaded
+[32m[2021-04-26 21:37:08 INFO] [experiment:96][39m Experiment looks valid
+[36m[2021-04-26 21:37:08 DEBUG] [caching:42][39m Clearing activities cache
+[36m[2021-04-26 21:37:08 DEBUG] [caching:25][39m Building activity cache...
+[36m[2021-04-26 21:37:08 DEBUG] [caching:35][39m Cached 2 activities
+[36m[2021-04-26 21:37:08 DEBUG] [configuration:54][39m Loading configuration...
+[36m[2021-04-26 21:37:08 DEBUG] [secret:75][39m Loading secrets...
+[36m[2021-04-26 21:37:08 DEBUG] [secret:92][39m Secrets loaded
+[32m[2021-04-26 21:37:08 INFO] [run:323][39m Running experiment: What happens if we abort responses
+[36m[2021-04-26 21:37:08 DEBUG] [__init__:136][39m Initializing global control 'chaosiq-cloud'
+[36m[2021-04-26 21:37:08 DEBUG] [python:166][39m Control 'configure_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:37:10 INFO] [execution:64][39m Execution available at http://console.chaosiq.io/tfm/luisreciomelero/executions/4f272617-0c1c-4889-94bb-8e373ddcb633
+[36m[2021-04-26 21:37:10 DEBUG] [workspace:108][39m Saving workspace at .chaosiq
+[36m[2021-04-26 21:37:10 DEBUG] [__init__:39][39m Initializing controls
+[32m[2021-04-26 21:37:10 INFO] [run:342][39m Steady-state strategy: default
+[32m[2021-04-26 21:37:10 INFO] [run:345][39m Rollbacks strategy: always
+[36m[2021-04-26 21:37:10 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'experiment'
+[36m[2021-04-26 21:37:10 DEBUG] [python:166][39m Control 'before_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:37:12 DEBUG] [run:466][39m Running steady-state hypothesis before the method
+[32m[2021-04-26 21:37:12 INFO] [hypothesis:183][39m Steady state hypothesis: The app is healthy
+[36m[2021-04-26 21:37:12 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'hypothesis'
+[36m[2021-04-26 21:37:12 DEBUG] [python:166][39m Control 'before_hypothesis_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:37:13 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:13 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:37:15 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:37:15 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '323', 'x-envoy-upstream-service-time': '22', 'date': 'Mon, 26 Apr 2021 19:37:15 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:37:15 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:15 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:37:17 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:37:17 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:17 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:37:18 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:37:18 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '323', 'x-envoy-upstream-service-time': '2', 'date': 'Mon, 26 Apr 2021 19:37:18 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:37:18 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:18 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:37:20 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:37:20 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:20 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:37:22 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:37:22 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '323', 'x-envoy-upstream-service-time': '42', 'date': 'Mon, 26 Apr 2021 19:37:22 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:37:22 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:22 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:37:23 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:37:23 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:23 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:37:25 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:37:25 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '323', 'x-envoy-upstream-service-time': '21', 'date': 'Mon, 26 Apr 2021 19:37:25 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:37:25 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:25 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:37:27 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:37:27 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:27 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:37:28 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:37:28 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '323', 'x-envoy-upstream-service-time': '38', 'date': 'Mon, 26 Apr 2021 19:37:28 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:37:28 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:28 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:37:30 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[32m[2021-04-26 21:37:30 INFO] [hypothesis:221][39m Steady state hypothesis is met!
+[36m[2021-04-26 21:37:30 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'hypothesis'
+[36m[2021-04-26 21:37:30 DEBUG] [python:166][39m Control 'after_hypothesis_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:37:32 INFO] [run:553][39m Playing your experiment's method now...
+[36m[2021-04-26 21:37:32 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'method'
+[36m[2021-04-26 21:37:32 DEBUG] [python:166][39m Control 'before_method_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:37:33 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:33 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:37:35 INFO] [activity:161][39m Action: abort-failure
+[36m[2021-04-26 21:37:35 DEBUG] [python:34][39m Activity 'abort-failure' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosistio/fault/actions.py'
+[36m[2021-04-26 21:37:35 DEBUG] [__init__:67][39m Using Kubernetes context: default
+[36m[2021-04-26 21:37:35 DEBUG] [__init__:67][39m Using Kubernetes context: default
+[36m[2021-04-26 21:37:35 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'body': {'apiVersion': 'networking.istio.io/v1alpha3', 'kind': 'VirtualService', 'metadata': {'annotations': {'kubectl.kubernetes.io/last-applied-configuration': '{"apiVersion":"networking.istio.io/v1alpha3","kind":"VirtualService","metadata":{"annotations":{},"name":"ms-read-vs","namespace":"default"},"spec":{"hosts":["ms-read"],"http":[{"route":[{"destination":{"host":"ms-read","port":{"number":8088},"subset":"primary"}}]}]}}\n'}, 'creationTimestamp': '2021-04-26T19:12:56Z', 'generation': 2, 'managedFields': [{'apiVersion': 'networking.istio.io/v1alpha3', 'fieldsType': 'FieldsV1', 'fieldsV1': {'f:metadata': {'f:annotations': {'.': {}, 'f:kubectl.kubernetes.io/last-applied-configuration': {}}}, 'f:spec': {'.': {}, 'f:hosts': {}, 'f:http': {}}}, 'manager': 'kubectl-client-side-apply', 'operation': 'Update', 'time': '2021-04-26T19:12:56Z'}], 'name': 'ms-read-vs', 'namespace': 'default', 'resourceVersion': '3809', 'uid': '84dfd451-8d6a-40e6-882e-2112a9250982'}, 'spec': {'hosts': ['ms-read'], 'http': [{'route': [{'destination': {'host': 'ms-read', 'port': {'number': 8088}, 'subset': 'primary'}}]}]}}, 'headers': {'Cache-Control': 'no-cache, private', 'Content-Type': 'application/json', 'X-Kubernetes-Pf-Flowschema-Uid': 'ca338ed9-6f9e-4cbe-97a8-df98999be000', 'X-Kubernetes-Pf-Prioritylevel-Uid': 'b23d468f-1284-456c-b90c-415700e009a5', 'Date': 'Mon, 26 Apr 2021 19:37:35 GMT', 'Content-Length': '1093'}}'
+[32m[2021-04-26 21:37:35 INFO] [activity:198][39m Pausing after activity for 1s...
+[36m[2021-04-26 21:37:36 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:36 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:37:38 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'method'
+[36m[2021-04-26 21:37:38 DEBUG] [python:166][39m Control 'after_method_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:37:39 DEBUG] [run:496][39m Running steady-state hypothesis after the method
+[32m[2021-04-26 21:37:39 INFO] [hypothesis:183][39m Steady state hypothesis: The app is healthy
+[36m[2021-04-26 21:37:39 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'hypothesis'
+[36m[2021-04-26 21:37:39 DEBUG] [python:166][39m Control 'before_hypothesis_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:37:41 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:41 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:37:43 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:37:43 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '323', 'x-envoy-upstream-service-time': '2', 'date': 'Mon, 26 Apr 2021 19:37:42 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:37:43 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:43 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:37:44 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:37:44 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:44 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:37:46 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:37:46 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '323', 'x-envoy-upstream-service-time': '1', 'date': 'Mon, 26 Apr 2021 19:37:46 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:37:46 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:46 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:37:47 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:37:48 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:48 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:37:49 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:37:49 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '323', 'x-envoy-upstream-service-time': '14', 'date': 'Mon, 26 Apr 2021 19:37:49 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:37:49 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:49 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:37:50 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:37:50 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:50 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:37:52 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:37:52 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '323', 'x-envoy-upstream-service-time': '1', 'date': 'Mon, 26 Apr 2021 19:37:52 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:37:52 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:52 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:37:54 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[36m[2021-04-26 21:37:54 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:54 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:37:55 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-04-26 21:37:55 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '323', 'x-envoy-upstream-service-time': '3', 'date': 'Mon, 26 Apr 2021 19:37:55 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        }\n    ]\n}'}'
+[36m[2021-04-26 21:37:55 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:37:55 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:37:57 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[32m[2021-04-26 21:37:57 INFO] [hypothesis:221][39m Steady state hypothesis is met!
+[36m[2021-04-26 21:37:57 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'hypothesis'
+[36m[2021-04-26 21:37:57 DEBUG] [python:166][39m Control 'after_hypothesis_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[33m[2021-04-26 21:37:59 WARNING] [run:580][39m Rollbacks were explicitly requested to be played
+[32m[2021-04-26 21:37:59 INFO] [run:809][39m Let's rollback...
+[36m[2021-04-26 21:37:59 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'rollback'
+[36m[2021-04-26 21:37:59 DEBUG] [python:166][39m Control 'before_rollback_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:38:00 INFO] [rollback:28][39m Rollback: remove-abort-failure
+[36m[2021-04-26 21:38:00 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:38:00 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:38:02 INFO] [activity:161][39m Action: remove-abort-failure
+[36m[2021-04-26 21:38:02 DEBUG] [python:34][39m Activity 'remove-abort-failure' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosistio/fault/actions.py'
+[36m[2021-04-26 21:38:02 DEBUG] [__init__:67][39m Using Kubernetes context: default
+[36m[2021-04-26 21:38:03 DEBUG] [__init__:67][39m Using Kubernetes context: default
+[36m[2021-04-26 21:38:03 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'body': {'apiVersion': 'networking.istio.io/v1alpha3', 'kind': 'VirtualService', 'metadata': {'annotations': {'kubectl.kubernetes.io/last-applied-configuration': '{"apiVersion":"networking.istio.io/v1alpha3","kind":"VirtualService","metadata":{"annotations":{},"name":"ms-read-vs","namespace":"default"},"spec":{"hosts":["ms-read"],"http":[{"route":[{"destination":{"host":"ms-read","port":{"number":8088},"subset":"primary"}}]}]}}\n'}, 'creationTimestamp': '2021-04-26T19:12:56Z', 'generation': 2, 'managedFields': [{'apiVersion': 'networking.istio.io/v1alpha3', 'fieldsType': 'FieldsV1', 'fieldsV1': {'f:metadata': {'f:annotations': {'.': {}, 'f:kubectl.kubernetes.io/last-applied-configuration': {}}}, 'f:spec': {'.': {}, 'f:hosts': {}, 'f:http': {}}}, 'manager': 'kubectl-client-side-apply', 'operation': 'Update', 'time': '2021-04-26T19:12:56Z'}], 'name': 'ms-read-vs', 'namespace': 'default', 'resourceVersion': '3809', 'uid': '84dfd451-8d6a-40e6-882e-2112a9250982'}, 'spec': {'hosts': ['ms-read'], 'http': [{'route': [{'destination': {'host': 'ms-read', 'port': {'number': 8088}, 'subset': 'primary'}}]}]}}, 'headers': {'Cache-Control': 'no-cache, private', 'Content-Type': 'application/json', 'X-Kubernetes-Pf-Flowschema-Uid': 'ca338ed9-6f9e-4cbe-97a8-df98999be000', 'X-Kubernetes-Pf-Prioritylevel-Uid': 'b23d468f-1284-456c-b90c-415700e009a5', 'Date': 'Mon, 26 Apr 2021 19:38:03 GMT', 'Content-Length': '1093'}}'
+[36m[2021-04-26 21:38:03 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-04-26 21:38:03 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:38:04 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'rollback'
+[36m[2021-04-26 21:38:04 DEBUG] [python:166][39m Control 'after_rollback_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[32m[2021-04-26 21:38:06 INFO] [run:421][39m Experiment ended with status: completed
+[36m[2021-04-26 21:38:06 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'experiment'
+[36m[2021-04-26 21:38:06 DEBUG] [python:166][39m Control 'after_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-04-26 21:38:08 DEBUG] [__init__:72][39m Cleaning up controls
+[36m[2021-04-26 21:38:08 DEBUG] [__init__:188][39m Cleaning up global control 'chaosiq-cloud'
+[36m[2021-04-26 21:38:08 DEBUG] [python:159][39m Control module '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py' does not declare 'cleanup_control'
+[36m[2021-04-26 21:38:08 DEBUG] [caching:42][39m Clearing activities cache

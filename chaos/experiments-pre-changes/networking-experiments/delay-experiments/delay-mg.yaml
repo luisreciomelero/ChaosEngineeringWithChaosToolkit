@@ -40,7 +40,7 @@ method:
     module: chaosistio.fault.actions
     func: add_delay_fault
     arguments:
-      virtual_service_name: http-mg-mread-vs
+      virtual_service_name: mg-v1-vs
       fixed_delay: 10s
       routes:
         - destination:
@@ -48,7 +48,6 @@ method:
             subset: primary
       percentage: 50
       version: networking.istio.io/v1alpha3
-      #ns: istio-system
   pauses: 
     after: 5
 rollbacks:
@@ -59,10 +58,9 @@ rollbacks:
     func: remove_delay_fault
     module: chaosistio.fault.actions
     arguments:
-      virtual_service_name: http-mg-mread-vs
+      virtual_service_name: mg-v1-vs
       routes:
         - destination:
             host: mg-v1.default.svc.cluster.local
             subset: primary
       version: networking.istio.io/v1alpha3
-     # ns: istio-system

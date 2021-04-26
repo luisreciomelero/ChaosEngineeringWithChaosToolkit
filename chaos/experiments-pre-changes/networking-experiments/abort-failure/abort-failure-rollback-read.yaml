@@ -40,7 +40,7 @@ method:
     module: chaosistio.fault.actions
     func: add_abort_fault
     arguments:
-      virtual_service_name: http-mg-mread-vs
+      virtual_service_name: ms-read-vs
       http_status: 503
       routes:
         - destination:
@@ -59,7 +59,7 @@ rollbacks:
     func: remove_abort_fault
     module: chaosistio.fault.actions
     arguments:
-      virtual_service_name: http-mg-mread-vs
+      virtual_service_name: ms-read-vs
       routes:
         - destination:
             host: ms-read.default.svc.cluster.local

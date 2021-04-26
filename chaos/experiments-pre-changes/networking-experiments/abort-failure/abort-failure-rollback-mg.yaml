@@ -40,7 +40,7 @@ method:
     module: chaosistio.fault.actions
     func: add_abort_fault
     arguments:
-      virtual_service_name: mg-v1-delegate
+      virtual_service_name: mg-v1-vs
       http_status: 503
       routes:
         - destination:
@@ -59,7 +59,7 @@ rollbacks:
     func: remove_abort_fault
     module: chaosistio.fault.actions
     arguments:
-      virtual_service_name: mg-v1-delegate
+      virtual_service_name: mg-v1-vs
       routes:
         - destination:
             host: mg-v1.default.svc.cluster.local

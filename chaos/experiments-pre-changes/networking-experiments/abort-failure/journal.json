@@ -26,9 +26,9 @@
           "tolerance": 200,
           "provider": {
             "type": "http",
-            "timeout": 20,
+            "timeout": 5,
             "verify_tls": false,
-            "url": "http://${ingress_host}/mg/health"
+            "url": "http://${ingress_host}/read/q/health"
           }
         },
         {
@@ -62,22 +62,23 @@
           "module": "chaosistio.fault.actions",
           "func": "add_abort_fault",
           "arguments": {
-            "virtual_service_name": "mg-v1-delegate",
+            "virtual_service_name": "ms-read-vs",
             "http_status": 503,
             "routes": [
               {
                 "destination": {
-                  "host": "mg-v1.default.svc.cluster.local",
+                  "host": "ms-read.default.svc.cluster.local",
                   "subset": "primary"
                 }
               }
             ],
             "percentage": 50,
-            "version": "networking.istio.io/v1alpha3"
+            "version": "networking.istio.io/v1alpha3",
+            "ns": "default"
           }
         },
         "pauses": {
-          "after": 5
+          "after": 1
         }
       }
     ],
@@ -90,11 +91,11 @@
           "func": "remove_abort_fault",
           "module": "chaosistio.fault.actions",
           "arguments": {
-            "virtual_service_name": "mg-v1-delegate",
+            "virtual_service_name": "ms-read-vs",
             "routes": [
               {
                 "destination": {
-                  "host": "mg-v1.default.svc.cluster.local",
+                  "host": "ms-read.default.svc.cluster.local",
                   "subset": "primary"
                 }
               }
@@ -107,19 +108,19 @@
     "extensions": [
       {
         "name": "chaosiq",
-        "experiment_id": "c3f6b1ac-3a1d-4e09-b289-14c2fae1ecc5",
-        "execution_id": "064adaf6-96b2-4619-a692-c09f8c407e2f",
+        "experiment_id": "aed96dc0-cc2c-4416-bbb6-de87b13833c3",
+        "execution_id": "4f272617-0c1c-4889-94bb-8e373ddcb633",
         "experiment_path": "None"
       }
     ],
     "dry": false
   },
-  "start": "2021-04-22T22:10:36.325956",
-  "status": "failed",
+  "start": "2021-04-26T19:37:08.390931",
+  "status": "completed",
   "deviated": false,
   "steady_states": {
     "before": {
-      "steady_state_met": false,
+      "steady_state_met": true,
       "probes": [
         {
           "activity": {
@@ -128,53 +129,325 @@
             "tolerance": 200,
             "provider": {
               "type": "http",
-              "timeout": 20,
+              "timeout": 5,
               "verify_tls": false,
-              "url": "http://${ingress_host}/mg/health"
+              "url": "http://${ingress_host}/read/q/health"
             }
           },
           "output": {
-            "status": 404,
+            "status": 200,
             "headers": {
-              "date": "Thu, 22 Apr 2021 22:10:43 GMT",
-              "server": "istio-envoy",
-              "content-length": "0"
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "22",
+              "date": "Mon, 26 Apr 2021 19:37:15 GMT",
+              "server": "istio-envoy"
             },
-            "body": ""
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
           },
           "status": "succeeded",
-          "start": "2021-04-22T22:10:43.667483",
-          "end": "2021-04-22T22:10:43.719283",
-          "duration": 0.0518,
-          "tolerance_met": false
+          "start": "2021-04-26T19:37:15.531752",
+          "end": "2021-04-26T19:37:15.573662",
+          "duration": 0.04191,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "name": "app-responds-to-requests",
+            "type": "probe",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 5,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/read/q/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "2",
+              "date": "Mon, 26 Apr 2021 19:37:18 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-04-26T19:37:18.911976",
+          "end": "2021-04-26T19:37:18.918234",
+          "duration": 0.006258,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "name": "app-responds-to-requests",
+            "type": "probe",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 5,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/read/q/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "42",
+              "date": "Mon, 26 Apr 2021 19:37:22 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-04-26T19:37:22.190362",
+          "end": "2021-04-26T19:37:22.246941",
+          "duration": 0.056579,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "name": "app-responds-to-requests",
+            "type": "probe",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 5,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/read/q/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "21",
+              "date": "Mon, 26 Apr 2021 19:37:25 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-04-26T19:37:25.464700",
+          "end": "2021-04-26T19:37:25.500967",
+          "duration": 0.036267,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "name": "app-responds-to-requests",
+            "type": "probe",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 5,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/read/q/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "38",
+              "date": "Mon, 26 Apr 2021 19:37:28 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-04-26T19:37:28.744173",
+          "end": "2021-04-26T19:37:28.796969",
+          "duration": 0.052796,
+          "tolerance_met": true
         }
       ]
     },
-    "after": null,
+    "after": {
+      "steady_state_met": true,
+      "probes": [
+        {
+          "activity": {
+            "name": "app-responds-to-requests",
+            "type": "probe",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 5,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/read/q/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "2",
+              "date": "Mon, 26 Apr 2021 19:37:42 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-04-26T19:37:43.083590",
+          "end": "2021-04-26T19:37:43.106417",
+          "duration": 0.022827,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "name": "app-responds-to-requests",
+            "type": "probe",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 5,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/read/q/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "1",
+              "date": "Mon, 26 Apr 2021 19:37:46 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-04-26T19:37:46.354770",
+          "end": "2021-04-26T19:37:46.358600",
+          "duration": 0.00383,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "name": "app-responds-to-requests",
+            "type": "probe",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 5,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/read/q/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "14",
+              "date": "Mon, 26 Apr 2021 19:37:49 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-04-26T19:37:49.531300",
+          "end": "2021-04-26T19:37:49.553894",
+          "duration": 0.022594,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "name": "app-responds-to-requests",
+            "type": "probe",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 5,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/read/q/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "1",
+              "date": "Mon, 26 Apr 2021 19:37:52 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-04-26T19:37:52.504618",
+          "end": "2021-04-26T19:37:52.508636",
+          "duration": 0.004018,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "name": "app-responds-to-requests",
+            "type": "probe",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 5,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/read/q/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "3",
+              "date": "Mon, 26 Apr 2021 19:37:55 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-04-26T19:37:55.780698",
+          "end": "2021-04-26T19:37:55.793465",
+          "duration": 0.012767,
+          "tolerance_met": true
+        }
+      ]
+    },
     "during": []
   },
-  "run": [],
-  "rollbacks": [
+  "run": [
     {
       "activity": {
         "type": "action",
-        "name": "remove-abort-failure",
+        "name": "abort-failure",
         "provider": {
           "type": "python",
-          "func": "remove_abort_fault",
           "module": "chaosistio.fault.actions",
+          "func": "add_abort_fault",
           "arguments": {
-            "virtual_service_name": "mg-v1-delegate",
+            "virtual_service_name": "ms-read-vs",
+            "http_status": 503,
             "routes": [
               {
                 "destination": {
-                  "host": "mg-v1.default.svc.cluster.local",
+                  "host": "ms-read.default.svc.cluster.local",
                   "subset": "primary"
                 }
               }
             ],
-            "version": "networking.istio.io/v1alpha3"
+            "percentage": 50,
+            "version": "networking.istio.io/v1alpha3",
+            "ns": "default"
           }
+        },
+        "pauses": {
+          "after": 1
         }
       },
       "output": {
@@ -184,10 +457,10 @@
           "kind": "VirtualService",
           "metadata": {
             "annotations": {
-              "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"networking.istio.io/v1alpha3\",\"kind\":\"VirtualService\",\"metadata\":{\"annotations\":{},\"name\":\"mg-v1-delegate\",\"namespace\":\"default\"},\"spec\":{\"hosts\":[\"http-mg-mread-vs\"],\"http\":[{\"route\":[{\"destination\":{\"host\":\"mg-v1.default.svc.cluster.local\",\"port\":{\"number\":8081},\"subset\":\"primary\"}}],\"timeout\":\"5s\"}]}}\n"
+              "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"networking.istio.io/v1alpha3\",\"kind\":\"VirtualService\",\"metadata\":{\"annotations\":{},\"name\":\"ms-read-vs\",\"namespace\":\"default\"},\"spec\":{\"hosts\":[\"ms-read\"],\"http\":[{\"route\":[{\"destination\":{\"host\":\"ms-read\",\"port\":{\"number\":8088},\"subset\":\"primary\"}}]}]}}\n"
             },
-            "creationTimestamp": "2021-04-22T21:09:58Z",
-            "generation": 1,
+            "creationTimestamp": "2021-04-26T19:12:56Z",
+            "generation": 2,
             "managedFields": [
               {
                 "apiVersion": "networking.istio.io/v1alpha3",
@@ -207,32 +480,31 @@
                 },
                 "manager": "kubectl-client-side-apply",
                 "operation": "Update",
-                "time": "2021-04-22T21:09:58Z"
+                "time": "2021-04-26T19:12:56Z"
               }
             ],
-            "name": "mg-v1-delegate",
+            "name": "ms-read-vs",
             "namespace": "default",
-            "resourceVersion": "5050",
-            "uid": "57f532f1-b21d-4a67-9d3b-d8e928ef85a4"
+            "resourceVersion": "3809",
+            "uid": "84dfd451-8d6a-40e6-882e-2112a9250982"
           },
           "spec": {
             "hosts": [
-              "http-mg-mread-vs"
+              "ms-read"
             ],
             "http": [
               {
                 "route": [
                   {
                     "destination": {
-                      "host": "mg-v1.default.svc.cluster.local",
+                      "host": "ms-read",
                       "port": {
-                        "number": 8081
+                        "number": 8088
                       },
                       "subset": "primary"
                     }
                   }
-                ],
-                "timeout": "5s"
+                ]
               }
             ]
           }
@@ -240,25 +512,122 @@
         "headers": {
           "Cache-Control": "no-cache, private",
           "Content-Type": "application/json",
-          "X-Kubernetes-Pf-Flowschema-Uid": "3834efba-5ed2-43ba-b824-fe014f259c2d",
-          "X-Kubernetes-Pf-Prioritylevel-Uid": "3a0df545-c8bc-4fb2-98c4-bc127522cf5a",
-          "Date": "Thu, 22 Apr 2021 22:10:50 GMT",
-          "Content-Length": "1201"
+          "X-Kubernetes-Pf-Flowschema-Uid": "ca338ed9-6f9e-4cbe-97a8-df98999be000",
+          "X-Kubernetes-Pf-Prioritylevel-Uid": "b23d468f-1284-456c-b90c-415700e009a5",
+          "Date": "Mon, 26 Apr 2021 19:37:35 GMT",
+          "Content-Length": "1093"
         }
       },
       "status": "succeeded",
-      "start": "2021-04-22T22:10:50.220507",
-      "end": "2021-04-22T22:10:50.297113",
-      "duration": 0.076606
+      "start": "2021-04-26T19:37:35.396937",
+      "end": "2021-04-26T19:37:35.422735",
+      "duration": 0.025798
     }
   ],
-  "end": "2021-04-22T22:10:53.291159",
-  "duration": 17.03466248512268,
+  "rollbacks": [
+    {
+      "activity": {
+        "type": "action",
+        "name": "remove-abort-failure",
+        "provider": {
+          "type": "python",
+          "func": "remove_abort_fault",
+          "module": "chaosistio.fault.actions",
+          "arguments": {
+            "virtual_service_name": "ms-read-vs",
+            "routes": [
+              {
+                "destination": {
+                  "host": "ms-read.default.svc.cluster.local",
+                  "subset": "primary"
+                }
+              }
+            ],
+            "version": "networking.istio.io/v1alpha3"
+          }
+        }
+      },
+      "output": {
+        "status": 200,
+        "body": {
+          "apiVersion": "networking.istio.io/v1alpha3",
+          "kind": "VirtualService",
+          "metadata": {
+            "annotations": {
+              "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"networking.istio.io/v1alpha3\",\"kind\":\"VirtualService\",\"metadata\":{\"annotations\":{},\"name\":\"ms-read-vs\",\"namespace\":\"default\"},\"spec\":{\"hosts\":[\"ms-read\"],\"http\":[{\"route\":[{\"destination\":{\"host\":\"ms-read\",\"port\":{\"number\":8088},\"subset\":\"primary\"}}]}]}}\n"
+            },
+            "creationTimestamp": "2021-04-26T19:12:56Z",
+            "generation": 2,
+            "managedFields": [
+              {
+                "apiVersion": "networking.istio.io/v1alpha3",
+                "fieldsType": "FieldsV1",
+                "fieldsV1": {
+                  "f:metadata": {
+                    "f:annotations": {
+                      ".": {},
+                      "f:kubectl.kubernetes.io/last-applied-configuration": {}
+                    }
+                  },
+                  "f:spec": {
+                    ".": {},
+                    "f:hosts": {},
+                    "f:http": {}
+                  }
+                },
+                "manager": "kubectl-client-side-apply",
+                "operation": "Update",
+                "time": "2021-04-26T19:12:56Z"
+              }
+            ],
+            "name": "ms-read-vs",
+            "namespace": "default",
+            "resourceVersion": "3809",
+            "uid": "84dfd451-8d6a-40e6-882e-2112a9250982"
+          },
+          "spec": {
+            "hosts": [
+              "ms-read"
+            ],
+            "http": [
+              {
+                "route": [
+                  {
+                    "destination": {
+                      "host": "ms-read",
+                      "port": {
+                        "number": 8088
+                      },
+                      "subset": "primary"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "headers": {
+          "Cache-Control": "no-cache, private",
+          "Content-Type": "application/json",
+          "X-Kubernetes-Pf-Flowschema-Uid": "ca338ed9-6f9e-4cbe-97a8-df98999be000",
+          "X-Kubernetes-Pf-Prioritylevel-Uid": "b23d468f-1284-456c-b90c-415700e009a5",
+          "Date": "Mon, 26 Apr 2021 19:38:03 GMT",
+          "Content-Length": "1093"
+        }
+      },
+      "status": "succeeded",
+      "start": "2021-04-26T19:38:02.327675",
+      "end": "2021-04-26T19:38:03.111324",
+      "duration": 0.783649
+    }
+  ],
+  "end": "2021-04-26T19:38:06.426318",
+  "duration": 58.043617486953735,
   "extensions": [
     {
       "name": "chaosiq",
-      "execution_id": "064adaf6-96b2-4619-a692-c09f8c407e2f",
-      "experiment_id": "c3f6b1ac-3a1d-4e09-b289-14c2fae1ecc5",
+      "execution_id": "4f272617-0c1c-4889-94bb-8e373ddcb633",
+      "experiment_id": "aed96dc0-cc2c-4416-bbb6-de87b13833c3",
       "safeguards": null
     }
   ]

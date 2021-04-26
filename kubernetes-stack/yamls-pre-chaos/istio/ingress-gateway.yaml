@@ -2,7 +2,6 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: ingress-gateway
-  #namespace: istio-system
 spec:
   selector:
     istio: ingressgateway # use Istio default gateway implementation
@@ -30,25 +29,13 @@ spec:
   - match:
     - uri:
         prefix: /mg
-##    rewrite:
-##      uri: " "
-#    delegate: 
-#      name: mg-v1-delegate
     rewrite:
       uri: " "
     route:
     - destination:
         port:
           number: 8081
-        host: mg-v1.default.svc.cluster.local
-        subset: primary
-#      weight: 50
-#    - destination:
-#        port:
-#          number: 8081
-#        host: mg-v1.default.svc.cluster.local
-#        subset: secondary
-#      weight: 50    
+        host: mg-v1.default.svc.cluster.local  
     retries:
       attempts: 15
       perTryTimeout: 2s
@@ -72,85 +59,3 @@ spec:
     timeout: 30s
       
 
-
----
-
-apiVersion: networking.istio.io/v1alpha3
-kind: DestinationRule
-metadata:
-  name: mg-v1
-  #namespace: istio-system
-spec:
-  host: mg-v1.default.svc.cluster.local
-  trafficPolicy:
-      connectionPool:
-        http: {}
-        tcp: {}
-      loadBalancer:
-        simple: RANDOM
-      outlierDetection:
-        baseEjectionTime: 1m
-        consecutive5xxErrors: 1
-        consecutiveGatewayErrors: 5
-        interval: 1m
-        maxEjectionPercent: 100
-  subsets:
-  - name: primary
-    labels:
-      release: primary
-#  - name: secondary
-#    labels:
-#       release: secondary
-  
-  
-
----
-
-apiVersion: networking.istio.io/v1alpha3
-kind: DestinationRule
-metadata:
-  name: ms-read
-  #namespace: istio-system
-spec:
-  host: ms-read.default.svc.cluster.local
-  trafficPolicy:
-      connectionPool:
-        http: {}
-        tcp: {}
-      loadBalancer:
-        simple: RANDOM
-      outlierDetection:
-        baseEjectionTime: 5m
-        consecutive5xxErrors: 1
-        consecutiveGatewayErrors: 5
-        interval: 5m
-        maxEjectionPercent: 100
-  subsets:
-  - name: primary
-    labels:
-      app: read-app
-      component: ms-read
-  
-
----
-
-
-#apiVersion: networking.istio.io/v1alpha3
-#kind: VirtualService
-#metadata:
-#  name: mg-v1-delegate
-#  namespace: default
-#spec:
-#  http:
-#  - match:
-#    - uri:
-#        prefix: /mg
-#    rewrite:
-#      uri: " "
-#    route:
-#    - destination:
-#        port:
-#          number: 8081
-#        host: mg-v1.default.svc.cluster.local
-#        subset: primary
-#    timeout: 5s

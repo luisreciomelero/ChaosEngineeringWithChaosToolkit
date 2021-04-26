@@ -40,7 +40,7 @@ method:
     module: chaosistio.fault.actions
     func: add_delay_fault
     arguments:
-      virtual_service_name: http-mg-mread-vs
+      virtual_service_name: ms-read-vs
       fixed_delay: 10s
       routes:
         - destination:
@@ -59,7 +59,7 @@ rollbacks:
     func: remove_delay_fault
     module: chaosistio.fault.actions
     arguments:
-      virtual_service_name: http-mg-mread-vs
+      virtual_service_name: ms-read-vs
       routes:
         - destination:
             host: ms-read.default.svc.cluster.local
