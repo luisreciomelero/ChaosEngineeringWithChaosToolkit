@@ -1,0 +1,520 @@
+{
+  "chaoslib-version": "1.19.0",
+  "platform": "Linux-5.8.0-50-generic-x86_64-with-glibc2.29",
+  "node": "luisreciomelero-HP-Pavilion-Laptop-15-ck0xx",
+  "experiment": {
+    "version": "1.0.0",
+    "title": "What happens if we abort and delay responses",
+    "description": "If responses are aborted and delayed, the dependant application should retry and/or timeout requests",
+    "tags": [
+      "k8s",
+      "istio",
+      "http"
+    ],
+    "configuration": {
+      "ingress_host": {
+        "type": "env",
+        "key": "INGRESS_HOST"
+      }
+    },
+    "steady-state-hypothesis": {
+      "title": "The app is healthy",
+      "probes": [
+        {
+          "type": "probe",
+          "name": "app-responds-to-requests",
+          "tolerance": 200,
+          "provider": {
+            "type": "http",
+            "timeout": 15,
+            "verify_tls": false,
+            "url": "http://${ingress_host}/read/q/health"
+          }
+        },
+        {
+          "type": "probe",
+          "tolerance": 200,
+          "ref": "app-responds-to-requests"
+        },
+        {
+          "type": "probe",
+          "tolerance": 200,
+          "ref": "app-responds-to-requests"
+        },
+        {
+          "type": "probe",
+          "tolerance": 200,
+          "ref": "app-responds-to-requests"
+        },
+        {
+          "type": "probe",
+          "tolerance": 200,
+          "ref": "app-responds-to-requests"
+        }
+      ]
+    },
+    "method": [
+      {
+        "type": "action",
+        "name": "delay",
+        "provider": {
+          "type": "python",
+          "module": "chaosistio.fault.actions",
+          "func": "add_delay_fault",
+          "arguments": {
+            "virtual_service_name": "ms-read-vs",
+            "fixed_delay": "10s",
+            "routes": [
+              {
+                "destination": {
+                  "host": "ms-read.default.svc.cluster.local",
+                  "subset": "primary"
+                }
+              }
+            ],
+            "percentage": 50,
+            "version": "networking.istio.io/v1alpha3",
+            "ns": "istio-system"
+          }
+        },
+        "pauses": {
+          "after": 5
+        }
+      }
+    ],
+    "rollbacks": [
+      {
+        "type": "action",
+        "name": "remove-delay",
+        "provider": {
+          "type": "python",
+          "func": "remove_delay_fault",
+          "module": "chaosistio.fault.actions",
+          "arguments": {
+            "virtual_service_name": "ms-read-vs",
+            "routes": [
+              {
+                "destination": {
+                  "host": "ms-read.default.svc.cluster.local",
+                  "subset": "primary"
+                }
+              }
+            ],
+            "version": "networking.istio.io/v1alpha3",
+            "ns": "istio-system"
+          }
+        }
+      }
+    ],
+    "extensions": [
+      {
+        "name": "chaosiq",
+        "experiment_id": "d576a6ec-0c3c-4c1c-a494-c3095db8881f",
+        "execution_id": "b074af6f-9666-4c29-a11a-eba94ddaa94c",
+        "experiment_path": "None"
+      }
+    ],
+    "dry": false
+  },
+  "start": "2021-04-27T16:27:59.067838",
+  "status": "completed",
+  "deviated": false,
+  "steady_states": {
+    "before": {
+      "steady_state_met": true,
+      "probes": [
+        {
+          "activity": {
+            "type": "probe",
+            "name": "app-responds-to-requests",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 15,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/read/q/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "96",
+              "date": "Tue, 27 Apr 2021 16:28:06 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-04-27T16:28:06.312611",
+          "end": "2021-04-27T16:28:06.412534",
+          "duration": 0.099923,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "type": "probe",
+            "name": "app-responds-to-requests",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 15,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/read/q/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "486",
+              "date": "Tue, 27 Apr 2021 16:28:10 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-04-27T16:28:09.684054",
+          "end": "2021-04-27T16:28:10.174581",
+          "duration": 0.490527,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "type": "probe",
+            "name": "app-responds-to-requests",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 15,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/read/q/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "2",
+              "date": "Tue, 27 Apr 2021 16:28:13 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-04-27T16:28:13.503738",
+          "end": "2021-04-27T16:28:13.509891",
+          "duration": 0.006153,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "type": "probe",
+            "name": "app-responds-to-requests",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 15,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/read/q/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "1",
+              "date": "Tue, 27 Apr 2021 16:28:16 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-04-27T16:28:16.548627",
+          "end": "2021-04-27T16:28:16.553441",
+          "duration": 0.004814,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "type": "probe",
+            "name": "app-responds-to-requests",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 15,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/read/q/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "3",
+              "date": "Tue, 27 Apr 2021 16:28:19 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-04-27T16:28:19.825979",
+          "end": "2021-04-27T16:28:19.846376",
+          "duration": 0.020397,
+          "tolerance_met": true
+        }
+      ]
+    },
+    "after": {
+      "steady_state_met": true,
+      "probes": [
+        {
+          "activity": {
+            "type": "probe",
+            "name": "app-responds-to-requests",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 15,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/read/q/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "3",
+              "date": "Tue, 27 Apr 2021 16:28:38 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-04-27T16:28:38.670648",
+          "end": "2021-04-27T16:28:38.677950",
+          "duration": 0.007302,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "type": "probe",
+            "name": "app-responds-to-requests",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 15,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/read/q/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "3",
+              "date": "Tue, 27 Apr 2021 16:28:41 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-04-27T16:28:41.945210",
+          "end": "2021-04-27T16:28:41.952600",
+          "duration": 0.00739,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "type": "probe",
+            "name": "app-responds-to-requests",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 15,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/read/q/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "1592",
+              "date": "Tue, 27 Apr 2021 16:28:46 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-04-27T16:28:45.226534",
+          "end": "2021-04-27T16:28:46.827758",
+          "duration": 1.601224,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "type": "probe",
+            "name": "app-responds-to-requests",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 15,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/read/q/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "1",
+              "date": "Tue, 27 Apr 2021 16:28:50 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-04-27T16:28:50.142209",
+          "end": "2021-04-27T16:28:50.147617",
+          "duration": 0.005408,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "type": "probe",
+            "name": "app-responds-to-requests",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 15,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/read/q/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "323",
+              "x-envoy-upstream-service-time": "1",
+              "date": "Tue, 27 Apr 2021 16:28:53 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-04-27T16:28:53.415925",
+          "end": "2021-04-27T16:28:53.420233",
+          "duration": 0.004308,
+          "tolerance_met": true
+        }
+      ]
+    },
+    "during": []
+  },
+  "run": [
+    {
+      "activity": {
+        "type": "action",
+        "name": "delay",
+        "provider": {
+          "type": "python",
+          "module": "chaosistio.fault.actions",
+          "func": "add_delay_fault",
+          "arguments": {
+            "virtual_service_name": "ms-read-vs",
+            "fixed_delay": "10s",
+            "routes": [
+              {
+                "destination": {
+                  "host": "ms-read.default.svc.cluster.local",
+                  "subset": "primary"
+                }
+              }
+            ],
+            "percentage": 50,
+            "version": "networking.istio.io/v1alpha3",
+            "ns": "istio-system"
+          }
+        },
+        "pauses": {
+          "after": 5
+        }
+      },
+      "output": null,
+      "status": "failed",
+      "exception": [
+        "Traceback (most recent call last):\n",
+        "  File \"/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoslib/provider/python.py\", line 55, in run_python_activity\n    return func(**arguments)\n",
+        "  File \"/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosistio/fault/actions.py\", line 202, in add_delay_fault\n    return set_fault(\n",
+        "  File \"/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosistio/fault/actions.py\", line 36, in set_fault\n    raise ActivityFailed(\"Virtual Service '{}' does not exist: {}\".format(\n",
+        "chaoslib.exceptions.ActivityFailed: Virtual Service 'ms-read-vs' does not exist: {'kind': 'Status', 'apiVersion': 'v1', 'metadata': {}, 'status': 'Failure', 'message': 'virtualservices.networking.istio.io \"ms-read-vs\" not found', 'reason': 'NotFound', 'details': {'name': 'ms-read-vs', 'group': 'networking.istio.io', 'kind': 'virtualservices'}, 'code': 404}\n",
+        "\nDuring handling of the above exception, another exception occurred:\n\n",
+        "chaoslib.exceptions.ActivityFailed: chaoslib.exceptions.ActivityFailed: Virtual Service 'ms-read-vs' does not exist: {'kind': 'Status', 'apiVersion': 'v1', 'metadata': {}, 'status': 'Failure', 'message': 'virtualservices.networking.istio.io \"ms-read-vs\" not found', 'reason': 'NotFound', 'details': {'name': 'ms-read-vs', 'group': 'networking.istio.io', 'kind': 'virtualservices'}, 'code': 404}\n"
+      ],
+      "start": "2021-04-27T16:28:26.174932",
+      "end": "2021-04-27T16:28:26.935658",
+      "duration": 0.760726
+    }
+  ],
+  "rollbacks": [
+    {
+      "activity": {
+        "type": "action",
+        "name": "remove-delay",
+        "provider": {
+          "type": "python",
+          "func": "remove_delay_fault",
+          "module": "chaosistio.fault.actions",
+          "arguments": {
+            "virtual_service_name": "ms-read-vs",
+            "routes": [
+              {
+                "destination": {
+                  "host": "ms-read.default.svc.cluster.local",
+                  "subset": "primary"
+                }
+              }
+            ],
+            "version": "networking.istio.io/v1alpha3",
+            "ns": "istio-system"
+          }
+        }
+      },
+      "output": null,
+      "status": "failed",
+      "exception": [
+        "Traceback (most recent call last):\n",
+        "  File \"/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoslib/provider/python.py\", line 55, in run_python_activity\n    return func(**arguments)\n",
+        "  File \"/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosistio/fault/actions.py\", line 245, in remove_delay_fault\n    return unset_fault(\n",
+        "  File \"/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosistio/fault/actions.py\", line 118, in unset_fault\n    raise ActivityFailed(\"Virtual Service '{}' does not exist: {}\".format(\n",
+        "chaoslib.exceptions.ActivityFailed: Virtual Service 'ms-read-vs' does not exist: {'kind': 'Status', 'apiVersion': 'v1', 'metadata': {}, 'status': 'Failure', 'message': 'virtualservices.networking.istio.io \"ms-read-vs\" not found', 'reason': 'NotFound', 'details': {'name': 'ms-read-vs', 'group': 'networking.istio.io', 'kind': 'virtualservices'}, 'code': 404}\n",
+        "\nDuring handling of the above exception, another exception occurred:\n\n",
+        "chaoslib.exceptions.ActivityFailed: chaoslib.exceptions.ActivityFailed: Virtual Service 'ms-read-vs' does not exist: {'kind': 'Status', 'apiVersion': 'v1', 'metadata': {}, 'status': 'Failure', 'message': 'virtualservices.networking.istio.io \"ms-read-vs\" not found', 'reason': 'NotFound', 'details': {'name': 'ms-read-vs', 'group': 'networking.istio.io', 'kind': 'virtualservices'}, 'code': 404}\n"
+      ],
+      "start": "2021-04-27T16:28:59.866379",
+      "end": "2021-04-27T16:29:01.179687",
+      "duration": 1.313308
+    }
+  ],
+  "end": "2021-04-27T16:29:04.376451",
+  "duration": 65.3500428199768,
+  "extensions": [
+    {
+      "name": "chaosiq",
+      "execution_id": "b074af6f-9666-4c29-a11a-eba94ddaa94c",
+      "experiment_id": "d576a6ec-0c3c-4c1c-a494-c3095db8881f",
+      "safeguards": null
+    }
+  ]
+}

@@ -108,13 +108,13 @@
       {
         "name": "chaosiq",
         "experiment_id": "48147c31-72ab-4256-812d-8a1f8d3e28a3",
-        "execution_id": "4ae1065a-58c8-41ad-a6e4-7f97eed011ec",
+        "execution_id": "1c7ac105-7d41-4ee4-8fc6-83c3da217864",
         "experiment_path": "None"
       }
     ],
     "dry": false
   },
-  "start": "2021-04-26T19:39:38.289820",
+  "start": "2021-04-27T16:45:16.806542",
   "status": "completed",
   "deviated": false,
   "steady_states": {
@@ -138,16 +138,16 @@
             "headers": {
               "content-type": "application/json; charset=UTF-8",
               "content-length": "1284",
-              "x-envoy-upstream-service-time": "12",
-              "date": "Mon, 26 Apr 2021 19:39:45 GMT",
+              "x-envoy-upstream-service-time": "20",
+              "date": "Tue, 27 Apr 2021 16:45:24 GMT",
               "server": "istio-envoy"
             },
             "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - liveness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - readiness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        }\n    ]\n}"
           },
           "status": "succeeded",
-          "start": "2021-04-26T19:39:45.449150",
-          "end": "2021-04-26T19:39:45.466159",
-          "duration": 0.017009,
+          "start": "2021-04-27T16:45:24.164225",
+          "end": "2021-04-27T16:45:24.193223",
+          "duration": 0.028998,
           "tolerance_met": true
         },
         {
@@ -167,16 +167,16 @@
             "headers": {
               "content-type": "application/json; charset=UTF-8",
               "content-length": "1284",
-              "x-envoy-upstream-service-time": "12",
-              "date": "Mon, 26 Apr 2021 19:39:48 GMT",
+              "x-envoy-upstream-service-time": "7",
+              "date": "Tue, 27 Apr 2021 16:45:26 GMT",
               "server": "istio-envoy"
             },
             "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - liveness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - readiness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        }\n    ]\n}"
           },
           "status": "succeeded",
-          "start": "2021-04-26T19:39:48.624419",
-          "end": "2021-04-26T19:39:48.640346",
-          "duration": 0.015927,
+          "start": "2021-04-27T16:45:27.334387",
+          "end": "2021-04-27T16:45:27.344346",
+          "duration": 0.009959,
           "tolerance_met": true
         },
         {
@@ -196,16 +196,16 @@
             "headers": {
               "content-type": "application/json; charset=UTF-8",
               "content-length": "1284",
-              "x-envoy-upstream-service-time": "17",
-              "date": "Mon, 26 Apr 2021 19:39:51 GMT",
+              "x-envoy-upstream-service-time": "9",
+              "date": "Tue, 27 Apr 2021 16:45:30 GMT",
               "server": "istio-envoy"
             },
             "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - liveness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - readiness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        }\n    ]\n}"
           },
           "status": "succeeded",
-          "start": "2021-04-26T19:39:52.005022",
-          "end": "2021-04-26T19:39:52.028976",
-          "duration": 0.023954,
+          "start": "2021-04-27T16:45:30.611457",
+          "end": "2021-04-27T16:45:30.625235",
+          "duration": 0.013778,
           "tolerance_met": true
         },
         {
@@ -225,16 +225,16 @@
             "headers": {
               "content-type": "application/json; charset=UTF-8",
               "content-length": "1284",
-              "x-envoy-upstream-service-time": "32",
-              "date": "Mon, 26 Apr 2021 19:39:55 GMT",
+              "x-envoy-upstream-service-time": "18",
+              "date": "Tue, 27 Apr 2021 16:45:33 GMT",
               "server": "istio-envoy"
             },
             "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - liveness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - readiness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        }\n    ]\n}"
           },
           "status": "succeeded",
-          "start": "2021-04-26T19:39:55.280097",
-          "end": "2021-04-26T19:39:55.319806",
-          "duration": 0.039709,
+          "start": "2021-04-27T16:45:33.682266",
+          "end": "2021-04-27T16:45:33.710461",
+          "duration": 0.028195,
           "tolerance_met": true
         },
         {
@@ -254,16 +254,16 @@
             "headers": {
               "content-type": "application/json; charset=UTF-8",
               "content-length": "1284",
-              "x-envoy-upstream-service-time": "27",
-              "date": "Mon, 26 Apr 2021 19:39:58 GMT",
+              "x-envoy-upstream-service-time": "20",
+              "date": "Tue, 27 Apr 2021 16:45:36 GMT",
               "server": "istio-envoy"
             },
             "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - liveness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - readiness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        }\n    ]\n}"
           },
           "status": "succeeded",
-          "start": "2021-04-26T19:39:58.695465",
-          "end": "2021-04-26T19:39:58.730574",
-          "duration": 0.035109,
+          "start": "2021-04-27T16:45:36.969667",
+          "end": "2021-04-27T16:45:36.997269",
+          "duration": 0.027602,
           "tolerance_met": true
         }
       ]
@@ -288,16 +288,16 @@
             "headers": {
               "content-type": "application/json; charset=UTF-8",
               "content-length": "1284",
-              "x-envoy-upstream-service-time": "28",
-              "date": "Mon, 26 Apr 2021 19:40:16 GMT",
+              "x-envoy-upstream-service-time": "5",
+              "date": "Tue, 27 Apr 2021 16:45:55 GMT",
               "server": "istio-envoy"
             },
             "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - liveness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - readiness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        }\n    ]\n}"
           },
           "status": "succeeded",
-          "start": "2021-04-26T19:40:16.886877",
-          "end": "2021-04-26T19:40:16.922089",
-          "duration": 0.035212,
+          "start": "2021-04-27T16:45:55.539619",
+          "end": "2021-04-27T16:45:55.547619",
+          "duration": 0.008,
           "tolerance_met": true
         },
         {
@@ -317,16 +317,16 @@
             "headers": {
               "content-type": "application/json; charset=UTF-8",
               "content-length": "1284",
-              "x-envoy-upstream-service-time": "26",
-              "date": "Mon, 26 Apr 2021 19:40:19 GMT",
+              "x-envoy-upstream-service-time": "5",
+              "date": "Tue, 27 Apr 2021 16:45:58 GMT",
               "server": "istio-envoy"
             },
             "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - liveness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - readiness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        }\n    ]\n}"
           },
           "status": "succeeded",
-          "start": "2021-04-26T19:40:20.060574",
-          "end": "2021-04-26T19:40:20.096000",
-          "duration": 0.035426,
+          "start": "2021-04-27T16:45:58.771694",
+          "end": "2021-04-27T16:45:58.779418",
+          "duration": 0.007724,
           "tolerance_met": true
         },
         {
@@ -346,16 +346,16 @@
             "headers": {
               "content-type": "application/json; charset=UTF-8",
               "content-length": "1284",
-              "x-envoy-upstream-service-time": "24",
-              "date": "Mon, 26 Apr 2021 19:40:23 GMT",
+              "x-envoy-upstream-service-time": "5",
+              "date": "Tue, 27 Apr 2021 16:46:01 GMT",
               "server": "istio-envoy"
             },
             "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - liveness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - readiness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        }\n    ]\n}"
           },
           "status": "succeeded",
-          "start": "2021-04-26T19:40:23.338620",
-          "end": "2021-04-26T19:40:23.371677",
-          "duration": 0.033057,
+          "start": "2021-04-27T16:46:01.748876",
+          "end": "2021-04-27T16:46:01.756309",
+          "duration": 0.007433,
           "tolerance_met": true
         },
         {
@@ -376,15 +376,15 @@
               "content-type": "application/json; charset=UTF-8",
               "content-length": "1284",
               "x-envoy-upstream-service-time": "7",
-              "date": "Mon, 26 Apr 2021 19:40:26 GMT",
+              "date": "Tue, 27 Apr 2021 16:46:04 GMT",
               "server": "istio-envoy"
             },
             "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - liveness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - readiness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        }\n    ]\n}"
           },
           "status": "succeeded",
-          "start": "2021-04-26T19:40:26.611210",
-          "end": "2021-04-26T19:40:26.620914",
-          "duration": 0.009704,
+          "start": "2021-04-27T16:46:05.119760",
+          "end": "2021-04-27T16:46:05.129863",
+          "duration": 0.010103,
           "tolerance_met": true
         },
         {
@@ -404,16 +404,16 @@
             "headers": {
               "content-type": "application/json; charset=UTF-8",
               "content-length": "1284",
-              "x-envoy-upstream-service-time": "10",
-              "date": "Mon, 26 Apr 2021 19:40:29 GMT",
+              "x-envoy-upstream-service-time": "27",
+              "date": "Tue, 27 Apr 2021 16:46:08 GMT",
               "server": "istio-envoy"
             },
             "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - liveness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - readiness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        }\n    ]\n}"
           },
           "status": "succeeded",
-          "start": "2021-04-26T19:40:29.888593",
-          "end": "2021-04-26T19:40:29.902916",
-          "duration": 0.014323,
+          "start": "2021-04-27T16:46:08.399534",
+          "end": "2021-04-27T16:46:08.432943",
+          "duration": 0.033409,
           "tolerance_met": true
         }
       ]
@@ -512,14 +512,14 @@
           "Content-Type": "application/json",
           "X-Kubernetes-Pf-Flowschema-Uid": "ca338ed9-6f9e-4cbe-97a8-df98999be000",
           "X-Kubernetes-Pf-Prioritylevel-Uid": "b23d468f-1284-456c-b90c-415700e009a5",
-          "Date": "Mon, 26 Apr 2021 19:40:05 GMT",
+          "Date": "Tue, 27 Apr 2021 16:45:44 GMT",
           "Content-Length": "1081"
         }
       },
       "status": "succeeded",
-      "start": "2021-04-26T19:40:05.517501",
-      "end": "2021-04-26T19:40:05.556884",
-      "duration": 0.039383
+      "start": "2021-04-27T16:45:43.619525",
+      "end": "2021-04-27T16:45:44.099921",
+      "duration": 0.480396
     }
   ],
   "rollbacks": [
@@ -609,22 +609,22 @@
           "Content-Type": "application/json",
           "X-Kubernetes-Pf-Flowschema-Uid": "ca338ed9-6f9e-4cbe-97a8-df98999be000",
           "X-Kubernetes-Pf-Prioritylevel-Uid": "b23d468f-1284-456c-b90c-415700e009a5",
-          "Date": "Mon, 26 Apr 2021 19:40:36 GMT",
+          "Date": "Tue, 27 Apr 2021 16:46:16 GMT",
           "Content-Length": "1081"
         }
       },
       "status": "succeeded",
-      "start": "2021-04-26T19:40:36.353700",
-      "end": "2021-04-26T19:40:36.413816",
-      "duration": 0.060116
+      "start": "2021-04-27T16:46:14.943212",
+      "end": "2021-04-27T16:46:16.264789",
+      "duration": 1.321577
     }
   ],
-  "end": "2021-04-26T19:40:39.516377",
-  "duration": 61.235068798065186,
+  "end": "2021-04-27T16:46:19.455977",
+  "duration": 62.65775203704834,
   "extensions": [
     {
       "name": "chaosiq",
-      "execution_id": "4ae1065a-58c8-41ad-a6e4-7f97eed011ec",
+      "execution_id": "1c7ac105-7d41-4ee4-8fc6-83c3da217864",
       "experiment_id": "48147c31-72ab-4256-812d-8a1f8d3e28a3",
       "safeguards": null
     }
