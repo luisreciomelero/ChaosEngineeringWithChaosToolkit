@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-sender-depl
+  labels:
+    app: sender-app
+    component: ms-sender
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sender-app
+      component: ms-sender
+  template:
+    metadata:
+      labels:
+        app: sender-app
+        component: ms-sender
+        version: ms-sender-v1
+    spec:
+      containers:
+      - name: ms-sender
+        image: luisreciomelero/ms-quarkus-sender:v1.0.2
+        #image: luisreciomelero/ms-quarkus-sender-native:v1.0.4
+        env:
+          - name: KAFKA_HOST
+            value: kafka:9092
+          - name: ENABLE_SMS
+            valueFrom:
+              configMapKeyRef:
+                name: config-sender
+                key: enable.sms
+        resources:
+          limits:
+            cpu: 500m
+            memory: 256Mi
+          requests:
+            cpu: 250m
+            memory: 64Mi
+        readinessProbe:
+          exec:
+            command:
+              - curl 
+              - "http://127.0.0.1:8091/health/ready"
+          initialDelaySeconds: 155
+          periodSeconds: 10
+        livenessProbe:
+          exec:
+            command:
+              - curl 
+              - "http://127.0.0.1:8091/health/live"
+          initialDelaySeconds: 120
+          periodSeconds: 20
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: ms-sender
+  labels:
+    app: sender-app
+    component: ms-sender
+spec:
+  type: ClusterIP
+  selector:
+    app: sender-app
+    component: ms-sender
+  ports:
+  - port: 8091
+    name: http-sender
+    targetPort: 8091
+
+---

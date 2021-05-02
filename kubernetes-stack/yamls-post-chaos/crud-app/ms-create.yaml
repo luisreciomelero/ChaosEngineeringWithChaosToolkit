@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-create-depl
+  labels:
+    app: crud-app
+    component: ms-create
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crud-app
+      component: ms-create
+  template:
+    metadata:
+      labels:
+        app: crud-app
+        component: ms-create
+        version: ms-create-v1
+    spec:
+      containers:
+      - name: ms-create
+        #image: luisreciomelero/ms-quarkus-create:v1.0.8
+        image: luisreciomelero/ms-quarkus-create-native:v1.0.5
+        env:
+          - name: KAFKA_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: config-ms-create
+                key: kafka.host
+          - name: POSTGRES_URL
+            valueFrom:
+              configMapKeyRef:
+                name: config-ms-create
+                key: postgres.host
+          - name: MAX_SIZE
+            valueFrom:
+              configMapKeyRef:
+                name: config-ms-create
+                key: database.max_size
+          - name: MIN_SIZE
+            valueFrom:
+              configMapKeyRef:
+                name: config-ms-create
+                key: database.min_size
+        resources:
+          limits:
+            cpu: 500m
+            memory: 256Mi
+          requests:
+            cpu: 250m
+            memory: 64Mi
+        readinessProbe:
+          exec:
+            command:
+              - curl 
+              - "http://127.0.0.1:8086/health/ready"
+          initialDelaySeconds: 155
+          periodSeconds: 10
+        livenessProbe:
+          exec:
+            command:
+             - curl 
+             - "http://127.0.0.1:8086/health/live"
+          initialDelaySeconds: 120
+          periodSeconds: 20
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: ms-create
+  labels:
+    app: crud-app
+    component: ms-create
+spec:
+  type: ClusterIP
+  selector:
+    app: crud-app
+    component: ms-create
+  ports:
+  - port: 8086
+    name: http-create
+    targetPort: 8086
+  
+
+

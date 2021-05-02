@@ -1,7 +1,0 @@
-experiments:
-  846e69e0-c776-46c9-a431-a7de0487556e:
-    ad7ea2e6-37e0-4421-b763-73bb5a55dd9f:
-      delay-mg.yaml:
-        experiment_id: 48147c31-72ab-4256-812d-8a1f8d3e28a3
-      delay-read.yaml:
-        experiment_id: d576a6ec-0c3c-4c1c-a494-c3095db8881f

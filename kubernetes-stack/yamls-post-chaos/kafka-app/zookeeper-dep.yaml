@@ -1,12 +1,14 @@
+
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   labels:
     app: kafka
     component: zookeeper
   name: zookeeper
 spec:
-  replicas: 1
+  replicas: 3
+  serviceName: zookeeper
   selector:
     matchLabels:
       app: kafka
@@ -25,4 +27,17 @@ spec:
         env:
         - name: ZOOKEEPER_ID
           value: "1"
-        - name: ZOOKEEPER_
+        - name: ZOOKEEPER_SERVER_1
+          value: zookeeper
+        volumeMounts:
+            - name: data
+              mountPath: /data
+              subPath: data
+            - name: data
+              mountPath: /datalog
+              subPath: datalog
+      volumes:
+        - name: data
+          hostPath:
+            path: /data
+            type: DirectoryOrCreate

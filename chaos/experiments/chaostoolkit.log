@@ -1,8 +1,0 @@
-[36m[2021-04-10 11:37:09 DEBUG] [cli:73][39m ###############################################################################
-[36m[2021-04-10 11:37:09 DEBUG] [cli:74][39m Running command 'run'
-[36m[2021-04-10 11:37:09 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
-[36m[2021-04-10 11:37:10 DEBUG] [settings:26][39m The Chaos Toolkit settings file could not be found at '/home/luisreciomelero/.chaostoolkit/settings.yaml'.
-[36m[2021-04-10 11:37:10 DEBUG] [__init__:355][39m No controls to apply on 'loader'
-[36m[2021-04-10 11:37:10 DEBUG] [__init__:355][39m No controls to apply on 'loader'
-[31m[2021-04-10 11:37:10 ERROR] [cli:164][39m Path "terminate-create-pod.yaml" does not exist.
-[36m[2021-04-10 11:37:10 DEBUG] [cli:165][39m Path "terminate-create-pod.yaml" does not exist.

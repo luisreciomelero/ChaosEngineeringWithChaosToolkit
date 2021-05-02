@@ -1,0 +1,117 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-mailer-depl
+  labels:
+    app: mailer-app
+    component: ms-mailer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mailer-app
+      component: ms-mailer
+  template:
+    metadata:
+      labels:
+        app: mailer-app
+        component: ms-mailer
+        version: ms-mailer-v1
+    spec:
+      containers:
+      - name: ms-mailer
+        image: luisreciomelero/ms-quarkus-mailer:v1.0.7
+        #image: luisreciomelero/ms-quarkus-mailer-native:v1.0.5
+        env:
+          - name: KAFKA_HOST
+            value: kafka:9092
+          - name: ENABLE_SMTP
+            valueFrom:
+              configMapKeyRef:
+                name: config-mailer
+                key: enable.smtp
+          - name: SMTP_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: config-mailer
+                key: smtp.host
+            #value: "fakesmtp"
+          - name: SMTP_PORT
+            #value: "2525"
+            valueFrom:
+              configMapKeyRef:
+                name: config-mailer
+                key: smtp.port
+          - name: SMTP_MAIL_FROM
+            valueFrom:
+              configMapKeyRef:
+                name: config-mailer
+                key: smtp.mail.from
+          - name: SMTP_SSL
+            valueFrom:
+              configMapKeyRef:
+                name: config-mailer
+                key: smtp.ssl
+            #value: "false"
+          - name: SMTP_USERNAME
+            valueFrom:
+              secretKeyRef: 
+                name: smtp-secret
+                key: stmp-username
+            #value: "apikey"
+          - name: SMTP_PASSWORD
+            valueFrom:
+              secretKeyRef: 
+                name: smtp-secret
+                key: stmp-password
+        resources:
+          limits:
+            cpu: 500m
+            memory: 256Mi
+          requests:
+            cpu: 250m
+            memory: 64Mi
+        readinessProbe:
+          exec:
+            command:
+              - curl 
+              - "http://127.0.0.1:8090/health/ready"
+          initialDelaySeconds: 155
+          periodSeconds: 10
+        livenessProbe:
+          exec:
+            command:
+              - curl 
+              - "http://127.0.0.1:8090/health/live"
+          initialDelaySeconds: 120
+          periodSeconds: 20
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: ms-mailer
+  labels:
+    app: mailer-app
+    component: ms-mailer
+spec:
+  type: ClusterIP
+  selector:
+    app: mailer-app
+    component: ms-mailer
+  ports:
+  - port: 8090
+    name: http-mailer
+    targetPort: 8090
+
+---
+  
+apiVersion: v1
+kind: Secret
+metadata:
+  name: smtp-secret
+type: Opaque
+data:
+  stmp-username: YXBpS2V5
+  stmp-password: U0cueW9XbWF6Z3dUSmVaNzlVYlhtYngwZy4welZzc2xocUxmNUVMdi1zbUp2Um5yWml6V3pYVk93S21zcktPcU5WbXlR
+

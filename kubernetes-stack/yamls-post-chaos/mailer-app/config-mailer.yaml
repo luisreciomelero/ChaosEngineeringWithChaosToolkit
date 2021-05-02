@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-mailer
+  namespace: default
+data:
+  enable.smtp: "false"
+  smtp.host: "smtp.sendgrid.net"
+  smtp.port: "465"
+  smtp.mail.from: "tfm.muirst.lrm@gmail.com"
+  smtp.ssl: "true"

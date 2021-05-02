@@ -1,0 +1,85 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-read-depl
+  labels:
+    app: read-app
+    component: ms-read
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: read-app
+      component: ms-read
+  template:
+    metadata:
+      labels:
+        app: read-app
+        component: ms-read
+        version: ms-read-v1
+    spec:
+      containers:
+      - name: ms-read
+        #image: luisreciomelero/ms-quarkus-read:v1.1.2
+        image: luisreciomelero/ms-quarkus-read-native:v1.0.4
+
+        env:
+          - name: POSTGRES_URL
+            valueFrom:
+              configMapKeyRef:
+                name: config-ms-read
+                key: postgres.host
+          - name: MAX_SIZE
+            valueFrom:
+              configMapKeyRef:
+                name: config-ms-read
+                key: database.max_size
+          - name: MIN_SIZE
+            valueFrom:
+              configMapKeyRef:
+                name: config-ms-read
+                key: database.min_size
+        resources:
+          limits:
+            cpu: 500m
+            memory: 256Mi
+          requests:
+            cpu: 250m
+            memory: 64Mi
+        readinessProbe:
+          exec:
+            command:
+              - curl 
+              - "http://127.0.0.1:8088/q/health/ready"
+          initialDelaySeconds: 155
+          periodSeconds: 10
+        livenessProbe:
+          exec:
+            command:
+              - curl 
+              - "http://127.0.0.1:8088/q/health/live"
+          initialDelaySeconds: 120
+          periodSeconds: 20
+        
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: ms-read
+  labels:
+    app: read-app
+    component: ms-read
+spec:
+  type: ClusterIP
+  selector:
+    app: read-app
+    component: ms-read
+  ports:
+  - port: 8088
+    name: http-read
+    targetPort: 8088
+  
+
+
