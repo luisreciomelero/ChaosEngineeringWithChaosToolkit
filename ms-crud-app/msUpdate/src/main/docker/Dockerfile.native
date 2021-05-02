@@ -7,7 +7,7 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.native -t quarkus/code-with-quarkus .
+# docker build -f src/main/docker/Dockerfile.native -t luisreciomelero/ms-quarkus-update-native:v1.0.2 .
 #
 # Then run the container using:
 #

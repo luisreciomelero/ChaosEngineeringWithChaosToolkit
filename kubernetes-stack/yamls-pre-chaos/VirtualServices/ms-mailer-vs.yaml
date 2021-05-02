@@ -12,3 +12,8 @@ spec:
         host: ms-mailer
         port:
           number: 8090
+    retries:
+      attempts: 10
+      perTryTimeout: 3s
+      retryOn: 5xx,connect-failure
+    timeout: 10s

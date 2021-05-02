@@ -1,0 +1,75 @@
+---
+
+
+
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: prueba-cron
+spec:
+  concurrencyPolicy: Forbid
+  schedule: "*/3 * * * *"
+  jobTemplate:
+    metadata:
+      labels:
+        app: prueba-cron
+    spec:
+      activeDeadlineSeconds: 600
+      backoffLimit: 0
+      template:
+        metadata:
+          labels:
+            app: prueba-cron
+          annotations:
+            sidecar.istio.io/inject: "false"
+        spec:
+          serviceAccountName: chaos-prueba
+          restartPolicy: Never
+          containers:
+          - name: chaos-prueba
+            #image: luisreciomelero/chaos-container:v1.0.1
+            image: vfarcic/chaostoolkit:1.4.1-2
+            args:
+            - --verbose
+            - run
+            - --journal-path
+            - /results/journal-health-http-mg.json
+            - /experiment/health-http-mg.yaml
+            
+            env:
+            - name: CHAOSTOOLKIT_IN_POD
+              value: "true"
+            volumeMounts:
+            - name: experiments
+              mountPath: /experiment
+              readOnly: true
+            - name: results
+              mountPath: /results
+              readOnly: false
+            resources:
+              limits:
+                cpu: 20m
+                memory: 64Mi
+              requests:
+                cpu: 20m
+                memory: 64Mi
+          volumes:
+          - name: experiments
+            configMap:
+              name: prueba-chaos
+          - name: results
+            persistentVolumeClaim:
+              claimName: chaos-pv
+
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: chaos-pv
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi

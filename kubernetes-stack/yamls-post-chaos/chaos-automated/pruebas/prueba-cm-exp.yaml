@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prueba-chaos
+data:
+  health-http-mg.yaml: |
+    version: 1.0.0
+    title: Qué ocurre si terminamos una instancia de un microservicio?
+    description: Se debe seguir dando servicio.
+    tags:
+    - k8s
+    - pod
+    steady-state-hypothesis:
+      title: La aplicación esta sana.
+      probes:
+      - name: app-responds-to-requests
+        type: probe
+        tolerance: 200
+        provider:
+          type: http
+          timeout: 3
+          verify_tls: false
+          url: http://mg-v1.default.svc.cluster.local:8081/health
+    method:
+    - type: action
+      name: terminate-app-pod
+      provider:
+        type: python
+        module: chaosk8s.pod.actions
+        func: terminate_pods
+        arguments:
+          label_selector: app=mg-backend
+          rand: true
+      pauses: 
+        after: 2

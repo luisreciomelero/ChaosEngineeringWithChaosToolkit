@@ -22,11 +22,24 @@ spec:
       containers:
       - name: ms-read
         #image: luisreciomelero/ms-quarkus-read:v1.1.2
-        image: luisreciomelero/ms-quarkus-read-native:v1.0.3
+        image: luisreciomelero/ms-quarkus-read-native:v1.0.4
 
         env:
           - name: POSTGRES_URL
-            value: "postgres:5432"
+            valueFrom:
+              configMapKeyRef:
+                name: config-ms-read
+                key: postgres.host
+          - name: MAX_SIZE
+            valueFrom:
+              configMapKeyRef:
+                name: config-ms-read
+                key: database.max_size
+          - name: MIN_SIZE
+            valueFrom:
+              configMapKeyRef:
+                name: config-ms-read
+                key: database.min_size
         resources:
           limits:
             cpu: 500m

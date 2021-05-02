@@ -1,4 +1,3 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -21,13 +20,29 @@ spec:
     spec:
       containers:
       - name: ms-create
-        image: luisreciomelero/ms-quarkus-create:v1.0.8
-        #image: luisreciomelero/ms-quarkus-create-native:v1.0.4
+        #image: luisreciomelero/ms-quarkus-create:v1.0.8
+        image: luisreciomelero/ms-quarkus-create-native:v1.0.5
         env:
           - name: KAFKA_HOST
-            value: kafka:9092
+            valueFrom:
+              configMapKeyRef:
+                name: config-ms-create
+                key: kafka.host
           - name: POSTGRES_URL
-            value: "postgres:5432"
+            valueFrom:
+              configMapKeyRef:
+                name: config-ms-create
+                key: postgres.host
+          - name: MAX_SIZE
+            valueFrom:
+              configMapKeyRef:
+                name: config-ms-create
+                key: database.max_size
+          - name: MIN_SIZE
+            valueFrom:
+              configMapKeyRef:
+                name: config-ms-create
+                key: database.min_size
         resources:
           limits:
             cpu: 500m

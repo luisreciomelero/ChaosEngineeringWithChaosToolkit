@@ -26,4 +26,9 @@ spec:
         host: ms-create
         port:
           number: 8086
+    retries:
+      attempts: 10
+      perTryTimeout: 3s
+      retryOn: 5xx,connect-failure
+    timeout: 10s
         

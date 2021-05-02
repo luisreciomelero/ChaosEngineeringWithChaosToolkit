@@ -13,7 +13,7 @@ steady-state-hypothesis:
   probes:
   - name: pod-exists
     type: probe
-    tolerance: 1
+    tolerance: 2
     provider:
       type: python
       func: count_pods
@@ -68,4 +68,4 @@ method:
           app=mg-backend
         ns: default
   pauses: 
-    after: 200
+    after: 20

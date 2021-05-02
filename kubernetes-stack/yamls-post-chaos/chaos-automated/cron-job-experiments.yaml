@@ -1,0 +1,134 @@
+---
+
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: chaos-cronjob-health-http
+spec:
+  concurrencyPolicy: Forbid
+  schedule: "*/5 * * * *"
+  jobTemplate:
+    metadata:
+      labels:
+        app: chaos-cronjob-health-http
+    spec:
+      activeDeadlineSeconds: 600
+      backoffLimit: 0
+      template:
+        metadata:
+          labels:
+            app: chaos-cronjob-health-http
+          annotations:
+            sidecar.istio.io/inject: "false"
+        spec:
+          serviceAccountName: chaos-sa
+          restartPolicy: Never
+          containers:
+          - name: chaos-container
+            image: luisreciomelero/chaos-container:v1.0.1
+            args:
+            - --verbose
+            - run
+            - --journal-path
+            - /results/journal-health-http-mg.json
+            - /experiment/health-http-mg.yaml
+            env:
+            - name: CHAOSTOOLKIT_IN_POD
+              value: "true"
+            volumeMounts:
+            - name: experiments
+              mountPath: /experiment
+              readOnly: true
+            - name: results
+              mountPath: /results
+              readOnly: false
+            resources:
+              limits:
+                cpu: 20m
+                memory: 64Mi
+              requests:
+                cpu: 20m
+                memory: 64Mi
+          volumes:
+          - name: experiments
+            configMap:
+              name: chaos-experiments-configmap
+          - name: results
+            persistentVolumeClaim:
+              claimName: chaos-pv
+
+---
+
+
+
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: chaos-cronjob-delay-and-abort
+spec:
+  concurrencyPolicy: Forbid
+  schedule: "*/3 * * * *"
+  jobTemplate:
+    metadata:
+      labels:
+        app: chaos-cronjob-delay-and-abort
+    spec:
+      activeDeadlineSeconds: 600
+      backoffLimit: 0
+      template:
+        metadata:
+          labels:
+            app: chaos-cronjob-delay-and-abort
+          annotations:
+            sidecar.istio.io/inject: "false"
+        spec:
+          serviceAccountName: chaos-sa
+          restartPolicy: Never
+          containers:
+          - name: chaos-container
+            image: luisreciomelero/chaos-container:v1.0.1
+            args:
+            - --verbose
+            - run
+            - --journal-path
+            - /results/journal-add-delay-and-abort-faults-mg.json
+            - /experiment/add-delay-and-abort-faults-mg.yaml
+            - --rollback-strategy
+            - always
+            env:
+            - name: CHAOSTOOLKIT_IN_POD
+              value: "true"
+            volumeMounts:
+            - name: experiments
+              mountPath: /experiment
+              readOnly: true
+            - name: results
+              mountPath: /results
+              readOnly: false
+            resources:
+              limits:
+                cpu: 20m
+                memory: 64Mi
+              requests:
+                cpu: 20m
+                memory: 64Mi
+          volumes:
+          - name: experiments
+            configMap:
+              name: chaos-experiments-configmap
+          - name: results
+            persistentVolumeClaim:
+              claimName: chaos-pv
+
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: chaos-pv
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi

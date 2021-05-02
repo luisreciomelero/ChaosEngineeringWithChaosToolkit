@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config-ms-read
+  namespace: default
+data:
+  database.max_size: "50"
+  database.min_size: "1"
+  postgres.host: "postgres:5432"

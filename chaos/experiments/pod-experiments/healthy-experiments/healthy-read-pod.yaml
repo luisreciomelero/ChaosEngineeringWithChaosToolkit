@@ -19,7 +19,7 @@ steady-state-hypothesis:
       type: http
       timeout: 3
       verify_tls: false
-      url: http://${ingress_host}/mg/q/health/ready
+      url: http://${ingress_host}/read/q/health
 method:
 - name: read-pod-logs
   provider:

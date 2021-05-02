@@ -6,7 +6,6 @@ metadata:
   labels:
     app: mg-backend
     release: primary
-  #namespace: openfaas
 spec:
   replicas: 2
   selector:

@@ -1,0 +1,7 @@
+experiments:
+  846e69e0-c776-46c9-a431-a7de0487556e:
+    ad7ea2e6-37e0-4421-b763-73bb5a55dd9f:
+      healthy-mg-pod.yaml:
+        experiment_id: c32a18ac-5c1e-4748-97fc-26fe32933869
+      healthy-read-pod.yaml:
+        experiment_id: 0e362782-9627-4a19-bcce-51b6db09d8f8

@@ -1993,3 +1993,211 @@
 [36m[2021-04-25 22:58:03 DEBUG] [__init__:188][39m Cleaning up global control 'chaosiq-cloud'
 [36m[2021-04-25 22:58:03 DEBUG] [python:159][39m Control module '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py' does not declare 'cleanup_control'
 [36m[2021-04-25 22:58:03 DEBUG] [caching:42][39m Clearing activities cache
+[36m[2021-05-01 22:53:14 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-05-01 22:53:15 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-05-01 22:53:15 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-05-01 22:53:16 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-05-01 22:53:16 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-01 22:53:16 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:53:16 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-01 22:53:16 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:53:16 DEBUG] [controls:109][39m Using experiment ID b421c2e8-6bc4-4a69-b2a1-7e0f4673f763 from workspace for experiment at location terminate-mg-pod-ssh-running-and-ready.yaml
+[36m[2021-05-01 22:53:16 DEBUG] [caching:25][39m Building activity cache...
+[36m[2021-05-01 22:53:16 DEBUG] [caching:35][39m Cached 5 activities
+[32m[2021-05-01 22:53:16 INFO] [experiment:47][39m Validating the experiment's syntax
+[36m[2021-05-01 22:53:16 DEBUG] [configuration:54][39m Loading configuration...
+[36m[2021-05-01 22:53:16 DEBUG] [secret:75][39m Loading secrets...
+[36m[2021-05-01 22:53:16 DEBUG] [secret:92][39m Secrets loaded
+[32m[2021-05-01 22:53:16 INFO] [experiment:96][39m Experiment looks valid
+[36m[2021-05-01 22:53:16 DEBUG] [caching:42][39m Clearing activities cache
+[36m[2021-05-01 22:53:16 DEBUG] [caching:25][39m Building activity cache...
+[36m[2021-05-01 22:53:16 DEBUG] [caching:35][39m Cached 5 activities
+[36m[2021-05-01 22:53:16 DEBUG] [configuration:54][39m Loading configuration...
+[36m[2021-05-01 22:53:16 DEBUG] [secret:75][39m Loading secrets...
+[36m[2021-05-01 22:53:16 DEBUG] [secret:92][39m Secrets loaded
+[32m[2021-05-01 22:53:16 INFO] [run:323][39m Running experiment: ¿Qué ocurre cuando eliminamos el pod donde se ejecuta el microgateway?
+[36m[2021-05-01 22:53:16 DEBUG] [__init__:136][39m Initializing global control 'chaosiq-cloud'
+[36m[2021-05-01 22:53:16 DEBUG] [python:166][39m Control 'configure_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[33m[2021-05-01 22:53:18 WARNING] [execution:62][39m Execution failed to be published: Internal Server Error
+[36m[2021-05-01 22:53:18 DEBUG] [workspace:108][39m Saving workspace at .chaosiq
+[36m[2021-05-01 22:53:18 DEBUG] [__init__:39][39m Initializing controls
+[32m[2021-05-01 22:53:18 INFO] [run:342][39m Steady-state strategy: default
+[32m[2021-05-01 22:53:18 INFO] [run:345][39m Rollbacks strategy: default
+[36m[2021-05-01 22:53:18 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'experiment'
+[36m[2021-05-01 22:53:18 DEBUG] [python:166][39m Control 'before_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:53:18 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[36m[2021-05-01 22:53:18 DEBUG] [run:466][39m Running steady-state hypothesis before the method
+[32m[2021-05-01 22:53:18 INFO] [hypothesis:183][39m Steady state hypothesis: Pod exists
+[36m[2021-05-01 22:53:18 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'hypothesis'
+[36m[2021-05-01 22:53:18 DEBUG] [python:166][39m Control 'before_hypothesis_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:53:18 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[36m[2021-05-01 22:53:18 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-05-01 22:53:18 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:53:18 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[32m[2021-05-01 22:53:18 INFO] [activity:161][39m Probe: pod-exists
+[36m[2021-05-01 22:53:18 DEBUG] [python:34][39m Activity 'pod-exists' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosk8s/pod/probes.py'
+[36m[2021-05-01 22:53:18 DEBUG] [__init__:65][39m Using Kubernetes context: default
+[36m[2021-05-01 22:53:18 DEBUG] [probes:202][39m Found 2 pods matching label 'app=mg-backend' in ns 'default'
+[36m[2021-05-01 22:53:18 DEBUG] [activity:180][39m   => succeeded with '2'
+[36m[2021-05-01 22:53:18 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-05-01 22:53:18 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:53:18 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[36m[2021-05-01 22:53:18 DEBUG] [hypothesis:211][39m allowed tolerance is 1
+[36m[2021-05-01 22:53:18 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'hypothesis'
+[36m[2021-05-01 22:53:18 DEBUG] [python:166][39m Control 'after_hypothesis_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:53:18 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[31m[2021-05-01 22:53:18 CRITICAL] [run:477][39m Steady state probe 'pod-exists' is not in the given tolerance so failing this experiment
+[32m[2021-05-01 22:53:18 INFO] [run:421][39m Experiment ended with status: failed
+[36m[2021-05-01 22:53:18 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'experiment'
+[36m[2021-05-01 22:53:18 DEBUG] [python:166][39m Control 'after_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:53:18 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[36m[2021-05-01 22:53:18 DEBUG] [execution:82][39m Cannot publish execution to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[36m[2021-05-01 22:53:18 DEBUG] [__init__:72][39m Cleaning up controls
+[36m[2021-05-01 22:53:18 DEBUG] [__init__:188][39m Cleaning up global control 'chaosiq-cloud'
+[36m[2021-05-01 22:53:18 DEBUG] [python:159][39m Control module '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py' does not declare 'cleanup_control'
+[36m[2021-05-01 22:53:18 DEBUG] [caching:42][39m Clearing activities cache
+[36m[2021-05-01 22:54:05 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-05-01 22:54:05 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-05-01 22:54:05 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-05-01 22:54:06 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-05-01 22:54:06 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-01 22:54:06 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:06 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-01 22:54:06 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:06 DEBUG] [controls:109][39m Using experiment ID b421c2e8-6bc4-4a69-b2a1-7e0f4673f763 from workspace for experiment at location terminate-mg-pod-ssh-running-and-ready.yaml
+[36m[2021-05-01 22:54:06 DEBUG] [caching:25][39m Building activity cache...
+[36m[2021-05-01 22:54:06 DEBUG] [caching:35][39m Cached 4 activities
+[32m[2021-05-01 22:54:06 INFO] [experiment:47][39m Validating the experiment's syntax
+[36m[2021-05-01 22:54:06 DEBUG] [configuration:54][39m Loading configuration...
+[36m[2021-05-01 22:54:06 DEBUG] [secret:75][39m Loading secrets...
+[36m[2021-05-01 22:54:06 DEBUG] [secret:92][39m Secrets loaded
+[32m[2021-05-01 22:54:07 INFO] [experiment:96][39m Experiment looks valid
+[36m[2021-05-01 22:54:07 DEBUG] [caching:42][39m Clearing activities cache
+[36m[2021-05-01 22:54:07 DEBUG] [caching:25][39m Building activity cache...
+[36m[2021-05-01 22:54:07 DEBUG] [caching:35][39m Cached 4 activities
+[36m[2021-05-01 22:54:07 DEBUG] [configuration:54][39m Loading configuration...
+[36m[2021-05-01 22:54:07 DEBUG] [secret:75][39m Loading secrets...
+[36m[2021-05-01 22:54:07 DEBUG] [secret:92][39m Secrets loaded
+[32m[2021-05-01 22:54:07 INFO] [run:323][39m Running experiment: ¿Qué ocurre cuando eliminamos el pod donde se ejecuta el microgateway?
+[36m[2021-05-01 22:54:07 DEBUG] [__init__:136][39m Initializing global control 'chaosiq-cloud'
+[36m[2021-05-01 22:54:07 DEBUG] [python:166][39m Control 'configure_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[33m[2021-05-01 22:54:09 WARNING] [execution:62][39m Execution failed to be published: Internal Server Error
+[36m[2021-05-01 22:54:09 DEBUG] [workspace:108][39m Saving workspace at .chaosiq
+[36m[2021-05-01 22:54:09 DEBUG] [__init__:39][39m Initializing controls
+[32m[2021-05-01 22:54:09 INFO] [run:342][39m Steady-state strategy: default
+[32m[2021-05-01 22:54:09 INFO] [run:345][39m Rollbacks strategy: default
+[36m[2021-05-01 22:54:09 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'experiment'
+[36m[2021-05-01 22:54:09 DEBUG] [python:166][39m Control 'before_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:09 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[36m[2021-05-01 22:54:09 DEBUG] [run:466][39m Running steady-state hypothesis before the method
+[32m[2021-05-01 22:54:09 INFO] [hypothesis:183][39m Steady state hypothesis: Pod exists
+[36m[2021-05-01 22:54:09 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'hypothesis'
+[36m[2021-05-01 22:54:09 DEBUG] [python:166][39m Control 'before_hypothesis_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:09 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[36m[2021-05-01 22:54:09 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-05-01 22:54:09 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:09 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[32m[2021-05-01 22:54:09 INFO] [activity:161][39m Probe: pod-in-phase
+[36m[2021-05-01 22:54:09 DEBUG] [python:34][39m Activity 'pod-in-phase' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosk8s/pod/probes.py'
+[36m[2021-05-01 22:54:09 DEBUG] [__init__:65][39m Using Kubernetes context: default
+[36m[2021-05-01 22:54:09 DEBUG] [probes:97][39m Found 2 pods matching label 'app=mg-backend' in ns 'default'
+[36m[2021-05-01 22:54:09 DEBUG] [activity:180][39m   => succeeded with 'True'
+[36m[2021-05-01 22:54:09 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-05-01 22:54:09 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:09 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[36m[2021-05-01 22:54:09 DEBUG] [hypothesis:211][39m allowed tolerance is True
+[36m[2021-05-01 22:54:09 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-05-01 22:54:09 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:09 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[32m[2021-05-01 22:54:09 INFO] [activity:161][39m Probe: pod-in-conditions
+[36m[2021-05-01 22:54:09 DEBUG] [python:34][39m Activity 'pod-in-conditions' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosk8s/pod/probes.py'
+[36m[2021-05-01 22:54:09 DEBUG] [__init__:65][39m Using Kubernetes context: default
+[36m[2021-05-01 22:54:09 DEBUG] [probes:130][39m Found 2 pods matching label 'app=mg-backend' in ns 'default'
+[36m[2021-05-01 22:54:09 DEBUG] [activity:180][39m   => succeeded with 'True'
+[36m[2021-05-01 22:54:09 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-05-01 22:54:09 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:09 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[36m[2021-05-01 22:54:09 DEBUG] [hypothesis:211][39m allowed tolerance is True
+[36m[2021-05-01 22:54:09 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-05-01 22:54:09 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:09 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[32m[2021-05-01 22:54:09 INFO] [activity:161][39m Probe: app-responds-to-requests
+[36m[2021-05-01 22:54:09 DEBUG] [activity:180][39m   => succeeded with '{'status': 200, 'headers': {'content-type': 'application/json; charset=UTF-8', 'content-length': '1284', 'x-envoy-upstream-service-time': '6', 'date': 'Sat, 01 May 2021 20:54:09 GMT', 'server': 'istio-envoy'}, 'body': '\n{\n    "status": "UP",\n    "checks": [\n        {\n            "name": "Liveness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - liveness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        },\n        {\n            "name": "Database connections health check",\n            "status": "UP"\n        },\n        {\n            "name": "Readiness check",\n            "status": "UP"\n        },\n        {\n            "name": "SmallRye Reactive Messaging - readiness check",\n            "status": "UP",\n            "data": {\n                "usuarios-delete": "[OK]",\n                "usuarios-sendemail": "[OK]",\n                "usuarios-sendnotification": "[OK]",\n                "usuarios-create": "[OK]",\n                "handlednotification-usuarios": "[OK]",\n                "usuarios-update": "[OK]",\n                "usuarios-sendsms": "[OK]"\n            }\n        }\n    ]\n}'}'
+[36m[2021-05-01 22:54:09 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-05-01 22:54:09 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:09 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[36m[2021-05-01 22:54:09 DEBUG] [hypothesis:211][39m allowed tolerance is 200
+[32m[2021-05-01 22:54:09 INFO] [hypothesis:221][39m Steady state hypothesis is met!
+[36m[2021-05-01 22:54:09 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'hypothesis'
+[36m[2021-05-01 22:54:09 DEBUG] [python:166][39m Control 'after_hypothesis_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:09 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[32m[2021-05-01 22:54:09 INFO] [run:553][39m Playing your experiment's method now...
+[36m[2021-05-01 22:54:09 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'method'
+[36m[2021-05-01 22:54:09 DEBUG] [python:166][39m Control 'before_method_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:09 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[36m[2021-05-01 22:54:09 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-05-01 22:54:09 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:09 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[32m[2021-05-01 22:54:09 INFO] [activity:161][39m Action: terminate-pod
+[36m[2021-05-01 22:54:09 DEBUG] [python:34][39m Activity 'terminate-pod' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosk8s/pod/actions.py'
+[36m[2021-05-01 22:54:09 DEBUG] [__init__:65][39m Using Kubernetes context: default
+[36m[2021-05-01 22:54:09 DEBUG] [actions:193][39m Found 2 pods labelled 'app=mg-backend' in ns default
+[36m[2021-05-01 22:54:09 DEBUG] [activity:182][39m   => succeeded without any result value
+[32m[2021-05-01 22:54:09 INFO] [activity:198][39m Pausing after activity for 2s...
+[36m[2021-05-01 22:54:11 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-05-01 22:54:11 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:11 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[36m[2021-05-01 22:54:11 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'method'
+[36m[2021-05-01 22:54:11 DEBUG] [python:166][39m Control 'after_method_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:11 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[36m[2021-05-01 22:54:11 DEBUG] [run:496][39m Running steady-state hypothesis after the method
+[32m[2021-05-01 22:54:11 INFO] [hypothesis:183][39m Steady state hypothesis: Pod exists
+[36m[2021-05-01 22:54:11 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'hypothesis'
+[36m[2021-05-01 22:54:11 DEBUG] [python:166][39m Control 'before_hypothesis_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:11 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[36m[2021-05-01 22:54:11 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'activity'
+[36m[2021-05-01 22:54:11 DEBUG] [python:166][39m Control 'before_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:11 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[32m[2021-05-01 22:54:11 INFO] [activity:161][39m Probe: pod-in-phase
+[36m[2021-05-01 22:54:11 DEBUG] [python:34][39m Activity 'pod-in-phase' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosk8s/pod/probes.py'
+[36m[2021-05-01 22:54:11 DEBUG] [__init__:65][39m Using Kubernetes context: default
+[36m[2021-05-01 22:54:11 DEBUG] [probes:97][39m Found 3 pods matching label 'app=mg-backend' in ns 'default'
+[36m[2021-05-01 22:54:11 DEBUG] [activity:235][39m Activity failed
+    Traceback (most recent call last):
+      File "/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoslib/provider/python.py", line 55, in run_python_activity
+        return func(**arguments)
+      File "/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosk8s/pod/probes.py", line 110, in pods_in_phase
+        raise ActivityFailed(
+    chaoslib.exceptions.ActivityFailed: pod 'app=mg-backend' is in phase 'Pending' but should be 'Running'
+    
+    During handling of the above exception, another exception occurred:
+    
+    Traceback (most recent call last):
+      File "/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoslib/activity.py", line 228, in run_activity
+        result = run_python_activity(activity, configuration, secrets)
+      File "/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoslib/provider/python.py", line 57, in run_python_activity
+        raise ActivityFailed(
+      File "/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoslib/provider/python.py", line 55, in run_python_activity
+        return func(**arguments)
+      File "/home/luisreciomelero/.local/lib/python3.8/site-packages/chaosk8s/pod/probes.py", line 110, in pods_in_phase
+        raise ActivityFailed(
+    chaoslib.exceptions.ActivityFailed: chaoslib.exceptions.ActivityFailed: pod 'app=mg-backend' is in phase 'Pending' but should be 'Running'
+[31m[2021-05-01 22:54:12 ERROR] [activity:188][39m   => failed: chaoslib.exceptions.ActivityFailed: pod 'app=mg-backend' is in phase 'Pending' but should be 'Running'
+[36m[2021-05-01 22:54:12 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'activity'
+[36m[2021-05-01 22:54:12 DEBUG] [python:166][39m Control 'after_activity_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:12 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[33m[2021-05-01 22:54:12 WARNING] [hypothesis:200][39m Probe terminated unexpectedly, so its tolerance could not be validated
+[36m[2021-05-01 22:54:12 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'hypothesis'
+[36m[2021-05-01 22:54:12 DEBUG] [python:166][39m Control 'after_hypothesis_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:12 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[31m[2021-05-01 22:54:12 CRITICAL] [run:507][39m Steady state probe 'pod-in-phase' is not in the given tolerance so failing this experiment
+[32m[2021-05-01 22:54:12 INFO] [run:421][39m Experiment ended with status: deviated
+[32m[2021-05-01 22:54:12 INFO] [run:423][39m The steady-state has deviated, a weakness may have been discovered
+[36m[2021-05-01 22:54:12 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'experiment'
+[36m[2021-05-01 22:54:12 DEBUG] [python:166][39m Control 'after_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-01 22:54:12 DEBUG] [execution:148][39m Cannot send event to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[36m[2021-05-01 22:54:12 DEBUG] [execution:82][39m Cannot publish execution to ChaosIQ because execution identifier was not found in the experiment's extensions block.
+[36m[2021-05-01 22:54:12 DEBUG] [__init__:72][39m Cleaning up controls
+[36m[2021-05-01 22:54:12 DEBUG] [__init__:188][39m Cleaning up global control 'chaosiq-cloud'
+[36m[2021-05-01 22:54:12 DEBUG] [python:159][39m Control module '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py' does not declare 'cleanup_control'
+[36m[2021-05-01 22:54:12 DEBUG] [caching:42][39m Clearing activities cache

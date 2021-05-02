@@ -50,7 +50,7 @@ kubectl apply -f "mg-deploy.yaml"
 
 cd "../crud-app"
 
-kubectl apply -f "ms-create.yaml,ms-delete.yaml,ms-update.yaml,ms-read.yaml"
+kubectl apply -f "."
 
 cd "../mailer-app"
 

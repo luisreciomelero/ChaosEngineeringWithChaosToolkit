@@ -48,7 +48,6 @@ method:
             subset: primary
       percentage: 50
       version: networking.istio.io/v1alpha3
-      ns: istio-system
   pauses: 
     after: 5
 rollbacks:
@@ -65,4 +64,3 @@ rollbacks:
             host: ms-read.default.svc.cluster.local
             subset: primary
       version: networking.istio.io/v1alpha3
-      ns: istio-system

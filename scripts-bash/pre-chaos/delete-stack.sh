@@ -18,7 +18,7 @@ kubectl delete -f "mg-deploy.yaml"
 
 cd "../crud-app"
 
-kubectl delete -f "ms-create.yaml,ms-delete.yaml,ms-update.yaml,ms-read.yaml"
+kubectl delete -f "."
 
 cd "../mailer-app"
 

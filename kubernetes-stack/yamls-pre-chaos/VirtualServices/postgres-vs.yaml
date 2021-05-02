@@ -12,3 +12,8 @@ spec:
         host: postgres
         port:
           number: 5432
+    retries:
+      attempts: 10
+      perTryTimeout: 3s
+      retryOn: 5xx,connect-failure
+    timeout: 10s

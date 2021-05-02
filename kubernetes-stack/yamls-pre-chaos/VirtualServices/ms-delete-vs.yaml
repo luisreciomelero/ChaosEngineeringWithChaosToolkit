@@ -12,3 +12,8 @@ spec:
         host: ms-delete
         port:
           number: 8087
+    retries:
+      attempts: 10
+      perTryTimeout: 3s
+      retryOn: 5xx,connect-failure
+    timeout: 10s

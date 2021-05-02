@@ -1,0 +1,431 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: chaos-experiments-configmap
+data:
+  health-http-mg.yaml: |
+    version: 1.0.0
+    title: Qué ocurre si terminamos una instancia de un microservicio?
+    description: Se debe seguir dando servicio.
+    tags:
+    - k8s
+    - pod
+    steady-state-hypothesis:
+      title: La aplicación esta sana.
+      probes:
+      - name: app-responds-to-requests
+        type: probe
+        tolerance: 200
+        provider:
+          type: http
+          timeout: 3
+          verify_tls: false
+          url: http://mg-v1.default.svc.cluster.local:8081/health
+    method:
+    - type: action
+      name: terminate-app-pod
+      provider:
+        type: python
+        module: chaosk8s.pod.actions
+        func: terminate_pods
+        arguments:
+          label_selector: app=mg-backend
+          rand: true
+      pauses: 
+        after: 2
+  health-http-read.yaml: |
+    version: 1.0.0
+    title: Qué ocurre si terminamos una instancia de un microservicio?
+    description: Se debe seguir dando servicio.
+    tags:
+    - k8s
+    - pod
+    steady-state-hypothesis:
+      title: La aplicación esta sana.
+      probes:
+      - name: app-responds-to-requests
+        type: probe
+        tolerance: 200
+        provider:
+          type: http
+          timeout: 3
+          verify_tls: false
+          url: http://ms-read.default.svc.cluster.local:8088/q/health
+    method:
+    - type: action
+      name: terminate-app-pod
+      provider:
+        type: python
+        module: chaosk8s.pod.actions
+        func: terminate_pods
+        arguments:
+          label_selector: app=read-app
+          rand: true
+      pauses: 
+        after: 2
+  terminate-cud-pod.yaml: |
+    version: 1.0.0
+    title: ¿Qué ocurre cuando eliminamos un microservicio cud?
+    description: Al estar manejado por un deployment debería levantarse otro de forma inmediata.
+    tags:
+    - k8s
+    - pod
+    steady-state-hypothesis:
+      title: Pod exists
+      probes:
+      - name: pod-in-phase
+        type: probe
+        tolerance: true
+        provider:
+          type: python
+          func: pods_in_phase
+          module: chaosk8s.pod.probes
+          arguments:
+            label_selector: 
+              app=crud-app
+            ns: default
+            phase: Running
+      - name: pod-in-conditions
+        type: probe
+        tolerance: true
+        provider:
+          type: python
+          func: pods_in_conditions
+          module: chaosk8s.pod.probes
+          arguments:
+            label_selector: 
+              app=crud-app
+            ns: default
+            conditions:
+            - type: Ready
+              status: "True"
+    method:
+    - type: action
+      name: terminate-pod
+      provider:
+        type: python
+        module: chaosk8s.pod.actions
+        func: terminate_pods
+        arguments:
+            label_selector: 
+              app=crud-app
+            rand: true
+      pauses: 
+        after: 200
+  terminate-rand-pod-kafka-app.yaml: |
+   version: 1.0.0
+    title: ¿Qué ocurre cuando eliminamos un pod aleatorio en el que se ejecuta el contenedor de Kafka o Zookeeper?
+    description: Al estar manejado por un deployment debería levantarse otro de forma inmediata.
+    tags:
+    - k8s
+    - pod
+    steady-state-hypothesis:
+      title: Pod exists
+      probes:
+      - name: pod-exists
+        type: probe
+        tolerance: 6
+        provider:
+          type: python
+          func: count_pods
+          module: chaosk8s.pod.probes
+          arguments:
+            label_selector: 
+              app=kafka
+            ns: default
+      - name: pod-in-phase
+        type: probe
+        tolerance: true
+        provider:
+          type: python
+          func: pods_in_phase
+          module: chaosk8s.pod.probes
+          arguments:
+            label_selector: 
+              app=kafka
+            ns: default
+            phase: Running
+      - name: pod-in-conditions
+        type: probe
+        tolerance: true
+        provider:
+          type: python
+          func: pods_in_conditions
+          module: chaosk8s.pod.probes
+          arguments:
+            label_selector: 
+              app=kafka
+            ns: default
+            conditions:
+            - type: Ready
+              status: "True"
+    method:
+    - type: action
+      name: terminate-pod
+      provider:
+        type: python
+        module: chaosk8s.pod.actions
+        func: terminate_pods
+        arguments:
+            label_selector: 
+              app=kafka
+            rand: true
+            ns: default
+      pauses: 
+        after: 300
+  abort-failure-rollback-mg.yaml: |
+    version: 1.0.0
+    title: ¿Qué ocurre si abortamos las respuestas del mg?
+    description: Se debes reintentar las peticiones.
+    tags:
+    - k8s
+    - istio
+    - http
+    steady-state-hypothesis:
+      title: The app is healthy
+      probes:
+      - type: probe
+        name: app-responds-to-requests
+        tolerance: 200
+        provider:
+          type: http
+          timeout: 10
+          verify_tls: false
+          url: http://mg-v1.default.svc.cluster.local:8081/health
+          headers:
+            Host: repeater.acme.com
+      - type: probe
+        tolerance: 200
+        ref: app-responds-to-requests
+      - type: probe
+        tolerance: 200
+        ref: app-responds-to-requests
+      - type: probe
+        tolerance: 200
+        ref: app-responds-to-requests
+      - type: probe
+        tolerance: 200
+        ref: app-responds-to-requests
+    method:
+    - type: action
+      name: abort-failure
+      provider:
+        type: python
+        module: chaosistio.fault.actions
+        func: add_abort_fault
+        arguments:
+          virtual_service_name: mg-v1-vs
+          http_status: 503
+          routes:
+            - destination:
+                host: mg-v1.default.svc.cluster.local
+                subset: primary
+          percentage: 50
+          version: networking.istio.io/v1alpha3
+      pauses: 
+        after: 5
+    rollbacks:
+    - type: action
+      name: remove-abort-failure
+      provider:
+        type: python
+        func: remove_abort_fault
+        module: chaosistio.fault.actions
+        arguments:
+          virtual_service_name: mg-v1-vs
+          routes:
+            - destination:
+                host: mg-v1.default.svc.cluster.local
+                subset: primary
+          version: networking.istio.io/v1alpha3
+  abort-failure-rollback-ms-read.yaml: |
+    version: 1.0.0
+    title: ¿Qué ocurre si abortamos las respuestas del mg?
+    description: Se debes reintentar las peticiones.
+    tags:
+    - k8s
+    - istio
+    - http
+    steady-state-hypothesis:
+      title: The app is healthy
+      probes:
+      - type: probe
+        name: app-responds-to-requests
+        tolerance: 200
+        provider:
+          type: http
+          timeout: 10
+          verify_tls: false
+          url: http://ms-read.default.svc.cluster.local:8088/health
+          headers:
+            Host: repeater.acme.com
+      - type: probe
+        tolerance: 200
+        ref: app-responds-to-requests
+      - type: probe
+        tolerance: 200
+        ref: app-responds-to-requests
+      - type: probe
+        tolerance: 200
+        ref: app-responds-to-requests
+      - type: probe
+        tolerance: 200
+        ref: app-responds-to-requests
+    method:
+    - type: action
+      name: abort-failure
+      provider:
+        type: python
+        module: chaosistio.fault.actions
+        func: add_abort_fault
+        arguments:
+          virtual_service_name: ms-read-vs
+          http_status: 503
+          routes:
+            - destination:
+                host: ms-read.default.svc.cluster.local
+                subset: primary
+          percentage: 50
+          version: networking.istio.io/v1alpha3
+      pauses: 
+        after: 5
+    rollbacks:
+    - type: action
+      name: remove-abort-failure
+      provider:
+        type: python
+        func: remove_abort_fault
+        module: chaosistio.fault.actions
+        arguments:
+          virtual_service_name: ms-read-vs
+          routes:
+            - destination:
+                host: ms-read.default.svc.cluster.local
+                subset: primary
+          version: networking.istio.io/v1alpha3
+  add-delay-and-abort-faults-mg.yaml: |
+    version: 1.0.0
+    title: ¿Qué ocurre si además de abortar las respuestas les añadimos un retraso?
+    description: Se debería reintentar la petición, ya sea que se pase el timeout o se reciba un codigo erroneo en la respuesta.
+    tags:
+    - k8s
+    - istio
+    - http
+    steady-state-hypothesis:
+      title: The app is healthy
+      probes:
+      - type: probe
+        name: app-responds-to-requests
+        tolerance: 200
+        provider:
+          type: http
+          timeout: 15
+          verify_tls: false
+          url: http://mg-v1.default.svc.cluster.local:8081/health
+      - type: probe
+        tolerance: 200
+        ref: app-responds-to-requests
+      - type: probe
+        tolerance: 200
+        ref: app-responds-to-requests
+      - type: probe
+        tolerance: 200
+        ref: app-responds-to-requests
+      - type: probe
+        tolerance: 200
+        ref: app-responds-to-requests
+    method:
+    - type: action
+      name: delay
+      provider:
+        type: python
+        module: chaosistio.fault.actions
+        func: add_delay_fault
+        arguments:
+          virtual_service_name: mg-v1-vs
+          fixed_delay: 10s
+          routes:
+            - destination:
+                host: mg-v1.default.svc.cluster.local
+                subset: primary
+          percentage: 50
+          version: networking.istio.io/v1alpha3
+      pauses: 
+        after: 5
+    rollbacks:
+    - type: action
+      name: remove-delay
+      provider:
+        type: python
+        func: remove_delay_fault
+        module: chaosistio.fault.actions
+        arguments:
+          virtual_service_name: mg-v1-vs
+          routes:
+            - destination:
+                host: mg-v1.default.svc.cluster.local
+                subset: primary
+          version: networking.istio.io/v1alpha3
+  add-delay-and-abort-faults-ms-read.yaml: |
+    version: 1.0.0
+    title: What happens if we abort and delay responses
+    description: If responses are aborted and delayed, the dependant application should retry and/or timeout requests
+    tags:
+    - k8s
+    - istio
+    - http
+    steady-state-hypothesis:
+      title: The app is healthy
+      probes:
+      - type: probe
+        name: app-responds-to-requests
+        tolerance: 200
+        provider:
+          type: http
+          timeout: 15
+          verify_tls: false
+          url: http://ms-read.default.svc.cluster.local:8088/q/health
+      - type: probe
+        tolerance: 200
+        ref: app-responds-to-requests
+      - type: probe
+        tolerance: 200
+        ref: app-responds-to-requests
+      - type: probe
+        tolerance: 200
+        ref: app-responds-to-requests
+      - type: probe
+        tolerance: 200
+        ref: app-responds-to-requests
+    method:
+    - type: action
+      name: delay
+      provider:
+        type: python
+        module: chaosistio.fault.actions
+        func: add_delay_fault
+        arguments:
+          virtual_service_name: ms-read-vs
+          fixed_delay: 10s
+          routes:
+            - destination:
+                host: ms-read.default.svc.cluster.local
+                subset: primary
+          percentage: 50
+          version: networking.istio.io/v1alpha3
+      pauses: 
+        after: 5
+    rollbacks:
+    - type: action
+      name: remove-delay
+      provider:
+        type: python
+        func: remove_delay_fault
+        module: chaosistio.fault.actions
+        arguments:
+          virtual_service_name: ms-read-vs
+          routes:
+            - destination:
+                host: ms-read.default.svc.cluster.local
+                subset: primary
+          version: networking.istio.io/v1alpha3

@@ -21,13 +21,29 @@ spec:
     spec:
       containers:
       - name: ms-update
-        image: luisreciomelero/ms-quarkus-update:v1.0.3
-        #image: luisreciomelero/ms-quarkus-update-native:v1.0.1
+        #image: luisreciomelero/ms-quarkus-update:v1.0.3
+        image: luisreciomelero/ms-quarkus-update-native:v1.0.2
         env:
           - name: KAFKA_HOST
-            value: kafka:9092
+            valueFrom:
+              configMapKeyRef:
+                name: config-ms-update
+                key: kafka.host
           - name: POSTGRES_URL
-            value: "postgres:5432"
+            valueFrom:
+              configMapKeyRef:
+                name: config-ms-update
+                key: postgres.host
+          - name: MAX_SIZE
+            valueFrom:
+              configMapKeyRef:
+                name: config-ms-update
+                key: database.max_size
+          - name: MIN_SIZE
+            valueFrom:
+              configMapKeyRef:
+                name: config-ms-update
+                key: database.min_size
         resources:
           limits:
             cpu: 500m
