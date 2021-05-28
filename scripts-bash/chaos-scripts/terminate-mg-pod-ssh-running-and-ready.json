@@ -1,0 +1,287 @@
+{
+  "chaoslib-version": "1.19.0",
+  "platform": "Linux-5.8.0-50-generic-x86_64-with-glibc2.29",
+  "node": "luisreciomelero-HP-Pavilion-Laptop-15-ck0xx",
+  "experiment": {
+    "version": "1.0.0",
+    "title": "¿Qué ocurre cuando eliminamos el pod donde se ejecuta el microgateway?",
+    "description": "Al estar manejado por un deployment debería levantarse otro de forma inmediata.",
+    "tags": [
+      "k8s",
+      "pod"
+    ],
+    "configuration": {
+      "ingress_host": {
+        "type": "env",
+        "key": "INGRESS_HOST"
+      }
+    },
+    "steady-state-hypothesis": {
+      "title": "Pod exists",
+      "probes": [
+        {
+          "name": "pod-exists",
+          "type": "probe",
+          "tolerance": 2,
+          "provider": {
+            "type": "python",
+            "func": "count_pods",
+            "module": "chaosk8s.pod.probes",
+            "arguments": {
+              "label_selector": "app=mg-backend",
+              "ns": "default"
+            }
+          }
+        },
+        {
+          "name": "pod-in-phase",
+          "type": "probe",
+          "tolerance": true,
+          "provider": {
+            "type": "python",
+            "func": "pods_in_phase",
+            "module": "chaosk8s.pod.probes",
+            "arguments": {
+              "label_selector": "app=mg-backend",
+              "ns": "default",
+              "phase": "Running"
+            }
+          }
+        },
+        {
+          "name": "pod-in-conditions",
+          "type": "probe",
+          "tolerance": true,
+          "provider": {
+            "type": "python",
+            "func": "pods_in_conditions",
+            "module": "chaosk8s.pod.probes",
+            "arguments": {
+              "label_selector": "app=mg-backend",
+              "ns": "default",
+              "conditions": [
+                {
+                  "type": "Ready",
+                  "status": "True"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "app-responds-to-requests",
+          "type": "probe",
+          "tolerance": 200,
+          "provider": {
+            "type": "http",
+            "timeout": 3,
+            "verify_tls": false,
+            "url": "http://${ingress_host}/mg/health"
+          }
+        }
+      ]
+    },
+    "method": [
+      {
+        "type": "action",
+        "name": "terminate-pod",
+        "provider": {
+          "type": "python",
+          "module": "chaosk8s.pod.actions",
+          "func": "terminate_pods",
+          "arguments": {
+            "label_selector": "app=mg-backend",
+            "ns": "default"
+          }
+        },
+        "pauses": {
+          "after": 20
+        }
+      }
+    ],
+    "extensions": [
+      {
+        "name": "chaosiq",
+        "experiment_id": "d3bc65ca-3b4b-4fbf-85b9-e1cb420da303",
+        "experiment_path": "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml"
+      }
+    ],
+    "dry": false
+  },
+  "start": "2021-05-21T17:43:06.861524",
+  "status": "failed",
+  "deviated": true,
+  "steady_states": {
+    "before": {
+      "steady_state_met": true,
+      "probes": [
+        {
+          "activity": {
+            "name": "pod-exists",
+            "type": "probe",
+            "tolerance": 2,
+            "provider": {
+              "type": "python",
+              "func": "count_pods",
+              "module": "chaosk8s.pod.probes",
+              "arguments": {
+                "label_selector": "app=mg-backend",
+                "ns": "default"
+              }
+            }
+          },
+          "output": 2,
+          "status": "succeeded",
+          "start": "2021-05-21T17:43:09.105725",
+          "end": "2021-05-21T17:43:09.353495",
+          "duration": 0.24777,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "name": "pod-in-phase",
+            "type": "probe",
+            "tolerance": true,
+            "provider": {
+              "type": "python",
+              "func": "pods_in_phase",
+              "module": "chaosk8s.pod.probes",
+              "arguments": {
+                "label_selector": "app=mg-backend",
+                "ns": "default",
+                "phase": "Running"
+              }
+            }
+          },
+          "output": true,
+          "status": "succeeded",
+          "start": "2021-05-21T17:43:09.354876",
+          "end": "2021-05-21T17:43:09.380176",
+          "duration": 0.0253,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "name": "pod-in-conditions",
+            "type": "probe",
+            "tolerance": true,
+            "provider": {
+              "type": "python",
+              "func": "pods_in_conditions",
+              "module": "chaosk8s.pod.probes",
+              "arguments": {
+                "label_selector": "app=mg-backend",
+                "ns": "default",
+                "conditions": [
+                  {
+                    "type": "Ready",
+                    "status": "True"
+                  }
+                ]
+              }
+            }
+          },
+          "output": true,
+          "status": "succeeded",
+          "start": "2021-05-21T17:43:09.381091",
+          "end": "2021-05-21T17:43:09.403781",
+          "duration": 0.02269,
+          "tolerance_met": true
+        },
+        {
+          "activity": {
+            "name": "app-responds-to-requests",
+            "type": "probe",
+            "tolerance": 200,
+            "provider": {
+              "type": "http",
+              "timeout": 3,
+              "verify_tls": false,
+              "url": "http://${ingress_host}/mg/health"
+            }
+          },
+          "output": {
+            "status": 200,
+            "headers": {
+              "content-type": "application/json; charset=UTF-8",
+              "content-length": "1284",
+              "x-envoy-upstream-service-time": "235",
+              "date": "Fri, 21 May 2021 17:43:09 GMT",
+              "server": "istio-envoy"
+            },
+            "body": "\n{\n    \"status\": \"UP\",\n    \"checks\": [\n        {\n            \"name\": \"Liveness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - liveness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        },\n        {\n            \"name\": \"Database connections health check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"Readiness check\",\n            \"status\": \"UP\"\n        },\n        {\n            \"name\": \"SmallRye Reactive Messaging - readiness check\",\n            \"status\": \"UP\",\n            \"data\": {\n                \"usuarios-delete\": \"[OK]\",\n                \"usuarios-sendemail\": \"[OK]\",\n                \"usuarios-sendnotification\": \"[OK]\",\n                \"usuarios-create\": \"[OK]\",\n                \"handlednotification-usuarios\": \"[OK]\",\n                \"usuarios-update\": \"[OK]\",\n                \"usuarios-sendsms\": \"[OK]\"\n            }\n        }\n    ]\n}"
+          },
+          "status": "succeeded",
+          "start": "2021-05-21T17:43:09.404681",
+          "end": "2021-05-21T17:43:09.806751",
+          "duration": 0.40207,
+          "tolerance_met": true
+        }
+      ]
+    },
+    "after": {
+      "steady_state_met": false,
+      "probes": [
+        {
+          "activity": {
+            "name": "pod-exists",
+            "type": "probe",
+            "tolerance": 2,
+            "provider": {
+              "type": "python",
+              "func": "count_pods",
+              "module": "chaosk8s.pod.probes",
+              "arguments": {
+                "label_selector": "app=mg-backend",
+                "ns": "default"
+              }
+            }
+          },
+          "output": 3,
+          "status": "succeeded",
+          "start": "2021-05-21T17:43:30.033169",
+          "end": "2021-05-21T17:43:30.568733",
+          "duration": 0.535564,
+          "tolerance_met": false
+        }
+      ]
+    },
+    "during": []
+  },
+  "run": [
+    {
+      "activity": {
+        "type": "action",
+        "name": "terminate-pod",
+        "provider": {
+          "type": "python",
+          "module": "chaosk8s.pod.actions",
+          "func": "terminate_pods",
+          "arguments": {
+            "label_selector": "app=mg-backend",
+            "ns": "default"
+          }
+        },
+        "pauses": {
+          "after": 20
+        }
+      },
+      "output": null,
+      "status": "succeeded",
+      "start": "2021-05-21T17:43:09.808353",
+      "end": "2021-05-21T17:43:10.005623",
+      "duration": 0.19727
+    }
+  ],
+  "rollbacks": [],
+  "end": "2021-05-21T17:43:30.573059",
+  "duration": 23.75218653678894,
+  "extensions": [
+    {
+      "name": "chaosiq",
+      "execution_id": null,
+      "experiment_id": "d3bc65ca-3b4b-4fbf-85b9-e1cb420da303",
+      "safeguards": null
+    }
+  ]
+}

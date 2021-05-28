@@ -5,8 +5,10 @@ description: Al estar manejado por un deployment debería levantarse otro de for
 tags:
 - k8s
 - pod
-# Definimos la hipotesis inicial, que debe cumplirse. Comprobamos que antes de terminar el pod create
-# existe el pod con las label definidas. Cuando termine el experimento, volverá a comprobar si se cumple
+# Definimos la hipotesis inicial, que debe cumplirse. 
+# Comprobamos que antes de terminar el pod microgateway
+# existe el pod con las label definidas. 
+# Cuando termine el experimento, volverá a comprobar si se cumple
 # la hipotesis. En caso afirmativo, nuestra aplicación será resiliente a este tipo de fallo.
 steady-state-hypothesis:
   title: Pod exists
@@ -35,3 +37,10 @@ method:
       ns: default
   pauses: 
     after: 40
+
+
+
+
+
+
+

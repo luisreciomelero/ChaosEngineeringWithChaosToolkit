@@ -1,0 +1,14 @@
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: ms-mailer-vs
+spec:
+  hosts:
+  - ms-mailer
+  http:
+  - route:
+    - destination:
+        host: ms-mailer
+        port:
+          number: 8090

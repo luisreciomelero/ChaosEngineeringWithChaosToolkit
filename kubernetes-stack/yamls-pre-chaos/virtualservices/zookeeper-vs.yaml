@@ -1,0 +1,14 @@
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: zookeeper-vs
+spec:
+  hosts:
+  - zookeeper
+  http:
+  - route:
+    - destination:
+        host: zookeeper
+        port:
+          number: 2181

@@ -1,0 +1,170 @@
+[36m[2021-05-21 19:08:24 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-05-21 19:08:24 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-05-21 19:08:24 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-05-21 19:08:25 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-05-21 19:08:25 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:08:25 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-21 19:08:25 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:08:25 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[31m[2021-05-21 19:08:25 ERROR] [cli:164][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:08:25 DEBUG] [cli:165][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:09:37 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-05-21 19:09:37 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-05-21 19:09:37 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-05-21 19:09:38 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-05-21 19:09:38 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:09:38 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-21 19:09:38 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:09:38 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[31m[2021-05-21 19:09:38 ERROR] [cli:164][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:09:38 DEBUG] [cli:165][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:14:11 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-05-21 19:14:11 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-05-21 19:14:11 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-05-21 19:14:12 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-05-21 19:14:12 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:14:12 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-21 19:14:12 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:14:12 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[31m[2021-05-21 19:14:12 ERROR] [cli:164][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:14:12 DEBUG] [cli:165][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:14:59 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-05-21 19:14:59 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-05-21 19:14:59 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-05-21 19:14:59 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-05-21 19:14:59 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:14:59 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-21 19:14:59 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:14:59 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[31m[2021-05-21 19:14:59 ERROR] [cli:164][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:14:59 DEBUG] [cli:165][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:16:16 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-05-21 19:16:16 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-05-21 19:16:16 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-05-21 19:16:17 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-05-21 19:16:17 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:16:17 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-21 19:16:17 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:16:17 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[31m[2021-05-21 19:16:17 ERROR] [cli:164][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:16:17 DEBUG] [cli:165][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:16:34 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-05-21 19:16:34 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-05-21 19:16:34 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-05-21 19:16:35 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-05-21 19:16:35 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:16:35 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-21 19:16:35 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:16:35 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[31m[2021-05-21 19:16:35 ERROR] [cli:164][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:16:35 DEBUG] [cli:165][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:17:42 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-05-21 19:17:42 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-05-21 19:17:42 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-05-21 19:17:43 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-05-21 19:17:43 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:17:43 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-21 19:17:43 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:17:43 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[31m[2021-05-21 19:17:43 ERROR] [cli:164][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:17:43 DEBUG] [cli:165][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:17:57 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-05-21 19:17:57 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-05-21 19:17:57 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-05-21 19:17:58 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-05-21 19:17:58 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:17:58 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-21 19:17:58 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:17:58 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[31m[2021-05-21 19:17:58 ERROR] [cli:164][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:17:58 DEBUG] [cli:165][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:19:35 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-05-21 19:19:35 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-05-21 19:19:35 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-05-21 19:19:36 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-05-21 19:19:36 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:19:36 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-21 19:19:36 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:19:36 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[31m[2021-05-21 19:19:36 ERROR] [cli:164][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:19:36 DEBUG] [cli:165][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:20:35 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-05-21 19:20:35 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-05-21 19:20:35 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-05-21 19:20:36 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-05-21 19:20:36 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:20:36 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-21 19:20:36 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:20:36 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[31m[2021-05-21 19:20:36 ERROR] [cli:164][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:20:36 DEBUG] [cli:165][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:20:59 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-05-21 19:20:59 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-05-21 19:20:59 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-05-21 19:20:59 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-05-21 19:20:59 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:20:59 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-21 19:20:59 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:20:59 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[31m[2021-05-21 19:20:59 ERROR] [cli:164][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:20:59 DEBUG] [cli:165][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:21:25 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-05-21 19:21:25 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-05-21 19:21:25 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-05-21 19:21:26 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-05-21 19:21:26 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:21:26 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-21 19:21:26 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:21:26 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[31m[2021-05-21 19:21:26 ERROR] [cli:164][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:21:26 DEBUG] [cli:165][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:24:51 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-05-21 19:24:51 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-05-21 19:24:51 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-05-21 19:24:52 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-05-21 19:24:52 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:24:52 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-21 19:24:52 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:24:52 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[31m[2021-05-21 19:24:52 ERROR] [cli:164][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:24:52 DEBUG] [cli:165][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:29:07 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-05-21 19:29:07 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-05-21 19:29:07 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-05-21 19:29:08 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-05-21 19:29:08 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:29:08 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-21 19:29:08 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:29:08 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[31m[2021-05-21 19:29:08 ERROR] [cli:164][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:29:08 DEBUG] [cli:165][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:32:03 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-05-21 19:32:03 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-05-21 19:32:03 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-05-21 19:32:04 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-05-21 19:32:04 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:32:04 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-21 19:32:04 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:32:04 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[31m[2021-05-21 19:32:04 ERROR] [cli:164][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:32:04 DEBUG] [cli:165][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:40:25 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-05-21 19:40:25 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-05-21 19:40:25 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-05-21 19:40:27 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-05-21 19:40:27 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:40:27 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-21 19:40:27 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:40:27 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[31m[2021-05-21 19:40:27 ERROR] [cli:164][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:40:27 DEBUG] [cli:165][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:42:34 DEBUG] [cli:73][39m ###############################################################################
+[36m[2021-05-21 19:42:34 DEBUG] [cli:74][39m Running command 'run'
+[36m[2021-05-21 19:42:34 DEBUG] [cli:78][39m Using settings file '/home/luisreciomelero/.chaostoolkit/settings.yaml'
+[36m[2021-05-21 19:42:35 DEBUG] [__init__:167][39m Loading global control 'chaosiq-cloud'
+[36m[2021-05-21 19:42:35 DEBUG] [__init__:365][39m Applying before-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:42:35 DEBUG] [python:166][39m Control 'before_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[36m[2021-05-21 19:42:35 DEBUG] [__init__:365][39m Applying after-control 'chaosiq-cloud' on 'loader'
+[36m[2021-05-21 19:42:35 DEBUG] [python:166][39m Control 'after_loading_experiment_control' loaded from '/home/luisreciomelero/.local/lib/python3.8/site-packages/chaoscloud/controls.py'
+[31m[2021-05-21 19:42:35 ERROR] [cli:164][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.
+[36m[2021-05-21 19:42:35 DEBUG] [cli:165][39m Path "../../chaos/experiments/pod-experiments/terminate-pods/running-and-ready/terminate-mg-pod-ssh-running-and-ready.yaml" does not exist.

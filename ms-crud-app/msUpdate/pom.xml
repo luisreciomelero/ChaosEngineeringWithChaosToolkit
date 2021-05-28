@@ -30,23 +30,23 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
-    <dependency>
+    <!--dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-hibernate-orm</artifactId>
-    </dependency>
+    </dependency-->
 
-    <dependency>
+    <!--dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-hibernate-validator</artifactId>
-    </dependency>
-    <dependency>
+    </dependency-->
+    <!--dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-arc</artifactId>
-    </dependency>
-    <dependency>
+    </dependency-->
+    <!--dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-resteasy-jsonb</artifactId>
-    </dependency>
+    </dependency-->
     <!--DEPENDENCIA KAFKA -->
     <dependency>
       <groupId>io.quarkus</groupId>

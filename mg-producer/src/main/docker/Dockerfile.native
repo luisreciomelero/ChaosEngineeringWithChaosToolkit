@@ -7,7 +7,7 @@
 #
 # Then, build the image with:
 #
-# docker build -f src/main/docker/Dockerfile.native -t luisreciomelero/mg-quarkus-native:v1.1.0 .
+# docker build -f src/main/docker/Dockerfile.native -t prueba-tiempos-native-mg:v1.0.1 .
 #
 # Then run the container using:
 #

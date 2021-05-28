@@ -13,6 +13,9 @@ cd "istio"
 
 kubectl apply -f "ingress-gateway.yaml"
 
+cd "../http-requester"
+
+kubectl apply -f "."
 
 cd "../postgres-db"
 
@@ -54,9 +57,9 @@ cd "../sendersms-app"
 
 kubectl apply -f "."
 
-#cd "../VirtualServices"
+cd "../virtualservices"
 
-#kubectl apply -f "."
+kubectl apply -f "."
 
 
 cd "../../../scripts-bash/pre-chaos-scripts/"

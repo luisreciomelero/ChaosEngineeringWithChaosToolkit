@@ -1,6 +1,6 @@
 version: 1.0.0
-title: What happens if we abort and delay responses
-description: If responses are aborted and delayed, the dependant application should retry and/or timeout requests
+title: ¿Qué ocurre si incrementamos la latencia en la respuestas?
+description: Si se añade latencia a las respuestas el sistema debería reintentar las peticiones o terminar con timeout.
 tags:
 - k8s
 - istio
@@ -12,12 +12,12 @@ configuration:
 steady-state-hypothesis:
   title: The app is healthy
   probes:
-  - type: probe
-    name: app-responds-to-requests
+  - name: app-responds-to-requests
+    type: probe
     tolerance: 200
     provider:
       type: http
-      timeout: 15
+      timeout: 10
       verify_tls: false
       url: http://${ingress_host}/mg/health
   - type: probe
@@ -44,12 +44,12 @@ method:
       fixed_delay: 10s
       routes:
         - destination:
-            host: mg-v1.default.svc.cluster.local
+            host: mg-v1
             subset: primary
       percentage: 50
       version: networking.istio.io/v1alpha3
   pauses: 
-    after: 5
+    after: 1
 rollbacks:
 - type: action
   name: remove-delay
@@ -61,6 +61,6 @@ rollbacks:
       virtual_service_name: mg-v1-vs
       routes:
         - destination:
-            host: mg-v1.default.svc.cluster.local
+            host: mg-v1
             subset: primary
       version: networking.istio.io/v1alpha3

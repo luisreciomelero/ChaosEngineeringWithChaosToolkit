@@ -1,14 +1,11 @@
 package es.upm.dit.muirst.tfm.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
-public class Usuario  implements Serializable {
 
-    @Id
+public class Usuario {
+
+
     private String DNI;
     private String nombre;
     private String apellido;

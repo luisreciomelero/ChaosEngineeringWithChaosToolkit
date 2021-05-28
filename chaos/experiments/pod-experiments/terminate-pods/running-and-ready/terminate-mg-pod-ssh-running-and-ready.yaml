@@ -68,4 +68,3 @@ method:
           app=mg-backend
         ns: default
   pauses: 
-    after: 20

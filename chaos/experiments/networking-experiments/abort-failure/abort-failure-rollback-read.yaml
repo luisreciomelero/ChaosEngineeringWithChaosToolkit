@@ -44,7 +44,7 @@ method:
       http_status: 503
       routes:
         - destination:
-            host: ms-read.default.svc.cluster.local
+            host: ms-read
             subset: primary
       percentage: 50
       version: networking.istio.io/v1alpha3
@@ -62,6 +62,6 @@ rollbacks:
       virtual_service_name: ms-read-vs
       routes:
         - destination:
-            host: ms-read.default.svc.cluster.local
+            host: ms-read
             subset: primary
       version: networking.istio.io/v1alpha3

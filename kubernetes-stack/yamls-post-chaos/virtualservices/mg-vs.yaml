@@ -14,20 +14,14 @@ spec:
         port:
           number: 8081
         subset: primary
-    retries:
-      attempts: 10
-      perTryTimeout: 3s
-      retryOn: 5xx,connect-failure
-    timeout: 10s
 ---
 
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: mg-v1
-  #namespace: istio-system
 spec:
-  host: mg-v1.default.svc.cluster.local
+  host: mg-v1
   trafficPolicy:
       connectionPool:
         http: {}
@@ -36,17 +30,10 @@ spec:
         simple: RANDOM
       outlierDetection:
         baseEjectionTime: 1m
-        consecutive5xxErrors: 1
-        consecutiveGatewayErrors: 5
-        interval: 1m
+        consecutive5xxErrors: 3
+        interval: 2s
         maxEjectionPercent: 100
   subsets:
   - name: primary
     labels:
       release: primary
-#  - name: secondary
-#    labels:
-#       release: secondary
-  
-  
-

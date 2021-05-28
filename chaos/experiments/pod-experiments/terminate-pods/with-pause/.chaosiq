@@ -1,0 +1,9 @@
+experiments:
+  846e69e0-c776-46c9-a431-a7de0487556e:
+    ad7ea2e6-37e0-4421-b763-73bb5a55dd9f:
+      terminate-mg-pod-pause.yaml:
+        experiment_id: 7a3cea3a-bb1d-4f86-8edb-89531ed2f7fd
+  8d25d811-ac7c-43bf-b9d6-3e4aef224aac:
+    0f79ba20-c1c0-4b3d-914e-b69c29012748:
+      terminate-mg-pod-pause.yaml:
+        experiment_id: 0c0e57f0-f992-491f-8842-acecbe1fcccb

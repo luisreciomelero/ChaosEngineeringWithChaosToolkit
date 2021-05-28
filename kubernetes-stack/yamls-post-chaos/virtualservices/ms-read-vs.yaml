@@ -14,11 +14,11 @@ spec:
         port:
           number: 8088
         subset: primary
-    retries:
-      attempts: 10
-      perTryTimeout: 3s
-      retryOn: 5xx,connect-failure
-    timeout: 10s
+    #retries:
+    #  attempts: 10
+    #  perTryTimeout: 3s
+    #  retryOn: 5xx,connect-failure
+    #timeout: 10s
 ---
 
 
@@ -28,19 +28,19 @@ metadata:
   name: ms-read
   #namespace: istio-system
 spec:
-  host: ms-read.default.svc.cluster.local
-  trafficPolicy:
-      connectionPool:
-        http: {}
-        tcp: {}
-      loadBalancer:
-        simple: RANDOM
-      outlierDetection:
-        baseEjectionTime: 5m
-        consecutive5xxErrors: 1
-        consecutiveGatewayErrors: 5
-        interval: 5m
-        maxEjectionPercent: 100
+  host: ms-read
+#  trafficPolicy:
+#      connectionPool:
+#        http: {}
+#        tcp: {}
+#      loadBalancer:
+#        simple: RANDOM
+#      outlierDetection:
+#        baseEjectionTime: 5m
+#        consecutive5xxErrors: 1
+#        consecutiveGatewayErrors: 5
+#        interval: 5m
+#        maxEjectionPercent: 100
   subsets:
   - name: primary
     labels:

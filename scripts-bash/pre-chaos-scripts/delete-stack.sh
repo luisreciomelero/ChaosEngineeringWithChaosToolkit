@@ -28,8 +28,8 @@ cd "../sendersms-app"
 
 kubectl delete -f "."
 
-#cd "../VirtualServices"
+cd "../virtualvervices"
 
-#kubectl delete -f "."
+kubectl delete -f "."
 
 cd "../../../scripts-bash/pre-chaos/"

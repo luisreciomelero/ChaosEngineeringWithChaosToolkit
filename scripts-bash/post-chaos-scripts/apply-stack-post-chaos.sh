@@ -65,6 +65,6 @@ cd "../horizontalPodAutoScalers"
 # únicamente habilitamos el autoescalamiento de read y mg.
 # Si se contase con más recursos podríamos ejecutar un kubectl apply -f "."
 
-kubectl apply -f "metrics-components.yaml,mg-hpa.yaml,ms-read-hpa.yaml"
+#kubectl apply -f "metrics-components.yaml,mg-hpa.yaml,ms-read-hpa.yaml"
 
 cd "../../../scripts-bash/post-chaos-scripts/"

@@ -20,7 +20,6 @@ help() {
   echo "Este script recibe un param: "
   echo "  Flags: "
   echo "  -e, --experiment: proporcionando el path al experimento a ejecutar"
- # echo "  -nr, --name-report: indicando el nombre del report que se generará con los resultados del experimento"
   echo " "
   exit 1
 }
@@ -29,6 +28,7 @@ get_name(){
 	IFS='.'
 	read -a strarr <<< "$1"
 	NAME=${strarr[0]}
+	echo "GET NAME: $NAME"
 }
 
 split_experiment_path(){
@@ -43,11 +43,13 @@ split_experiment_path(){
 	echo "NAME: $NAME"
 	for (( n=0; n < ${#strarr[*]}-1; n++))
 	do
-		
 		if [ $n = 0 ]; then 
 			PATH_FILE="${strarr[n]}"
+			echo "$PATH_FILE"
 		else
 			PATH_FILE="$PATH_FILE/${strarr[n]}"
+			echo "$PATH_FILE"
+
 		fi
 		  	
 	done
@@ -81,18 +83,28 @@ done
 if [ $# -ne 1 ]; then
   help 
 fi
-if [ -f $EXPERIMENT ]; then
+if [ -f "$EXPERIMENT" ]; then
 	echo "Archivo existe"
 	split_experiment_path
 else
 	echo "Archivo no existe"
 fi
-if [ -d $PATH_JOURNAL ]; then
+
+echo "PATH_JOURNAL FUERA: $PATH_JOURNAL"
+echo "NAME FUERA: $NAME"
+
+pwd
+
+if [ -d "$PATH_JOURNAL" ]; then
+	echo "PATH_JOURNAL ENTRAMOS: $PATH_JOURNAL"
+
 	NAME_JOURNAL="$NAME.json"
 	echo "$EXPERIMENT"
 	#chaos run "$EXPERIMENT" --journal-path "$NAME_JOURNAL"
 fi
-cd "$PATH_JOURNAL"
+
+
+
 
 chaos run "$EXPERIMENT" --journal-path "$NAME_JOURNAL" --rollback-strategy "always"
 echo "PATH_REPORTS: $PATH_REPORTS"

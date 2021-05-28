@@ -1,6 +1,6 @@
 #!/bin/bash
 
-istioctl install --set profile=default --set meshConfig.accessLogFile=/dev/stdout -y
+istioctl install --set profile=default -y
 
 sleep 30
 

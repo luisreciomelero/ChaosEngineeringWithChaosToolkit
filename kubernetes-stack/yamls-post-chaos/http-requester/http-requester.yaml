@@ -1,0 +1,89 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: http-requester-depl
+  labels:
+    app: http-requester-app
+    component: http-requester
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: http-requester-app
+      component: http-requester
+  template:
+    metadata:
+      labels:
+        app: http-requester-app
+        component: http-requester
+    spec:
+      containers:
+      - name: http-requester
+        image: luisreciomelero/http-requester:v1.0.5
+
+        env:
+          - name: MG_HOST
+            value: mg-v1
+          - name: MG_PORT
+            value: "8081"
+          - name: MS_READ_HOST
+            value: ms-read
+          - name: MS_READ_PORT
+            value: "8088"
+        
+        
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: http-requester
+  labels:
+    app: http-requester-app
+    component: http-requester
+spec:
+  type: ClusterIP
+  selector:
+    app: http-requester-app
+    component: http-requester
+  ports:
+  - port: 8181
+    name: http-requester
+    targetPort: 8181
+  
+
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: http-requester-vs
+spec:
+  hosts:
+  - http-requester
+  http:
+  - route:
+    - destination:
+        host: http-requester
+        subset: primary
+    timeout: 1s
+
+---
+
+
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: http-requester
+spec:
+  host: http-requester
+  subsets:
+  - name: primary
+    labels:
+      app: http-requester-app
+      component: http-requester
+  
+
+
+

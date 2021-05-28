@@ -16,3 +16,6 @@ public class LivenessProbe implements HealthCheck {
         return HealthCheckResponse.up("Liveness check");
     }
 }
+
+
+

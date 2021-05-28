@@ -1,14 +1,12 @@
 package org.acme.config.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
 import java.io.Serializable;
 import java.util.Objects;
 
-@Entity
 public class Usuario  implements Serializable {
 
-    @Id
+
     private String DNI;
     private String nombre;
     private String apellido;

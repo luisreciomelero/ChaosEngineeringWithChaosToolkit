@@ -1,0 +1,34 @@
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: mg-v1-vs
+spec:
+  hosts:
+  - mg-v1
+  http:
+  - route:
+      - destination:
+          host: mg-v1
+          port:
+            number: 8081
+          subset: primary
+  
+    #retries:
+    #  attempts: 10
+    #  perTryTimeout: 3s
+    #  retryOn: 5xx,connect-failure
+
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: mg-v1
+spec:
+  host: mg-v1
+  subsets:
+  - name: primary
+    labels:
+      release: primary

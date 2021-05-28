@@ -32,10 +32,8 @@ spec:
       uri: " "
     route:
     - destination:
-        port:
-          number: 8081
-        host: mg-v1.default.svc.cluster.local  
-    timeout: 30s
+        host: http-requester
+    #timeout: 2s
   - match:
     - uri:
         prefix: /read
@@ -43,8 +41,6 @@ spec:
       uri: " "
     route:
     - destination:
-        port:
-          number: 8088
-        host: ms-read.default.svc.cluster.local
+        host: http-requester
       
 

@@ -1,6 +1,6 @@
 version: 1.0.0
-title: What happens if we abort responses
-description: If responses are aborted, the dependant application should retry and/or timeout requests
+title: ¿Que ocurre si abortamos las respuestas http del microgateway?
+description: EL microservicio que las realiza debería realizar reintentos hasta recibir la respuesta correcta o expirar el timeout
 tags:
 - k8s
 - istio
@@ -17,7 +17,7 @@ steady-state-hypothesis:
     tolerance: 200
     provider:
       type: http
-      timeout: 20
+      timeout: 5
       verify_tls: false
       url: http://${ingress_host}/mg/health
   - type: probe
@@ -44,11 +44,10 @@ method:
       http_status: 503
       routes:
         - destination:
-            host: mg-v1.default.svc.cluster.local
+            host: mg-v1
             subset: primary
-      percentage: 50
+      percentage: 70
       version: networking.istio.io/v1alpha3
-      #ns: istio-system
   pauses: 
     after: 5
 rollbacks:
@@ -62,6 +61,7 @@ rollbacks:
       virtual_service_name: mg-v1-vs
       routes:
         - destination:
-            host: mg-v1.default.svc.cluster.local
+            host: mg-v1
             subset: primary
       version: networking.istio.io/v1alpha3
+

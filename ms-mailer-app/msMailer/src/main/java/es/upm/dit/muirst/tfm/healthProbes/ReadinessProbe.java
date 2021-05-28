@@ -14,3 +14,6 @@ public class ReadinessProbe implements HealthCheck {
         return HealthCheckResponse.up("Readiness check");
     }
 }
+
+
+
